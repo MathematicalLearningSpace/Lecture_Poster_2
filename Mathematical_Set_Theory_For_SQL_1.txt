@@ -1,0 +1,66 @@
+#-------------------------------Create the Key Sequence for Postresql------------------------------
+CREATE SEQUENCE public."A_ID_seq"
+    INCREMENT 1
+    START 1199688
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public."A_ID_seq"
+    OWNER TO postgres;
+#---------------------------------Create the Table--------------------------------------
+-- Table: public."A"
+
+-- DROP TABLE public."A";
+
+CREATE TABLE public."A"
+(
+    "A_ID" bigint NOT NULL DEFAULT nextval('"A_ID_seq"'::regclass),
+    "Field_1" text COLLATE pg_catalog."default" NOT NULL,
+    "Field_2" bigint COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "A_ID_PKEY" PRIMARY KEY ("A_ID"),
+    CONSTRAINT "A_FKey" FOREIGN KEY ("Field_1")
+        REFERENCES public."B" ("B_ID") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public."A"
+    OWNER to postgres;
+#---------------------------------Create the Index-----------------------------------------------
+-- Index: A_Field_1_Index
+
+-- DROP INDEX public."A_Field_1_Index";
+
+CREATE INDEX "A_Field_1_Index"
+    ON public."A" USING btree
+    (Field_1 COLLATE pg_catalog."default")
+    TABLESPACE pg_default;
+#--------------------------------Insert Data into Table------------------------
+INSERT INTO public."A"(
+	"A_ID", "Field_1", "Field_2")
+	VALUES (1,"1",1);
+#---------------------------------Basic Structure for Set A------------------------------
+SELECT "A"."A_ID", "A"."Field_1", "A"."Field_2"
+	FROM public."A"
+	WHERE "A'."Field_2" < 10
+#---------------------------------Filtered by Number of Sequences-----------------------
+SELECT "A"."A_ID", "A"."Field_1", "A"."Field_2"
+	FROM public."A"
+	WHERE "A'."Field_2" < 10
+#---------------------------------Group the Set By Count of Members of the Set----------------------------------------
+GROUP BY "A"."A_ID"
+HAVING COUNT(*)>=10
+ORDER BY COUNT(*) DESC;
+#--------------------------------Filter the Set Based on StringMatches--------------------------------------------
+SELECT Count(Distinct "Field_1") As Count, "A_ID"
+	FROM public."A"
+Group by "A_ID", "Field_1"
+Having "Field_1" like '%String_Name%'
+Order by "Field_1";
+
+
