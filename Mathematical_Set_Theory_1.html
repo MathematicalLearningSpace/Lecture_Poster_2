@@ -1,0 +1,526 @@
+<!doctype html>
+<html>
+<head>
+<title>Mathematical_Set_Theory_1</title>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link type="text/css" rel="stylesheet" href="css/jquery-ui.css"/>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<style>
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  margin: 40px;
+  background-image: url(images/);
+  background-color:black;
+}
+img {
+  max-width: 100%;
+}
+h1,
+p {
+  margin: 0 0 1em 0;
+  color: white;
+}
+.wrapper {
+  max-width: 2440px;
+  margin: 0 20px;
+ /* display: grid;*/
+  grid-gap: 10px;
+}
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.wrapper {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+  grid-auto-rows: minmax(150px, auto);
+}
+.panel {
+  /* needed for the flex layout*/
+  margin-left: 2px;
+  margin-right: 2px;
+  flex: 1 1 200px;
+  font-size: 50%;
+}
+.panel:hover{
+moz-transform:scale(6.5);
+}
+.journal{ 
+   height: 100px;
+   width: 100px;
+  }
+.journal:hover{
+<!---moz-transform:scale(6.5);-->
+}
+.tall-panel {
+  grid-row-end: span 2;
+}
+
+.header,
+.footer {
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 0 1 100%;
+  grid-column: 1 / -1;
+}
+
+.wrapper > * {
+  background-color: teal;
+  color: black;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 100%;
+  margin-bottom: 10px;
+}
+@supports (display: grid) {
+  .wrapper > * {
+    margin: 0;
+  }
+}
+body { 
+    background: black ;
+    font-size: 16px;
+    color: white;
+}
+aside {
+    text-align: center;
+}
+h3 {
+    font-weight: normal;
+    display: inline-block;
+    margin: 0.5rem 1rem;
+}
+#reset {
+    margin: 0 1rem; 
+}
+main {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    margin: 0 auto;
+    width: 57.3rem;
+    font: 4rem serif;
+}
+figure {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: 0.25rem;
+    float: left;
+    border: 1px solid #666;
+    margin: 0.5rem;
+    height: 9rem;
+    width: 6rem;
+    padding: 0;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    perspective: 1000;
+    position: relative;
+}
+
+div input {
+  display: none;
+}
+
+div [type="radio"]:checked + .animate {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.animate {
+   -webkit-transform-style: preserve-3d;
+   -moz-transform-style: preserve-3d;
+   transform-style: preserve-3d;
+   transition: all 0.5s ease-out;
+}
+label {
+    text-align: center;
+    border-radius: 0.25rem;
+    border: 0.5rem solid #fff;
+    display: inline-block;
+    width: 5rem;
+    height: 8rem;
+    line-height: 8rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.back {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    background: #fcfcfc;
+}
+.front {
+   z-index: 1;
+}
+.front:before {
+    content:'\272A';
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    background: firebrick;
+    height: 100%;
+    width: 100%;
+    displey: block;
+    border: 1.75rem solid firebrick;
+    border-left-width: 0.5rem;
+    border-right-width: 0.5rem;
+}
+#theBox_3, #theBox_2{
+    display: none; 
+    border: 1px solid #000;
+    width: 200px;
+    height: 100px;
+    background-color: #ddf;
+}
+#toggleSwitch_j, #StayOpen {
+ background-color: #cacaca;            
+}
+
+</style>
+<body>
+<h2>2018 Vision Board of Projects<h2>
+
+<!---<main> </main>-->
+<div class="wrapper">
+  <header class="header">Group Posters
+  <img class="journal" src="images\PosterGroup1.png"  data-tooltip-id="1" title="Poster Group 1">
+  <img class="journal" src="images\PosterGroup2.png" data-tooltip-id="2" title="Poster Group 2">
+  <img class="journal" src="images\PosterGroup3.png" data-tooltip-id="3" title="Poster Group 3">
+  <img class="journal" src="images\PosterGroup4.png" data-tooltip-id="4" title="Poster Group 4">
+  <img class="journal" src="images\PosterGroup5.png" data-tooltip-id="5" title="Poster Group 5">
+  <img class="journal" src="images\PosterGroup6.png" data-tooltip-id="6" title="Poster Group 6">
+  <img class="journal" src="images\PosterGroup7.png" data-tooltip-id="7" title="Poster Group 7">
+  <img class="journal" src="images\PosterGroup8.png" data-tooltip-id="8" title="Poster Group 8">
+  <img class="journal" src="images\PosterGroup9.png"data-tooltip-id="9" title="Poster Group 9">
+  <img class="journal" src="images\PosterGroup10.png" data-tooltip-id="10" title="Poster Group 10">
+  </header>
+  <header class="header">Project Posters</header>
+   <div id="Proj1" class="panel">Project 1
+	<img src="images\Poster1.png" data-tooltip-id="11" title="Title:" onclick="changeState()">
+	<div id="theBox_3">test</div>
+  </div>
+  <div class="panel">Project 2
+	<img src="images\Poster2.png" data-tooltip-id="12" title="Title:">
+  </div>
+  <div class="panel">Project 3
+	<img src="images\Poster3.png" data-tooltip-id="13" title="Title:">
+  </div>
+	<div class="panel">Project 4
+	<img src="images\Poster4.png" data-tooltip-id="14" title="Title:">
+  </div>
+   <div class="panel">Project 5
+	<img src="images\Poster5.png" data-tooltip-id="15" title="Title:">
+  </div>
+  <div class="panel">Project 6
+	<img src="images\Poster6.png" data-tooltip-id="16" title="Title:">
+  </div>
+	<div class="panel">Project 7
+	<img src="images\Poster7.png" data-tooltip-id="17" title="Title:">
+  </div>
+ <div class="panel">Project 8
+	<img src="images\Poster8.png" data-tooltip-id="18" title="Title:">
+  </div>
+  <div class="panel">Project 9
+	<img src="images\Poster9.png" data-tooltip-id="19" title="Title:">
+  </div>
+	<div class="panel">GRP 1:Project 10
+	<img src="images\Poster10.png">
+  </div>
+   <div class="panel">Project 11
+	<img src="images\Poster11.png">
+  </div>
+  <div class="panel">Project 12
+	<img src="images\Poster12.png">
+  </div>
+	<div class="panel">Project 13
+	<img src="images\Poster13.png">
+  </div>
+   <div class="panel">Project 14
+	<img src="images\Poster14.png">
+  </div>
+  <div class="panel">Project 15
+	<img src="images\Poster15.png">
+  </div>
+  <div class="panel">Project 16
+	<img src="images\Poster16.png">
+  </div>
+	<div class="panel">Project 17
+	<img src="images\Poster17.png">
+  </div>
+   <div class="panel">Project 18
+	<img src="images\Poster18.png">
+  </div>
+  <div class="panel">Project 19
+	<img src="images\Poster19.png">
+  </div>
+	<div class="panel">GRP 2:Project 20
+	<img src="images\Poster20.png">
+  </div>
+ <div class="panel">Project 21
+	<img src="images\Poster21.png">
+  </div>
+  <div class="panel">Project 22
+	<img src="images\Poster22.png">
+  </div>
+	<div class="panel">Project 23
+	<img src="images\Poster23.png">
+  </div>
+   <div class="panel">Project 24
+	<img src="images\Poster24.png">
+  </div>
+  <div class="panel">Project 25
+	<img src="images\Poster25.png">
+  </div>
+	<div class="panel">Project 26
+	<img src="images\Poster26.png">
+  </div>
+  <div class="panel">Project 27
+	<img src="images\Poster27.png">
+  </div>
+  <div class="panel">Project 28
+	<img src="images\Poster28.png">
+  </div>
+	<div class="panel">Project 29
+	<img src="images\Poster29.png">
+  </div>
+   <div class="panel">GRP 3:Project 30
+	<img src="images\Poster30.png">
+  </div>
+  <div class="panel">Project 31
+	<img src="images\Poster31.png">
+  </div>
+	<div class="panel">Project 32
+	<img src="images\Poster32.png">
+  </div>
+  <div class="panel">Project 33
+	<img src="images\Poster33.png">
+  </div>
+   <div class="panel">Project 34
+	<img src="images\Poster34.png">
+  </div>
+  <div class="panel">Project 35
+	<img src="images\Poster35.png">
+  </div>
+	<div class="panel">Project 36
+	<img src="images\Poster36.png">
+  </div>
+  <div class="panel">Project 37
+	<img src="images\Poster37.png">
+  </div>
+  <div class="panel">Project 38
+	<img src="images\Poster38.png">
+  </div>
+	<div class="panel">Project 39
+	<img src="images\Poster39.png">
+  </div>
+   <div class="panel">GRP 4:Project 40
+	<img src="images\Poster40.png">
+  </div>
+  <div class="panel">Project 41
+	<img src="images\Poster41.png">
+  </div>
+	<div class="panel">Project 42
+	<img src="images\Poster42.png">
+  </div>
+  <div class="panel">Project 43
+	<img src="images\Poster43.png">
+  </div>
+   <div class="panel">Project 44
+	<img src="images\Poster44.png">
+  </div>
+  <div class="panel">Project 45
+	<img src="images\Poster45.png">
+  </div>
+	<div class="panel">Project 46
+	<img src="images\Poster46.png">
+  </div>
+  <div class="panel">Project 47
+	<img src="images\Poster47.png">
+  </div>
+  <div class="panel">Project 48
+	<img src="images\Poster48.png">
+  </div>
+	<div class="panel">Project 49
+	<img src="images\Poster49.png">
+  </div>
+   <div class="panel">GRP 5:Project 50
+	<img src="images\Poster50.png">
+  </div>
+  <div class="panel">Project 51
+	<img src="images\Poster51.png">
+  </div>
+	<div class="panel">Project 52
+	<img src="images\Poster52.png">
+  </div>
+  <div class="panel">Project 53
+	<img src="images\Poster53.png">
+  </div>
+   <div class="panel">Project 54
+	<img src="images\Poster54.png">
+  </div>
+  <div class="panel">Project 55
+	<img src="images\Poster55.png">
+  </div>
+	<div class="panel">Project 56
+	<img src="images\Poster56.png">
+  </div>
+  <div class="panel">Project 57
+	<img src="images\Poster57.png">
+  </div>
+  <div class="panel">Project 58
+	<img src="images\Poster58.png">
+  </div>
+	<div class="panel">Project 59
+	<img src="images\Poster59.png">
+  </div>
+   <div class="panel">GRP 6:Project 60
+	<img src="images\Poster60.png">
+  </div>
+  <div class="panel">Project 61
+	<img src="images\Poster61.png">
+  </div>
+	<div class="panel">Project 62
+	<img src="images\Poster62.png">
+  </div>
+  <div class="panel">Project 63
+	<img src="images\Poster63.png">
+  </div>
+   <div class="panel">Project 64
+	<img src="images\Poster64.png">
+  </div>
+  <div class="panel">Project 65
+	<img src="images\Poster65.png">
+  </div>
+	<div class="panel">Project 66
+	<img src="images\Poster66.png">
+  </div>
+  <div class="panel">Project 67
+	<img src="images\Poster67.png">
+  </div>
+  <div class="panel">Project 68
+	<img src="images\Poster68.png">
+  </div>
+	<div class="panel">Project 69
+	<img src="images\Poster69.png">
+  </div>
+   <div class="panel">GRP 7:Project 70
+	<img src="images\Poster70.png">
+  </div>
+  <div class="panel">Project 71
+	<img src="images\Poster71.png">
+  </div>
+	<div class="panel">Project 72
+	<img src="images\Poster72.png">
+  </div>
+  <div class="panel">Project 73
+	<img src="images\Poster73.png">
+  </div>
+   <div class="panel">Project 74
+	<img src="images\Poster74.png">
+  </div>
+  <div class="panel">Project 75
+	<img src="images\Poster75.png">
+  </div>
+	<div class="panel">Project 76
+	<img src="images\Poster76.png">
+  </div>
+  <div class="panel">Project 77
+	<img src="images\Poster77.png">
+  </div>
+  <div class="panel">Project 78
+	<img src="images\Poster78.png">
+  </div>
+	<div class="panel">Project 79
+	<img src="images\Poster79.png">
+  </div>
+   <div class="panel">GRP 8:Project 80
+	<img src="images\Poster80.png">
+  </div>
+   <div class="panel">Project 81
+	<img src="images\Poster81.png">
+  </div>
+	<div class="panel">Project 82
+	<img src="images\Poster82.png">
+  </div>
+  <div class="panel">Project 83
+	<img src="images\Poster83.png">
+  </div>
+   <div class="panel">Project 84
+	<img src="images\Poster84.png">
+  </div>
+  <div class="panel">Project 85
+	<img src="images\Poster85.png">
+  </div>
+	<div class="panel">Project 86
+	<img src="images\Poster86.png">
+  </div>
+  <div class="panel">Project 87
+	<img src="images\Poster87.png">
+  </div>
+  <div class="panel">Project 88
+	<img src="images\Poster88.png">
+  </div>
+	<div class="panel">Project 89
+	<img src="images\Poster89.png">
+  </div>
+   <div class="panel">GRP 9:Project 90
+	<img src="images\Poster90.png">
+  </div>
+   <div class="panel">Project 91
+	<img src="images\Poster91.png">
+  </div>
+	<div class="panel">Project 92
+	<img src="images\Poster92.png">
+  </div>
+  <div class="panel">Project 93
+	<img src="images\Poster93.png">
+  </div>
+   <div class="panel">Project 94
+	<img src="images\Poster94.png">
+  </div>
+  <div class="panel">Project 95
+	<img src="images\Poster95.png">
+  </div>
+	<div class="panel">Project 96
+	<img src="images\Poster96.png">
+  </div>
+  <div class="panel">Project 97
+	<img src="images\Poster97.png">
+  </div>
+  <div class="panel">Project 98
+	<img src="images\Poster98.png">
+  </div>
+  <div class="panel">Project 99
+	<img src="images\Poster99.png">
+  </div>
+   <div class="tall-panel">Goal Attainment:Project 100
+	<img src="images\Poster100.png">
+  </div>
+  <footer class="footer">Resume Poster
+   </footer>
+   <div class="panel">Resume 1
+	<img src="images\Resume1.png">
+  </div>
+   <div class="panel">Vita 1
+	<img src="images\Vita1.png">
+  </div>
+   <div class="panel">BioSketch
+	<img src="images\BioSketch1.png">
+  </div>
+   <div class="panel">Personality Profile
+	<img src="images\Personality1.png">
+  </div>
+   <footer class="footer">Project statistics
+   </footer>
+</body>
+</html>
