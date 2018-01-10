@@ -1,0 +1,23 @@
+--------------------------------Example of the Project-Graph-Poster Relationship---------------------
+
+
+INSERT INTO public."Project"(
+	"Project_Name", "Project_Synonyms", "Project_Type", "Project_Domain_ID", "Project_Description", "Project_Comment", "Project_FeatureChange_1", "Project_FeatureChange_2", "Project_FeatureChange_3", "Graph_ID", "Project_Status", "Project_Message", "Project_Exception", "Project_Script", "Project_CreatedBy", "Project_CreatedDate", "Project_DeliveredDate", "Project_EditedBy")
+	VALUES ('Project_1', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '',
+	'Project_3', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '',
+	'Project_4', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '',
+	'Project_5', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '',
+	'Project_6', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '',
+	'Project_7', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '',
+	'Project_8', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '',
+	'Project_9', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '',
+	'Project_10', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '');
+
+INSERT INTO public."Graph"(
+	"Graph_Name", "Graph_Synonyms", "Graph_Type", "Graph_Domain_ID", "Graph_Description", "Graph_Comment", "Graph_FeatureChange_1", "Graph_FeatureChange_2", "Graph_FeatureChange_3","Graph_Status", "Graph_Message", "Graph_Exception", "Graph_Script", "Graph_CreatedBy", "Graph_CreatedDate", "Graph_DeliveredDate", "Graph_EditedBy")
+	VALUES ('Graph_1', '', '', '', '', '', '', '', '','', '', '', '', '', '', '', '');
+
+
+INSERT INTO public."Poster"(
+	"Poster_Name", "Poster_Synonyms", "Poster_Type", "Poster_Domain_ID", "Poster_Description", "Poster_Comment", "Poster_FeatureChange_1", "Poster_FeatureChange_2", "Poster_FeatureChange_3", "Graph_ID", "Poster_Status", "Poster_Message", "Poster_Exception", "Poster_Script", "Poster_CreatedBy", "Poster_CreatedDate", "Poster_DeliveredDate", "Poster_EditedBy")
+	VALUES ('Poster_1', '', '', '', '', '', '', '', '', 1, '', '', '', '', '', '', '', '');
