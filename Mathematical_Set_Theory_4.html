@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Mathematical Set Theory 4</title>
+	<style>
+	* {
+margin: 0;
+padding: 0;
+}
+body {
+font: 71%/1.5 Verdana, Sans-Serif;
+background: #eee;
+}
+
+#container {
+margin: 10px auto;
+width: 1400px;
+}
+#write {
+margin: 0 0 5px;
+padding: 5px;
+width: 1000px;
+height: 100px;
+font: 1em/1.5 Verdana, Sans-Serif;
+background: #fff;
+border: 1px solid #f9f9f9;
+-moz-border-radius: 100px / 50px; 
+-webkit-border-radius: 100px / 50px; 
+border-radius: 100px / 50px;
+	 box-shadow: 10px 10px 5px grey;
+}
+#LectureBoard {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+    #LectureBoard li {
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 80px;
+    height: 80px;
+    line-height: 40px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #f9f9f9;
+	-moz-border-radius: 100px / 50px; 
+	-webkit-border-radius: 100px / 50px; 
+	border-radius: 100px / 50px;
+	box-shadow: 10px 10px 5px grey;
+    }
+        .poster, .tab, .left-shift {
+        clear: left;
+		 width: 170px;
+        }
+            #LectureBoard  .tab, #LectureBoard .delete {
+            width: 170px;
+			color: black;
+			background-color: lightblue;
+            }
+            #LectureBoard  .capslock {
+            width: 180px;
+            }
+            #LectureBoard .return {
+            width: 177px;
+			background-color: lightpink;
+            }
+            #LectureBoard .left-shift {
+            width: 195px;
+            }
+            #LectureBoard .right-shift {
+            width: 109px;
+            }
+			#LectureBoard .symbol{
+				 width: 50px;
+				 height: 50px;
+				 background-color: lightgreen;
+				 -moz-border-radius: 50px; 
+				 -webkit-border-radius: 50px; 
+				 border-radius: 50px;
+			}
+			#LectureBoard .Lecture{
+				 background-color: purple;
+				 width: 50px;
+				 height: 50px;
+			}
+        .lastitem {
+        margin-right: 0;
+        }
+        .uppercase {
+        text-transform: uppercase;
+        }
+        #LectureBoard .space {
+        clear: left;
+        width: 1000px;
+        }
+        .on {
+        display: none;
+        }
+        #LectureBoard li:hover {
+        position: relative;
+        top: 1px;
+        left: 1px;
+        border-color: #e5e5e5;
+        cursor: pointer;
+		background-color: red;
+        }
+	</style>
+</head>
+<body>
+<div id="container">
+    <textarea id="write" rows="8" cols="60"></textarea>
+    <ul id="LectureBoard">
+        <li class="posterSymbol"><span class="off">1</span><span class="on">Matrix</span></li>
+        <li class="posterSymbol"><span class="off">2</span><span class="on">Diff</span></li>
+        <li class="posterSymbol"><span class="off">3</span><span class="on">Integral</span></li>
+        <li class="posterSymbol"><span class="off">4</span><span class="on">CDF</span></li>
+        <li class="posterSymbol"><span class="off">5</span><span class="on">PDF</span></li>
+        <li class="posterSymbol"><span class="off">6</span><span class="on">Set</span></li>
+        <li class="posterSymbol"><span class="off">7</span><span class="on">Def</span></li>
+        <li class="posterSymbol"><span class="off">8</span><span class="on">Algorithm</span></li>
+        <li class="posterSymbol"><span class="off">9</span><span class="on">Theorem</span></li>
+        <li class="posterSymbol"><span class="off">10</span><span class="on">Graph</span></li>
+        <li class="posterSymbol"><span class="off">11</span><span class="on">Table</span></li>
+        <li class="posterSymbol"><span class="off">12</span><span class="on">Figure</span></li>
+        <li class="posterSymbol"><span class="off">13</span><span class="on">Reference</span></li>
+        <li class="delete lastitem">delete</li>
+        <li class="tab">Lecture Detail</li>
+        <li class="Lecture">1</li>
+        <li class="Lecture">2</li>
+        <li class="Lecture">3</li>
+        <li class="Lecture">4</li>
+        <li class="Lecture">5</li>
+        <li class="Lecture">6</li>
+        <li class="Lecture">7</li>
+        <li class="Lecture">8</li>
+        <li class="Lecture">9</li>
+        <li class="Lecture">10</li>
+        <li class="posterSymbol"><span class="off">Q1</span><span class="on">Q2</span></li>
+        <li class="posterSymbol"><span class="off">Q3</span><span class="on">Q4</span></li>
+        <li class="posterSymbol lastitem"><span class="off">Q5</span><span class="on">Q6</span></li>
+        <li class="poster">Poster</li>
+        <li class="Lecture">11</li>
+        <li class="Lecture">12</li>
+        <li class="Lecture">13</li>
+        <li class="Lecture">14</li>
+        <li class="Lecture">15</li>
+        <li class="Lecture">16</li>
+        <li class="Lecture">17</li>
+        <li class="Lecture">18</li>
+        <li class="Lecture">19</li>
+        <li class="posterSymbol"><span class="off">Q7</span><span class="on">Q8</span></li>
+        <li class="posterSymbol"><span class="off">Q9</span><span class="on">Q10</span></li>
+        <li class="nextLine lastitem">Next</li>
+        <li class="left-shift">shift</li>
+        <li class="Lecture">20</li>
+        <li class="Lecture">21</li>
+        <li class="Lecture">22</li>
+        <li class="Lecture">23</li>
+        <li class="Lecture">24</li>
+        <li class="Lecture">25</li>
+        <li class="Lecture">26</li>
+        <li class="posterSymbol"><span class="off">Q11</span><span class="on">Q12</span></li>
+        <li class="posterSymbol"><span class="off">Q13</span><span class="on">Q14</span></li>
+        <li class="posterSymbol"><span class="off">Q15</span><span class="on">Q16</span></li>
+        <li class="right-shift lastitem">shift</li>
+        <li class="space lastitem">&nbsp;</li>
+    </ul>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    var $write = $('#write'),
+        shift = false,
+        capslock = false; 
+    $('#LectureBoard li').click(function(){
+        var $this = $(this),
+            character = $this.html(); //
+        if ($this.hasClass('left-shift') || $this.hasClass('right-shift')) {
+            $('.Lecture').toggleClass('uppercase');
+            $('.posterSymbol span').toggle();
+            shift = (shift === true) ? false : true;
+            capslock = false;
+            return false;
+        }
+        if ($this.hasClass('poster')) {
+            $('.Lecture').toggleClass('uppercase');
+            capslock = true;
+            return false;
+        }
+        if ($this.hasClass('delete')) {
+            var html = $write.html();
+            $write.html(html.substr(0, html.length - 1));
+            return false;
+        }
+        if ($this.hasClass('posterSymbol')) character = $('span:visible', $this).html();
+        if ($this.hasClass('space')) character = ' ';
+        if ($this.hasClass('nextLine')) character = "\n";
+        if ($this.hasClass('uppercase')) character = character.toUpperCase();
+        if (shift === true) {
+            $('.posterSymbol span').toggle();
+            if (capslock === false) $('.letter').toggleClass('uppercase');    
+            shift = false;
+        }
+        $write.html($write.html() + character);
+    });
+});
+
+</script>
+</body>
+</html>
