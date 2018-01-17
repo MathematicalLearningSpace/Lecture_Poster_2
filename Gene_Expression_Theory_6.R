@@ -1,0 +1,79 @@
+library(xtable)
+library(stringr)
+library(stringi)
+library(chinese.misc)
+
+#-------------------------------------------Data----------------------------------------------------------
+#-------------------------------------------HGNC Gene Family --------------------------------------------------
+Gene.Family.HGNC <- read_delim("HGNC_Gene_Family_Data.txt", 
+                              "\t", escape_double = FALSE, trim_ws = TRUE)
+View(Gene.Family.HGNC)
+Gene.Family.HGNC$Chromosome
+#------------------------------------------Choose a Chromosome --------------------------------------------
+#--------------------------16 Percent Cancer and 8p + 15 high mutation rate (Point and Missense)-------------
+#------------------------------------------Wikipedia--------------------------------------------------------
+pattern<-"8q.*"
+Gene.Chromosome.8.q<-match_pattern(pattern, Gene.Family.HGNC$Chromosome)
+Gene.Chromosome.8.q<-Gene.Family.HGNC$`Approved Symbol`[grep('8q.*',Gene.Family.HGNC$Chromosome)]
+
+pattern.2<-"WDR*"
+Gene.WDR.Chromosomes<-match_pattern(pattern.2, Gene.Family.HGNC$`Approved Symbol`)
+Gene.WDR.Chromosomes<-Gene.Family.HGNC$Chromosome[grep('WDR*',Gene.Family.HGNC$`Approved Symbol`)]
+
+pattern.3<-"8p22.*"
+Gene.Chromosome.8.p.22<-match_pattern(pattern.3, Gene.Family.HGNC$Chromosome)
+Gene.Chromosome.8.p.22<-Gene.Family.HGNC$`Approved Symbol`[grep('8p22.*',Gene.Family.HGNC$Chromosome)]
+
+pattern.4<-"8p23.*"
+Gene.Chromosome.8.p.23<-match_pattern(pattern.4, Gene.Family.HGNC$Chromosome)
+Gene.Chromosome.8.p.23<-Gene.Family.HGNC$`Approved Symbol`[grep('8p23.*',Gene.Family.HGNC$Chromosome)]
+
+Gene.Chromosome.8.p.23.study<-c("DEFA*","OR7E*","ZNF*","MIR*")
+
+Transformations<-c("translocations","inversions","deletions","duplications")
+Defensins.publications <- read_csv("Defensins/publications.csv")
+View(publications)
+#-----------------------------------------Regular Expressions---------------------------------------------
+
+Gene.DEFA<-grep("DEFA",Gene.Chromosome.8.p.23)
+Gene.OR7E<-grep("OR7",Gene.Chromosome.8.p.23)
+Gene.ZNF<-grep("ZNF",Gene.Chromosome.8.p.23)
+Gene.MIR<-grep("MIR",Gene.Chromosome.8.p.23)
+
+#-----------------------------------------Peptide Transformations------------------------------------------------
+Transformations<-c("translocations","inversions","deletions","duplications")
+
+
+Chromosome_Analysis.df<-data.frame()
+Chromosome_Analysis.df<-rbind(TF_1(Chromosome.Study))
+colnames(Chromosome_Analysis.df)<-c("Transformation")
+rownames(Chromosome_Analysis.df)<-c("Chromosome_1")
+
+#------------------------------------------Definitions----------------------------------------------------
+
+Definitions.df<-as.data.frame(read_delim("Gene_Expression_Definitions.txt", 
+                                      "\t", escape_double = FALSE, trim_ws = TRUE))
+
+#------------------------------------------Theorems-------------------------------------------------------
+
+Theorems.df<-as.data.frame(read_delim("Gene_Expression_Theorems.txt", 
+                                      "\t", escape_double = FALSE, trim_ws = TRUE))
+
+
+#------------------------------------------Tables---------------------------------------------------------
+Table.1<-xtable(Chromosome_Analysis.df)
+Table.2<-xtable(Definitions.df)
+Table.3<-xtable(Theorems.df)
+
+#------------------------------------------Figures---------------------------------------------------------
+
+
+#------------------------------------------Function Library-----------------------------------------------
+
+TF_1->function(x)
+{
+  TF.data.local<-NULL
+  #Design of Transformations goes here
+  return(list(TF.Local=TF.data.local))
+  
+}
