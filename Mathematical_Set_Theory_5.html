@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Mathematical Set Theory 6</title>
+<style>
+* {
+  margin: 0px auto;
+  padding: 0px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+.cont_principal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+background: rgb(251,250,246); /* Old browsers */
+background: -moz-linear-gradient(-45deg,  rgba(251,250,246,1) 9%, rgba(212,206,191,1) 74%, rgba(212,206,191,1) 74%, rgba(212,206,191,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(251,250,246,1) 9%,rgba(212,206,191,1) 74%,rgba(212,206,191,1) 74%,rgba(212,206,191,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(251,250,246,1) 9%,rgba(212,206,191,1) 74%,rgba(212,206,191,1) 74%,rgba(212,206,191,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbfaf6', endColorstr='#d4cebf',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.cont_central {  
+position: absolute;
+  width: 100%;
+  top: 20%;
+  margin-top: -100px;
+}
+.cont_modal {
+  position: relative;
+  width: 400px;
+  height: 700px;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; 
+transition-delay: 0.7s;
+-webkit-transition-delay: 0.7s;
+-o-transition-delay: 0.7s;
+transition-delay: 0.7s;
+}
+.cont_photo {
+  position: relative;
+  width: 400px;
+  height: 740px;
+  overflow: hidden;
+  background-color: #4F009E;
+  border-radius:5px;
+top: -20px;
+float: left;
+z-index: 2;
+-webkit-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+transition: all 0.5s; 
+box-shadow: 1px 1px 20px -5px rgba(0,0,0,0.5);  
+}
+.cont_img_back {
+  position: absolute;
+width: 100%;
+height: 100%;
+overflow: hidden;
+border-radius:5px ;
+}
+.cont_img_back > img {
+  width: 100%;
+opacity: 0.7;
+-webkit-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+transition: all 1s;
+}
+.cont_img_back:hover > img {
+  transform: scale(1.5);
+}
+.cont_text_ingredients {
+position: absolute;
+  width: 0px;
+top: 0px;
+left: 390px;
+  margin-left: 10px;
+  height: 700px;
+  float: left; 
+  border-radius:5px ;
+z-index: 3;
+box-shadow: 1px 1px  20px  -5px  rgba(0,0,0,0.2);
+background: rgb(251,249,249); /* Old browsers */
+background: -moz-linear-gradient(-45deg,  rgba(251,249,249,1) 28%, rgba(232,234,237,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(251,249,249,1) 28%,rgba(232,234,237,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(251,249,249,1) 28%,rgba(232,234,237,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbf9f9', endColorstr='#e8eaed',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+-webkit-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s; 
+transition-delay: 0.7s;
+-webkit-transition-delay: 0.7s;
+-o-transition-delay: 0.7s;
+transition-delay: 0.7s;
+}
+.cont_mins{
+position: relative;
+float: left;
+  width: 100%;
+}
+.sub_mins {
+  position: relative;
+  float: left;
+  width: 40px;
+  height: 40px;
+  background-color:#9E0077;
+  color: #fff;
+border-radius:50% ;
+margin: 16px;
+margin-bottom: 0px;
+opacity: 0;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  transition: all 0.5s;
+transition-delay: 1s;
+-webkit-transition-delay: 1s;
+-o-transition-delay: 1s;
+transition-delay: 1s;
+}
+.sub_mins > h3 {
+  font-size: 12px;
+margin-top: 7px;
+  margin-bottom: -15px;
+}
+.sub_mins > span {
+  font-size: 9px; 
+  font-weight: 700;
+}
+.cont_servings {
+  position: relative;
+  float: left;
+  width: 40px;
+  height: 40px;
+  background-color: #9E0077;
+  color: #fff;
+border-radius:50% ;
+margin: 16px;
+opacity: 0;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; 
+transition-delay: 0.7s;
+-webkit-transition-delay: 0.7s;
+-o-transition-delay: 0.7s;
+transition-delay: 0.7s;
+}
+.cont_servings > h3 {
+  font-size:12px;
+margin-top: 5px;
+  margin-bottom: -15px;
+}
+.cont_servings > span {
+  font-size: 9px;
+  font-weight: 700;
+}
+.cont_calories {
+  position: relative;
+  float: right;
+  width: 40px;
+  height: 40px;
+  background-color: #9E0077;
+  color:#fff;
+border-radius:50% ;
+margin: 16px;
+opacity: 0;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s; 
+transition-delay: 0.7s;
+-webkit-transition-delay: 0.7s;
+-o-transition-delay: 0.7s;
+transition-delay: 0.7s;
+}
+.cont_calories > h3 {
+  font-size: 12px;
+margin-top: 5px;
+  margin-bottom: -1px;
+}
+.cont_calories > span {
+  font-size: 9px;
+  font-weight: 700;
+}
+.cont_icon_right {
+  position: relative;
+float: right;
+  margin-top: 16px;
+}
+.cont_icon_right  > a  {
+margin: 16px;
+margin-top: 16px;
+  color: #4F009E;
+}
+.cont_detalles {
+  position: absolute;
+bottom:-200px;
+  height: 600px;
+  border-radius:5px ;
+background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 68%, rgba(0,0,0,0.65) 100%, rgba(0,0,0,0.65) 101%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 68%,rgba(0,0,0,0.65) 100%,rgba(0,0,0,0.65) 101%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 68%,rgba(0,0,0,0.65) 100%,rgba(0,0,0,0.65) 101%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+
+width: 100%;
+-webkit-transition: all 0.5s;
+-o-transition: all 0.5s; 
+transition: all 0.5s;
+  transition-delay: 1.2s;
+-webkit-transition-delay: 0.7s;
+-o-transition-delay: 0.7s;
+transition-delay: 0.7s;}
+.cont_detalles > h3 {
+  margin-top: 50px;
+ color: #fff;
+  font-size: 24px;
+}
+.cont_detalles > p {
+  color: #FF80FF;
+width: 80%;
+  text-align:left;
+  font-size: 14px;
+}
+.cont_tabs {
+  position: relative;
+  float: left;
+  width: 710px;
+  height: 60px;
+border-bottom: 2px solid #4F009E;
+}
+.cont_tabs > ul {
+  width: 700px;
+  background-color: #4F009E;
+}
+.cont_tabs > ul > li {
+  position: relative;
+  float: left;
+  width: 20%;
+list-style: none;
+}
+.cont_tabs > ul > li > a {
+border-top: 5px solid #4F009E;
+  position: relative;
+  display: block;
+  float: left;
+padding-top: 15px;
+  color: #4F009E;
+  text-decoration: none;
+  margin-left: 15px;
+font-size: 14px;
+}
+.cont_tabs > ul > li:first-child > a
+{
+  border-top: 7px solid rgba(237, 52, 108, 0);
+  margin-top: 0px;
+  color: #4F009E;
+-webkit-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+transition: all 0.2s;
+}
+.cont_tabs > ul > li:first-child > a:hover {
+  border-top: 7px solid #ED346C;
+padding-top: 15px;
+  color: #4F009E;
+ margin-top: 0px;
+}
+.cont_btn_open_dets {
+  position: absolute;
+  right: -15px;
+  top:50%;
+}
+.cont_btn_open_dets  > a {
+display: block;
+  padding-top: -5px;
+width: 30px;
+  height: 30px;
+  background-color: #9E0077;
+border-radius:50% ;
+color: #fff;
+box-shadow: 0px 0px 20px -2px rgba(237, 36, 96, 1);
+-webkit-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+transition: all 0.5s;
+transform: rotate(180deg);
+}
+.cont_btn_open_dets  > a > i {
+  margin-top: 4px;
+}
+.cont_title_preparation {
+   position: relative;
+  float: left;
+margin:10px 0px ;
+width: 710px;
+}
+.cont_title_preparation > p {
+  font-weight: 700;
+font-size: 14px;
+  margin-left: 40px;
+text-align: left;
+color: #4F009E;
+}
+.cont_lecture_preparation {
+  position: relative;
+  float: left;
+}
+.cont_lecture_preparation > p {
+  margin: 5px 0px;
+  margin-left: 50px;
+border-left: 2px solid #E3E3E3; 
+font-size: 12px;
+  padding: 20px 0px;
+padding-left: 20px;
+text-align: left;
+padding-right: 15px;
+color: #565656;
+}
+.cont_btn_mas_dets {
+  position: absolute;
+  bottom:0px;
+  left: 50%;
+  color:#4F009E;
+}
+.cont_btn_mas_dets > a {
+  color: #4F009E;
+}
+.cont_over_hidden {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+.cont_text_det_preparation {
+  position: relative;
+  width: 710px;
+}
+.cont_modal_active > .cont_text_ingredients  > .cont_btn_open_dets > a {
+  transform: rotate(0deg);
+}
+.cont_modal_active > .cont_text_ingredients{
+  width: 710px;
+left: 385px;
+z-index: 1;
+box-shadow: 15px 20px  70px  -5px  rgba(0,0,0,0.2);
+}
+.cont_modal_active {
+width: 700px;  
+}
+.cont_modal_active > .cont_photo {
+box-shadow: 25px 10px 70px -5px rgba(0,0,0,0.3);  
+}
+.cont_modal_active > .cont_photo > .cont_mins > .sub_mins {
+  opacity: 1;
+}
+.cont_modal_active  > .cont_photo > .cont_servings {
+  opacity: 1;
+}
+.cont_modal_active > .cont_photo  > .cont_detalles{
+  bottom: 0px;
+}
+</style>
+</head>
+<body>
+<h3>2018 Mathematical Lectures</h3>
+	<div class="cont_principal">
+		<div class="cont_central">
+			<div class="cont_modal cont_modal_active">
+				<div class="cont_photo">
+					<div class="cont_img_back">
+						<img src="images/MathematicalLearningSpace.jpg" alt="" />
+					</div>
+					<div class="cont_mins">
+						<div class="sub_mins">
+							<h3>AMS</h3>
+						</div>
+						<div class="cont_icon_right">
+							<a href="#">  <i class="material-icons">&#xE8E7;</i></a>
+						</div>
+					</div>
+					<div class="cont_servings">
+						<h3></h3>
+						<span></span>
+					</div>
+					<div class="cont_detalles">
+						<h3>Mathematical Lectures</h3>
+						<p>orem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis est est aliquam, sed faucibus massa lobortis. Maecenas non est justo.
+						orem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis est est aliquam, sed faucibus massa lobortis. Maecenas non est justo.
+						orem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis est est aliquam, sed faucibus massa lobortis. Maecenas non est justo.</p>
+					</div>
+			</div>
+		<div class="cont_text_ingredients">
+		<div class="cont_over_hidden">
+			<div class="cont_tabs">
+				<ul>
+					<li><a href="#f"><h4>1</h4></a></li>
+					<li><a href="#e"><h4>2</h4></a></li>
+					<li><a href="#g"><h4>3</h4></a></li>
+					<li><a href="#h"><h4>4</h4></a></li>
+				</ul>  
+			</div>
+		<div>
+		<div id="f">
+		<div class="cont_title_preparation">
+				<p>Lecture 1</p>
+			</div>
+			<div class="cont_lecture_preparation">
+				<p>Lecture Info</p>
+			</div> 
+		</div>
+		<div id="e">
+		<div class="cont_text_det_preparation">
+			<div class="cont_title_preparation">
+				<p>Lecture 2</p>
+			</div>
+		<div class="cont_lecture_preparation">
+				<p>Lecture Info</p>
+		</div>  
+		<div class="cont_text_det_preparation">
+			<div class="cont_title_preparation">
+				<p>Lecture 3</p>
+			</div>
+			<div class="cont_lecture_preparation">
+				<p>Lecture Info</p>
+			</div> 
+		</div>
+		<div class="cont_text_det_preparation">
+			<div class="cont_title_preparation">
+				<p>Lecture 4</p>
+			</div>
+			<div class="cont_lecture_preparation">
+				<p>Lecture Info</p>
+			</div> 
+		</div>
+		<div class="cont_text_det_preparation">
+			<div class="cont_title_preparation">
+				<p>Lecture 5</p>
+			</div>
+			<div class="cont_lecture_preparation">
+				<p>Lecture Info</p>
+			</div> 
+		</div>
+	</div>  
+	</div>
+	</div>
+	<div class="cont_btn_mas_dets">
+		<a href="#"><i class="material-icons">&#xE313;</i></a>
+	</div>
+	</div>
+  <div class="cont_btn_open_dets">
+  <a href="#e" onclick="open_close()"><i class="material-icons">&#xE314;</i></a>
+  </div>
+    </div>
+   </div>
+</div>
+<script>
+window.onload = function(){
+document.querySelector('.cont_modal').className = "cont_modal";    
+}
+var c = 0;
+function open_close(){
+  if(c % 2 == 0){    
+document.querySelector('.cont_modal').className = "cont_modal cont_modal_active";  
+c++;
+  }else {
+document.querySelector('.cont_modal').className = "cont_modal";  
+c++;    
+  }  
+}
+</script>
+</body>
+</html>
