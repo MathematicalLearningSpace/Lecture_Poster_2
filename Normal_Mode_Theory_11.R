@@ -45,7 +45,7 @@ Figure.3<-plot(protein.5VIK.cp, main = 'closed & projected', lwd = 2)
 #----------------------------Linkout Resource----------------------------------
 
 LO.1<-c("http://knotprot.cent.uw.edu.pl/view/5vik/A/")
-
+LO.2<-c("http://katlas.org/wiki/File:Figure8knot-parametricequation.png")
 #----------------------------References----------------------------------------
 
 Reference.1<-c("Mikhail Baloban,Daria M. Shcherbakova,Sergei Pletnev,Vladimir Z. Pletnev,Clark Lagarias,Vladislav V. Verkhusha",
