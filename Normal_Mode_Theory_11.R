@@ -51,6 +51,8 @@ LO.2<-c("http://katlas.org/wiki/File:Figure8knot-parametricequation.png")
 Reference.1<-c("Mikhail Baloban,Daria M. Shcherbakova,Sergei Pletnev,Vladimir Z. Pletnev,Clark Lagarias,Vladislav V. Verkhusha",
                "Designing brighter near-infrared fluorescent proteins: insights from structural and biochemical studies",
                "Chem. Sci.,2017,8,4546")
-
+Reference.2<-c("ROBERT W. GHRIST and PHILIP J. HOLMES",
+               "AN ODE WHOSE SOLUTIONS CONTAIN ALL KNOTS AND LINKS",
+               "Int. J. Bifurcation Chaos 06, 779 (1996)")
 
 #----------------------------Function Library----------------------------------
