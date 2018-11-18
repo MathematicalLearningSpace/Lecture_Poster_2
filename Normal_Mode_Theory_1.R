@@ -4,9 +4,7 @@ library(dcGOR);library(MDplot);library(UniProt.ws);library(circlize);library(Bio
 library(seqinr);library(Biostrings);library(Peptides);library(PearsonDS);library(xtable)
 
 #-----Example Data from Protein Database Retrieved by Students in the Classroom------------------------------
-
 pdb_2VTB<- read.pdb("2VTB.pdb")
-
 centerMass_2VTB<-com(pdb_2VTB)
 aa_2VTB.seq<-pdbseq(pdb_2VTB)
 
