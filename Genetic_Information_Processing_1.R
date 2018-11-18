@@ -1,18 +1,8 @@
-library(KEGG.db)
-library(KEGGgraph)
-library(KEGGprofile)
-library(KEGGREST)
-library(rentrez)
-library(xtable)
-library(stringi)
-library(readr)
-library(readxl)
-library(Matrix)
-library(igraph)
-library(visNetwork)
-
+#-----------------------------------------------------R API ------------------------------------------------
+library(KEGG.db);library(KEGGgraph);library(KEGGprofile);library(KEGGREST);library(rentrez)
+library(xtable);library(stringi);library(readr);library(readxl);library(Matrix);library(igraph);library(visNetwork)
 #-------------------------------------------------Data-------------------------------------------------------------------------
-#
+#--------------Design Data Tables to be used in the Classroom------------------------------------------------------------------
 KEGG.IDs.df <- as.data.frame(read_csv("data/KEGG_IDs_For_Query.txt"))
 KEGG.Cancer.IDs.df<- as.data.frame(read_csv("data/KEGG_Cancer_IDs_For_Query.txt"))
 View(KEGG.IDs.df)
@@ -85,8 +75,6 @@ Proteasome.20s.Assembled.df<-as.data.frame(c(Proteasome.20s.Middle))
 #----------------------------------------------A: PA 700 26s Proteasome Assembly------------------------------------------------------------
 
 KEGG.Proteasome.26s.RPN.13.publications<-entrez_search(db="pubmed", term="26S proteasome regulatory subunit RPN13-like", retmax=40)
-
-
 Proteasome.26s.df<-data.frame()
 Proteasome.26s.lid<-c("RPN.3","RPN.5","RPN.6","RPN.7","RPN.8","RPN.9","RPN.11","RPN.12","RPN.15")
 Proteasome.26s.base<-c("RPN.1","RPN.2","RPN.13","RPT.1","RPT.2","RPT.6","RPT.4","RPT.5","RPT.3")
@@ -95,7 +83,6 @@ Proteasome.26s.Bottom<-c(Proteasome.26s.base,Proteasome.26s.lid)
 Proteasome.26s.Assembled.df<-as.data.frame(c(Proteasome.26s.Top,
                                              Proteasome.20s.Middle,
                                              Proteasome.26s.Bottom))
-
 #--------------------------------------------C: Immunoproteasome-------------------------------------------
 
 Immunoproteasome.20s.df<-data.frame()
@@ -104,7 +91,6 @@ Immunoproteasome.20s.core.Regulatory.Particle.1<-c("PA28.gamma") #, homo hexamer
 Immunoproteasome.20s.core.particle.beta<-c("beta.5i","beta.2i","beta.1i")
 Immunoproteasome.20s.core.Regulatory.Particle.reverse<-c("PA28.alpha","PA28.beta")
 Immunoproteasome.20s.core.particle.beta.reverse<-c("beta.1i","beta.2i","beta.5i")
-
 
 Immunoproteasome.20s.Assembled.df<-as.data.frame(c(Immunoproteasome.20s.core.Regulatory.Particle,
                                   Immunoproteasome.20s.core.particle.beta,
@@ -124,10 +110,9 @@ Table.3<-xtable(Proteasome.20s.Assembled.df)
 Table.4<-xtable(Immunoproteasome.20s.Assembled.df)
 Table.5<-xtable(Thymoproteasome.Assembled.df)
 
-#-----------------------------------------------Figures------------------------------------------------------------------------
+#-------------Figures to be designed by students in the classroom--------------------------------------------------------------
 
 Figure.1<-plot()
-
 #-----------------------------------------------References-----------------------------------
 References<-xtable(KEGG.Proteasome.20s.Articles.References.df)
 #----------------------------------------------Function Library----------------------------------------------------------------
