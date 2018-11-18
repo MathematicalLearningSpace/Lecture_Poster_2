@@ -26,7 +26,7 @@ error.pearson.6<-rpearsonVI(pearson.N,params=pVIpars)
 error.pearson.7<-rpearsonVII(pearson.N,params=pVIIpars)
 
 #-------------------------------Create Gene Theoretical Data Set based on CDF Hypothesis 
-#--------------------------------------------for Analysis Workflow--------------------------------------------------------------------------
+#--------------for Analysis Workflow based on Simulated Network Data for the Classroom-------------------------------------
 
 MOV10<-window(error.pearson.0,start = 25,end=75)
 CSNK2B<-window(error.pearson.1,start = 25,end=75)
