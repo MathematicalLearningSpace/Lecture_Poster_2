@@ -1,42 +1,14 @@
-library(xtable)
+#------------------------------------------------R API -----------------------------------------------------------------
+library(xtable);
 #-------------------------------------------------Normal Mode Analysis---------------------------------------------------
-library(gdata)
-library(bio3d)
-library(igraph)
-library(sna)
-library(ips)
-library(phangorn)
-library(proteomics)
-library(dcGOR)
-library(MDplot)
-library(UniProt.ws)
-library(circlize)
-library(BioPhysConnectoR)
-library(ape)
+library(gdata);library(bio3d);library(igraph);library(sna);library(ips);library(phangorn);library(proteomics);library(dcGOR)
+library(MDplot);library(UniProt.ws);library(circlize);library(BioPhysConnectoR);library(ape)
 #------------------------------------------------Arabidopsis Thaliana----------------------------------------------------
-library(myTAI)
-library(seqinr)
-library(org.At.tair.db)
-library(dplyr)
-library(BioSeqClass)
-library(Rcpi)
-library(protr)
-library(seqinr)
-library(Biostrings)
-library(Peptides)
-library(titrationCurves)
+library(myTAI);library(seqinr);library(org.At.tair.db);library(dplyr);library(BioSeqClass);library(Rcpi);library(protr)
+library(seqinr);library(Biostrings);library(Peptides);library(titrationCurves)
 #------------------------------------------------Ontology--------------------------------------------------------------
-library(dcGOR)
-library(ontologyIndex)
-library(ggplot2)
-library(tidyr)
-library(PearsonDS)
-library(CHNOSZ)
-library(stringi)
-library(stringr)
-
+library(dcGOR);library(ontologyIndex);library(ggplot2);library(tidyr);library(PearsonDS);library(CHNOSZ);library(stringi);library(stringr)
 detach("package:Biostrings", unload=TRUE)
-
 #------------------------------------------------Data------------------------------------------------------------
 
 data("AAdata")
@@ -57,7 +29,7 @@ AA.df.mass<-AA.df$mass
 AA.df<-AA.df[with(AA.df,order(AA.df$mass,decreasing=TRUE)),]
 
 #------------------------------------------------Ratios------------------------------------------------------
-
+#--------------------------------------FASTA Files for Classroom---------------------------
 AT.Protein.Mitochondrion.1<-readFASTA('ArabidopsisThalianaProteinMitochondrion.txt')
 AT.Protein.Mitochondrion.1.117<-AT.Protein.Mitochondrion.1[[117]]
 AT.Protein.Mitochondrion.1.117.Motif.RRRR<-stri_locate_all_regex(AT.Protein.Mitochondrion.1.117, "(?=RRRR)")
@@ -83,12 +55,10 @@ AA.AT3G54890.3<-seq2aa("AT3G54890",AT.Chromosome.3[[1]][20339961:20340922])
 
 #-------------------------------------Transformations-------------------------------------------------
 
-
-
 #------------------------------------Tables-----------------------------------------------------------
 Table.1<-xtable(AT.Protein.Mitochondrion.1.117.Statistics.df)
 
-#------------------------------------Figures----------------------------------------------------------
+#---------------------------Figures for Presentation in Classroom----------------------------------------------------------
 Figure.1<-plot(AA.df$mass,type = 'l', 
                col = "black", lwd = 2, lty=1,
                xaxt='n',
@@ -112,7 +82,7 @@ legend("topright", col = c("black"),
        lty = 1:1, cex=0.75,
        legend = c("CYS","TYR"))
 
-#----------------------------------Function Library-------------------------------------------------
+#----------Function Library to be Modified by Students in the Classroom-------------------------------------------------
 #average state of oxidation
 carbon.Oxidation.average<-function(d)
 {
