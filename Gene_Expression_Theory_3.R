@@ -1,21 +1,7 @@
-library(circlize)
-library(PearsonDS)
-library(igraph)
-library(Matrix)
-library(matrixStats)
-library(matrixcalc)
-library(MatrixModels)
-library(mathgraph)
-library(stringi)
-library(deSolve)
-library(xtable)
-library(Deriv)
-library(utils)
-library(smoothHR)
-library(pspline)
-library(bigsplines)
-library(formatR)
-library(splines)
+#-----------------------------------------------R API ----------------------------------------
+library(circlize);library(PearsonDS);library(igraph);library(Matrix);library(matrixStats)
+library(matrixcalc);library(MatrixModels);library(mathgraph);library(stringi);library(deSolve);library(xtable)
+library(Deriv);library(utils);library(smoothHR);library(pspline);library(bigsplines);library(formatR);library(splines)
 
 pearson.N<-100
 #-------------------------------------Moment Parameters for the Distributions-------------------------------------------------
@@ -79,17 +65,12 @@ model.lm.restriction<-lm(A$y ~A$x+A.x.Interval)
 model.lm.restriction.prediction<-predict(model.lm.restriction)
 summary(model.lm.restriction)
 anova(model.lm.restriction)
-
 f.polynomial(3)
 design.x.derivative.1<-Deriv(f.polynomial(3))
 design.x.derivative.2<-Deriv(design.x.derivative.2)
-
 #---------------------------------------------Tables-----------------------------------------------------------------
-
 Table.1<-xtable(Spline.Table.df)
-
-
-#--------------------------------------------Figures-----------------------------------------------------------------
+#--------------------Figures for Classroom Presentation-----------------------------------------------------------------
 Figure.1<-plot(A$y,type='l', xlab="Hours",ylab='Expression')
 title(main='Cubic Spline Prediction',lty=1,col=1)
 lines(Spline.Prediction.df$fit,lty=2,col=2)
@@ -105,7 +86,7 @@ legend("topright", legend=c("Theoretical Data",
 
 par(mar = c(1, 1, 1, 1))
 circos.initializeWithIdeogram()
-Figure.1<-circos.genomicTrackPlotRegion(data.distribution, panel.fun = function(region, value, ...) {
+Figure.2<-circos.genomicTrackPlotRegion(data.distribution, panel.fun = function(region, value, ...) {
   x = (region[[2]] + region[[1]]) / 2
   y = value[[1]]
   loess.fit = loess(y ~ x)
@@ -153,8 +134,7 @@ circos.trackPlotRegion(factors = factors, ylim = c(0, 1), bg.border = "purple")
 circos.updatePlotRegion(sector.index = "a", bg.border = "green") 
 circos.lines(1:100/100, y1, pch = 16, cex = 0.5) 
 
-#--------------------------------------------Function Library-------------------------------------------------------
-
+#-----------Function Library for Modification in Classroom-------------------------------------------------------
 f.polynomial<-function(polynomial.max) {
   strPoly<-""
   for(i in 1:polynomial.max)
