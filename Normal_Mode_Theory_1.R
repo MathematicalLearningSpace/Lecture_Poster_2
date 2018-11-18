@@ -1,24 +1,9 @@
-library(gdata)
-library(bio3d)
-library(igraph)
-library(sna)
-library(ips)
-library(phangorn)
-library(proteomics)
-library(dcGOR)
-library(MDplot)
-library(UniProt.ws)
-library(circlize)
-library(BioPhysConnectoR)
-library(protr)
-library(seqinr)
-library(Biostrings)
-library(Peptides)
+#----------------------------------------------------R API------------------------------------
+library(gdata);library(bio3d);library(igraph);library(sna);library(ips);library(phangorn);library(proteomics)
+library(dcGOR);library(MDplot);library(UniProt.ws);library(circlize);library(BioPhysConnectoR);library(protr)
+library(seqinr);library(Biostrings);library(Peptides);library(PearsonDS);library(xtable)
 
-library(PearsonDS)
-library(xtable)
-
-#--------------------------------------------------Data----------------------------------------------------------
+#-----Example Data from Protein Database Retrieved by Students in the Classroom------------------------------
 
 pdb_2VTB<- read.pdb("2VTB.pdb")
 
@@ -30,31 +15,21 @@ tor <- torsion.pdb(pdb_2VTB)
 inds <- atom.select(pdb_2VTB, "calpha")
 a.inds_2VTB <- atom.select(pdb_2VTB, chain="A")
 
-#-------------------------------------------------Hydrophobic--------------------------------------------
-
+#------------------Modification of the Hydrophobic Moment by Students--------------------------------------------
 sequence.angle.100<-hmoment(seq = c2s(pdb_2VTB$seqres), angle = 100, window = 11)
 sequence.angle.160<-hmoment(seq = c2s(), angle = 160, window = 11)
 
 AA.Index.Table.df<-data.frame()
 AA.Index.Table.df<-cbind(sequence.angle.100,sequence.angle.160)
 colnames(AA.Index.Table.df)<-c("HMoment 100","HMoment 160")
-
 #-------------------------------------------------Contact Map---------------------------------------------
-
 ref.cont <- cmap(pdb_2VTB$xyz[inds$xyz], dcut=6, scut=3 )
 g_Contact<-graph_from_adjacency_matrix(ref.cont)
-
 #-------------------------------------------------Factors-------------------------------------------------
-
 bfactor.2VTB<-pdb_2VTB$atom$b[pdb_2VTB$calpha]
-
 bfactor<-data.frame(cbind(bfactor.2VTB))
-
 #-------------------------------------------------Density------------------------------------------------
-
 dens.2VTB <- density(bfactor[,1])
-
-
 #------------------------------------------------Normal Mode Analysis-------------------------------------
 pdb_2VTB.A.open<- trim.pdb(pdb_2VTB, 
                          atom.select(pdb_2VTB, chain="A"))
@@ -70,15 +45,11 @@ modes_2VTB.D <- nma(pdb_2VTB.D.open)
 nv_modes.7_2VTB.A<- normalize.vector(modes_2VTB.A$modes[,7])
 nv_modes.7_2VTB.B<- normalize.vector(modes_2VTB.B$modes[,7])
 nv_modes.7_2VTB.D<- normalize.vector(modes_2VTB.D$modes[,7])
-
-
 #------------------------------------------------Tables----------------------------------------------------------
 
 Table.1<-xtable(AA.Index.Table.df)
 
-#------------------------------------------------Figures--------------------------------------------------------
-
-
+#--------------Figures for Presentation and Discussion--------------------------------------------------------
 Figure.1<-plot(g_Contact,layout=layout_with_kk, vertex.color="Blue",vertex.size=3,
      vertex.label.dist=1,edge.arrow.size=0.2,main='', 
      vertex.label.cex=0.3,margin=c(-0.35,-0.35,-0.35,0))
