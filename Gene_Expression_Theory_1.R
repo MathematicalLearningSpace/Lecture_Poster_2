@@ -1,16 +1,6 @@
-library(fractal)
-library(fracdiff)
-library(timeSeries)
-library(RandomFields)
-library(boot)
-library(vars)
-library(urca)
-library(PearsonDS)
-library(stringr)
-library(stringi)
-library(corrplot)
-library(ggplot2)
-library(xtable)
+#-----------------------------------R API ----------------------------------------------------
+library(fractal); library(fracdiff);library(timeSeries);library(RandomFields);library(boot);library(vars)
+library(urca);library(PearsonDS);library(stringr);library(stringi);library(corrplot);library(ggplot2);library(xtable)
 
 pearson.N<-100
 #-------------------------------------Moment Parameters for the Distributions-------------------------------------------------
