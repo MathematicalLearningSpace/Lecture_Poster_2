@@ -117,7 +117,7 @@ for (i in 1:length(Gene.Study.Names)){
 Table.1<-xtable(Gene.Expression.Table.df)
 Table.2<-xtable(Test.Stationarity)
 Table.3<-xtable(Hurst.Gene)
-#------------------------------Figures-----------------------------------------------------------------------
+#-------------Figures for Presentation in the Classroom-----------------------------------------------------------------------
 col1 <- colorRampPalette(c("#7F0000","red","#FF7F00","yellow","white", "cyan", "#007FFF", "blue","#00007F"))
 
 Figure.1<-plot(Gene.Study[,1],type='l', xlab="Hours",ylab='Expression')
@@ -141,7 +141,7 @@ legend("topright", legend=c(Gene.Study.Names[1],
 Figure.2<-corrplot(Gene.Matrix.Correlation, 
                    order="hclust", addrect=3,col=col1(100),t1.cex=0.8)
 title(main="Gene Correlation Plot")
-#-----------------------------Function Library---------------------------------------------------------------
+#-----------------------------Function Library for Modification in the Classroom-----------------------------------
 correlation.Test <- function(mat, conf.level = 0.95){
   mat <- as.matrix(mat)
   n <- ncol(mat)
