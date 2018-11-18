@@ -4,8 +4,7 @@ library(stats);library(boot);library(vars);library(urca);library(xtable);library
 library(stringi);library(Hmisc);library(Kendall);library(Deducer);library(corrplot);library(PearsonDS)
 library(dplyr);library(readr);library(readxl)
 
-#---------------------------------------Data--------------------------------------------------------
-
+#---------------------------------------Data Sets for Classroom--------------------------------------------------------
 article.Notes<-readlines('Notes_Gene_Expression_Theory_5.txt')
 AvailableResources <- read_csv("AvailableResources.txt")
 View(AvailableResources)
@@ -20,8 +19,7 @@ Gene.Cell.Cycle.Phase.df<-data.frame()
 Gene.Cell.Cycle.Phase.df<-cbind(c(Gene.Cell.Cycle.S_Phase))
 colnames(Gene.Cell.Cycle.Phase.df)<-c("S-Phase")
 
-#---------------------------------------Gene Expression---------------------------------------------
-
+#---------------------------------------Gene Expression Data Set---------------------------------------------
 GeneExpression <- read.delim("dataPlusScores_all5.txt")
 Gene.Description<-as.array(GeneExpression[,2])
 #-----------RNA collected for points (typically every 1-2 h) for 30 h (Thy-Thy1),------------------ 
@@ -87,7 +85,7 @@ gene.correlation <- cor(Gene.Study)
 Table.1<-xtable(Gene_Stats.df)
 Table.2<-xtable(Gene_Dist.df)
 
-#---------------------------------------Figures-------------------------------------------------------
+#---------------------Figures for Classroom Discussion-------------------------------------------------------
 
 Figure.1<-plot(P53,type = 'l', col = "black", lwd = 2, 
                lty=1,main = "TP53, MDM2 and WDR5 Expression Cell Cycle",ylab="Expression",xlab="Hours")
@@ -101,7 +99,7 @@ legend("bottomright", col = c("black","red","blue","green"),
 
 Figure.2<-corrplot(gene.correlation)
 title(main="Gene Correlation Plot")
-#------------------------------------Function Library------------------------------------------------
+#-------Function Library to be Modfied by Students in the Classroom------------------------------------------------
 
 gene.statistics.descriptive <-function(x)
 {
