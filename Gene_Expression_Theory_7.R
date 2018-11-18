@@ -10,11 +10,7 @@ library(seqinr);library(Biostrings);library(Peptides);library(titrationCurves)
 library(dcGOR);library(ontologyIndex);library(ggplot2);library(tidyr);library(PearsonDS);library(CHNOSZ);library(stringi);library(stringr)
 detach("package:Biostrings", unload=TRUE)
 #------------------------------------------------Data------------------------------------------------------------
-
-data("AAdata")
-data(thermo)
-data(aa.table)
-
+data("AAdata");data(thermo);data(aa.table)
 thermo$element
 
 Thermo.protein.df<-as.data.frame(thermo$protein)
@@ -53,8 +49,23 @@ AT.Chromosome.3<-read.fasta(file ='Arabidopsis_thaliana.TAIR10.31.dna.chromosome
 AT.Chromosome.3[[1]][20339504:20341103]
 AA.AT3G54890.3<-seq2aa("AT3G54890",AT.Chromosome.3[[1]][20339961:20340922])
 
-#-------------------------------------Transformations-------------------------------------------------
-
+#-------------Transformations to be designed by Students with this Design Pattern-------------------------------------------------
+Transformation.1<-function(X)
+  {
+  Z<-NULL;
+  w.1<-1
+  for(i in 1:length(X))
+    {
+      Z[i]<-w.1.*X[i]
+    }
+  output<-list()
+  output$X<-X
+  output$Z<-Z
+  return(output)
+  }
+X<-runif(100,0,1)
+test.Transformation.1<-Transformation.1(X)
+test.Transformation.1
 #------------------------------------Tables-----------------------------------------------------------
 Table.1<-xtable(AT.Protein.Mitochondrion.1.117.Statistics.df)
 
