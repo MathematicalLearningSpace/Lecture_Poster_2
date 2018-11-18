@@ -1,21 +1,10 @@
-library(tm)
-library(stringi)
-library(stringr)
-library(utils)
-library(CHNOSZ)
-library(PearsonDS)
-library(xtable)
-library(bio3d)
-library(Peptides)
-library(jsonlite)
-library(rjson)
-library(xtable)
-library(seqinr)
-
+#------------------------------------------------R API ----------------------------------------------------------
+library(tm);library(stringi);library(stringr);library(utils);library(CHNOSZ);library(PearsonDS);library(xtable)
+library(bio3d);library(Peptides);library(jsonlite);library(rjson);library(xtable);library(seqinr)
 #--------------------------------------------Data------------------------------------------------------------------------
 data(thermo)
 data(aa.table)
-
+#---------------------------------Example Test Sequence for Classroom Discussion--------------------------------
 test.seq<-c('MAANLSRNGPALQEAYVRVVTEKSPTDWALFTYEGNSNDIRVAGTGEGGLEEMVEELNSGK
             VMYAFCRVKDPNSGLPKFVLINWTGEGVNDVRKGACASHVSTMASFLKGAHVTINARAEEDVEPECI
             MEKVAKASGANYSFHKESGRFQDVGPQAPVGSVYQKTNAVSEIKRVGKDSFWAKAEKEEENRRLEE
@@ -24,19 +13,17 @@ test.seq<-c('MAANLSRNGPALQEAYVRVVTEKSPTDWALFTYEGNSNDIRVAGTGEGGLEEMVEELNSGK
             PAEEPAPSTPPCLVQAEEEAVYEEPPEQETFYEQPPLVQQQGAGSEHIDHHIQGQGLSGQGL
             CARALYDYQAADDTEISFDPENLITGIEVIDEGWWRGYGPDGHFGMFPANYVELIE')
 test.seq.2<-str_to_upper(s2c(test.seq))
-
 test.seq.pattern<-stri_locate_all_regex("ACAGAGACTTTAGATAGAGAAGA", "(?=AGA)")
 
 article.project.files <- list.files(patt='*.*pdf$')
+#----------------------------Examples of WDRs---------------------------------------------
 keywords<-c('coronin','WD40','WDR5','WDR64')
 WDR5.df<- read.delim("WDR5_HUMAN.txt")
 WDR5<-read.fasta('WDR5_HUMAN.fasta')
 motif = c("VM....CI")
 motif.find(motif, test.seq)
-#-----------------------------------------Language Processing------------------------------------------------------------
-
-#-----------------------------------------WD40---------------------------------------------------------------------------
-
+#-----------------------------------------Language Processing for Student Work Here------------------------------------------------------------
+#-----------------------------------------WD40 Example---------------------------------------------------------------------------
 #-----------------------------------------Beta strands D - WD40 beta proteins-------------------------------------------
 WD40.tetrad<- 'DHSW' 
 WD40.Strand.D.1.protein.sequence<-'ALKFTL'
@@ -63,8 +50,6 @@ Hydrogen.Carbon.ratio(pf.test.df)
 #-----------------------------------------WDR5---------------------------------------------------------------------------
 
 sentence.1<- stri_paste("There are ", length(WDR5.df$Repeats)," repeats.")
-
-
 aa.strand.d.Face.Side <- seq2aa('WDR5.Strand.D',WDR5.df$Strand_d)
 aa.strand.c.Core.Inner.Interior.1 <- seq2aa('WDR5.Strand.c',WDR5.df$Strand_c)
 aa.strand.b.Core.Inner.Interior.2<- seq2aa('WDR5.Strand.b',WDR5.df$Strand_b)
@@ -93,10 +78,8 @@ WDR.components.df<-rbind(aa.composition.average.strand.df,
                          aa.composition.average.loop.df)
 
 #---------------------------------------Tables-------------------------------------------------------------------------
-
 Table.1<-xtable(aa.composition.average.loop.df)
 Table.2<-xtable(WDR.components.df)
-
 #---------------------------------------Figures-----------------------------------------------------------------------
 Figure.1<-aa_Stats<-AAstat(test.seq.2)
 title("Residue Statistics for Test Sequence")
