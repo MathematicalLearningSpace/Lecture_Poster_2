@@ -1,9 +1,6 @@
-library(bio3d)
-library(xtable)
-library(Peptides)
-library(stringi)
-library(xtable)
-#------------------------------------------Data---------------------------------------------------------
+#--------------------------------------R API ----------------------------------------------------------
+library(bio3d);library(xtable);library(Peptides);library(stringi);library(xtable)
+#------------------------Data Sets for Each Student in the Classroom---------------------------------------------------------
 
 WDR<-c(WDR1, WDR5,WDR10, WDR12, WDR13, WDR16, 
        WDR17,WDR18, WDR19, WDR20, WDR21A, 
@@ -56,7 +53,7 @@ modes.RMSIP.COR1A <- rmsip(c, d)
 #------------------------------------------Tables-------------------------------------------------------
 
 
-#-----------------------------------------Figures-------------------------------------------------------
+#-------Figures to be presented and modified in the classroom-------------------------------------------------------
 r<-seq(0,10,by=0.1)
 par(mfcol = c(2, 3))
 Figure.1<-plot(r,ff.1(r), col="Blue")
@@ -74,7 +71,7 @@ legend("topright", legend=c("FF Base Eigenvalues",
        , bty = "n",lwd=2, 
        cex=0.75, col=cols, text.col=cols, lty=1:2)
 
-#----------------------------------------Function Library-----------------------------------------------
+#----------------------------------------Function Library to be modified by students-----------------------------------------------
 
 ff.1.mutation<-function (r, rmin = 2.9, ...) 
 {
