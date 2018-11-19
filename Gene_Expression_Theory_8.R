@@ -1,20 +1,7 @@
-library(HDMD)
-library(xtable)
-library(Matrix)
-library(GSEABase)
-library(Peptides)
-library(ActiveDriver)
-library(Bio3d)
-library(protr)
-library(seqinr)
-library(CHNOSZ)
-library(gss)
-library(PearsonDS)
-library(fitdistrplus)
-library(igraph)
-library(sets)
-library(stringr)
-library(stringi)
+#-------------------------------------------------------R API ---------------------------------------------
+library(HDMD);library(xtable);library(Matrix);library(GSEABase);library(Peptides);library(ActiveDriver)
+library(Bio3d);library(protr);library(seqinr);library(CHNOSZ);library(gss);library(PearsonDS);library(fitdistrplus)
+library(igraph);library(sets);library(stringr);library(stringi)
 #--------------------------------------------Data-phosphorylated proteins and phospholipids ------------------------------
 
 data(Sachs) #protein expression levels in human immune system cells under stimulations.
@@ -133,13 +120,12 @@ E(graph.0.1)$weight<-seq(0,1,length.out=ecount(graph.0.1))
 E(graph.0.2)$weight<-seq(0,1,length.out=ecount(graph.0.2))
 E(graph.0.3)$weight<-seq(0,1,length.out=ecount(graph.0.3))
 
-
 #---------------------------------------------Tables-------------------------------------------
 Table.1<-xtable(AA.sequence.Properties.df)
 Table.2<-xtable(Pearson.data.df)
 Table.3<-xtable(distribution.moments.1.df)
 
-#---------------------------------------------Figures------------------------------------------
+#----------Figures for Presentation in the Classroom------------------------------------------
 
 Figure.1<-plot(diag(AA.sequence.group.matrix.1.Molecular.MI), 
                type = "h", 
@@ -184,7 +170,7 @@ Reference.1<-c("Sachs, K., Perez, O., Pe'er, D., Lauffenburger, D. A., and Nolan
 "Causal protein-signaling networks derived from multiparameter single-cell data.", 
 "Science, 308 (5732), 523-529.")
 
-#----------------------------------------------Function Library-------------------------------
+#----------------Function Library to be modified by Students-------------------------------
 empMoments.table.caption<-function(nouns, references)
 {
   verbs<-c("")
