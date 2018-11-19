@@ -1,11 +1,5 @@
-library(bio3d)
-library(xtable)
-library(Peptides)
-library(stringi)
-library(stringr)
-library(xtable)
-library(readr)
-library(readxl)
+#----------------------------------------------R API ------------------------------------------------------
+library(bio3d);library(xtable);library(Peptides);library(stringi);library(stringr);library(xtable);library(readr);library(readxl)
 #---------------------------------------------Data From String DB and GeneCards---------------------------------------------
 
 WD64.Enrichment.Process <- as.data.frame(read_delim("enrichment.Process.tsv", "\t", escape_double = FALSE, trim_ws = TRUE))
@@ -29,9 +23,7 @@ Proteins.Study<-c(immune.response_regulating.cell.surface.receptor.signaling.pat
 
 Table.1<-xtable(WDR64.Protein.Annotations.Notes)
 Table.2<-xtable(WD64.Enrichment.Process)
-#-------------------------------------------------------------Figures------------------------------------------
+#----------------------Figures to be added by students------------------------------------------
 
 
-
-
-#------------------------------------------------------------Function Library----------------------------------
+#---------------------Function Library to be added by students----------------------------------
