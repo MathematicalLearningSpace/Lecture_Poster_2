@@ -1,22 +1,7 @@
-library(gdata)
-library(bio3d)
-library(igraph)
-library(sna)
-library(ips)
-library(phangorn)
-library(proteomics)
-library(dcGOR)
-library(MDplot)
-library(UniProt.ws)
-library(circlize)
-library(BioPhysConnectoR)
-library(protr)
-library(seqinr)
-library(Biostrings)
-library(Peptides)
-
-library(PearsonDS)
-library(xtable)
+#---------------------------------------------------R API --------------------------------------------------------
+library(gdata);library(bio3d);library(igraph);library(sna);library(ips);library(phangorn);library(proteomics)
+library(dcGOR);library(MDplot);library(UniProt.ws);library(circlize);library(BioPhysConnectoR);library(protr)
+library(seqinr);library(Biostrings);library(Peptides);library(PearsonDS);library(xtable)
 
 #------------------------------Data-------------------------------------------------------
 
@@ -53,7 +38,7 @@ network.1.pruned <- prune.cna(network.1, size.min = 30)
 
 network.1.path <- cnapath(network.1, from=14, to=25, k=10)
 
-#------------------------------------------------------
+#-----------------------------------Graph Theory---------------------------
 
 adjM_Full<-as_adjacency_matrix(network.1$network)
 adjM_Communities<-as_adjacency_matrix(network.1$community.network)
@@ -66,7 +51,7 @@ g3 <- graph_from_adjacency_matrix(adjM_Pruned)
 #-----------------------------Tables-----------------------------------------------------
 Table.1<-xtable(network.table.1$tbl)
 
-#----------------------------Figures-----------------------------------------------------
+#----------------------------Figures to be Presented in the Classroom-----------------------------------------------------
 
 par(mfcol = c(2, 2), mar = c(0, 0, 0, 0)) 
 Figure.1<-plot(network.1, pdb_2VTB.open, full = TRUE,vertex.size=5, 
