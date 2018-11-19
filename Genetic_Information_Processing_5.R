@@ -1,25 +1,8 @@
-library(KEGG.db)
-library(KEGGgraph)
-library(KEGGprofile)
-library(KEGGREST)
-library(rentrez)
-library(xtable)
-library(stringi)
-library(readr)
-library(Matrix)
-library(igraph)
-library(visNetwork)
-library(protr)
-library(Biostrings)
-library(Decipher)
-library(msa)
-library(seqLogo)
-library(seqinr)
-library(odseq)
-library(bio3d)
-library(ape)
-library(ips)
-library(cba)
+#------------------------------------------------R API ------------------------------------------------------------
+library(KEGG.db);library(KEGGgraph);library(KEGGprofile);library(KEGGREST);library(rentrez);library(xtable)
+library(stringi);library(readr);library(Matrix);library(igraph);library(visNetwork);library(protr);library(Biostrings)
+library(Decipher);library(msa);library(seqLogo);library(seqinr);library(odseq);library(bio3d);library(ape)
+library(ips);library(cba)
 
 #------------------------------------------------------Data-----------------------------------------------------------------
 Protein_Report_RCSB_PDB_Results.df <- as.data.frame(read_csv("data/Protein_Report_RCSB_PDB_Results.csv"))
@@ -86,7 +69,7 @@ msaPrettyPrint(System.Immune.Sequences.Classification.Alignment.Clustal,
 
 Table.1<-xtable(System.Immune.Hydrolase.Sequences.df)
 
-#----------------------------------------------------Figures------------------------------------------------------------------
+#------------Figures to be added by Students in the Classroom------------------------------------------------------------------
 Figure.1<-plot(System.Immune.Hydrolase.Tree, main="Phylogenetic Tree of Immune System Hydrolase Sequences",cex=0.5)
 
 #---------------------------------------------------References----------------------------------------------------------------
