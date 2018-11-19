@@ -1,29 +1,9 @@
-library(protr)
-library(CHNOSZ)
-library(bio3d)
-library(VarfromPDB)
-library(dplyr)
-library(HMM)
-library(markovchain)
-library(mcmc)
-library(combinat)
-library(permute)
-library(permutations)
-library(Peptides)
-library(boot)
-library(stringi)
-library(stringr)
-library(utils)
-library(DescTools)
-library(seqinr)
-library(xtable)
-
+#----------------------------------------------------R API ----------------------------------------------------
+library(protr);library(CHNOSZ);library(bio3d);library(VarfromPDB);library(dplyr);library(HMM)
+library(markovchain);library(mcmc);library(combinat);library(permute);library(permutations);library(Peptides)
+library(boot);library(stringi);library(stringr);library(utils);library(DescTools);library(seqinr);library(xtable)
 #----------------------------------------------Data--------------------------------------------------------
-data(thermo)
-data(aa.table)
-data(aa.index)
-data(aa)
-data(pepdata)
+data(thermo);data(aa.table);data(aa.index);data(aa);data(pepdata)
 peptide.properties<-colnames(pepdata)
 
 Amino.Study<-c("A","P","S","T")
@@ -61,9 +41,7 @@ Amino.Study.Combinations.sequence.Property.membrame<-membpos(Amino.Study.Combina
 #---------------------------------------------Permutations------------------------------------------------
 Amino.Study.Permutations.Matrix<-allPerms(Amino.Study)
 #---------------------------------------------Temperature, Pressure and pH--------------------------------
-temperature <-seq(0,320,2)
-pressure<-seq(1,161,1)
-pH<-seq(1,17, 0.1)
+temperature <-seq(0,320,2);pressure<-seq(1,161,1);pH<-seq(1,17, 0.1)
 aa <- seq2aa("Octapeptide",Octapeptide)
 ionize.sequence<-ionize.aa(aa, T=25, pH=pH)
 #---------------------------------------------Properties--------------------------------------------------
@@ -85,7 +63,7 @@ colnames(sequence.properties.df)<-c("Type","Boman","instaIndex","MW")
 Table.1<-xtable(amino.study.df)
 Table.2<-xtable(sequence.properties.df)
 
-#--------------------------------------------Figures-------------------------------------------------------
+#------------Figures to be modified by students in the classroom-------------------------------------------------------
 Figure.1<-plot(Amino.Study.Combinations.sequence.Property.Charge.pH[[1]],type="l",xlab="pH",
                ylab='Charge',main="Peptide Charge by pH level")
 Figure.2<-plot(Amino.Study.Combinations.sequence.Property.Charge.pH.3[[1]],type="l",xlab="pH",
