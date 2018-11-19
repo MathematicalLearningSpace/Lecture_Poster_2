@@ -1,16 +1,8 @@
-library(KEGG.db)
-library(KEGGgraph)
-library(KEGGprofile)
-library(KEGGREST)
-library(rentrez)
-library(xtable)
-library(stringi)
-library(readr)
-library(Matrix)
-library(igraph)
-library(visNetwork)
+#------------------------------------------R API -----------------------------------------------------
+library(KEGG.db);library(KEGGgraph);library(KEGGprofile);library(KEGGREST);library(rentrez);library(xtable)
+library(stringi);library(readr);library(Matrix);library(igraph);library(visNetwork)
 
-#-------------------------------------------------Data-------------------------------------------------------------------------
+#----------------------------Data Sets for Reading in the Classroom-------------------------------------------------------------------------
 #
 KEGG.IDs.df <- as.data.frame(read_csv("data/KEGG_IDs_For_Query.txt"))
 KEGG.Cancer.IDs.df<- as.data.frame(read_csv("data/KEGG_Cancer_IDs_For_Query.txt"))
@@ -18,8 +10,6 @@ Genetic.Information.Processing.df <- as.data.frame(read_csv("Data/Genetic_Inform
 GIP.Folding.Sorting.Degradation.df<-Genetic.Information.Processing.df[9:15,]
 
 #-----------------------------------------------Ubiquitin mediated proteolysis------------------------------------------
-
-
 Ubiquitin.enzyme.activation.E1<-c("UB.E1","UB.L.E1.A","UB.L.E1.B","UB.E1.C")
 Ubiquitin.enzyme.conjugation.E2<-c("UB.E2.A","UB.E2.B","UB.E2.C","UB.E2.D",
                                    "UB.E2.E","UB.E2.F","UB.E2.G.1","UB.E2.G.2",
@@ -47,16 +37,12 @@ Polyubiquitination.publications<-entrez_search(db="pubmed", term="Polyubiquitina
 Ubiquitin.mediated.proteolysis.publications<-entrez_search(db="pubmed", term="Ubiquitin mediated proteolysis", retmax=40)
 
 #-----------------------------------------------Tables-------------------------------------------------------------------------
-
-
 Table.1<-xtable(Genetic.Information.Processing.df)
-
-
-#-----------------------------------------------Figures------------------------------------------------------------------------
+#----------------------Figures to be added by Students------------------------------------------------------------------------
 
 Figure.1<-plot()
 
-#-----------------------------------------------References-----------------------------------
+#---------------------References to be added by Students-----------------------------------
 Reference.1<-c("","","")
 
 #----------------------------------------------Function Library----------------------------------------------------------------
