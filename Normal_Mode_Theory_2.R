@@ -1,29 +1,13 @@
-library(gdata)
-library(bio3d)
-library(igraph)
-library(sna)
-library(ips)
-library(phangorn)
-library(proteomics)
-library(dcGOR)
-library(MDplot)
-library(UniProt.ws)
-library(circlize)
-library(BioPhysConnectoR)
-library(protr)
-library(seqinr)
-library(Biostrings)
-library(Peptides)
-
-library(PearsonDS)
-library(xtable)
+#----------------------------------------------R API --------------------------------------------
+library(gdata);library(bio3d);library(igraph);library(sna);library(ips);library(phangorn);library(proteomics)
+library(dcGOR);library(MDplot);library(UniProt.ws);library(circlize);library(BioPhysConnectoR);library(protr)
+library(seqinr);library(Biostrings);library(Peptides);library(PearsonDS);library(xtable)
 
 #------------------------------------------Data------------------------------------------------------
 
 pdb_2VTB<- read.pdb("2VTB.pdb")
 
 #-----------------------------------------Elastic Network Models------------------------------------
-
 pdb_2VTB.open<- trim.pdb(pdb_2VTB, 
                          atom.select(pdb_2VTB, chain="A"))
 
@@ -60,11 +44,7 @@ energy.2VTB <- deformation.nma(modes_2VTB.A)
 fluctuations.2VTB <- fluct.nma(modes_2VTB.A, mode.inds=seq(7,11))
 fluctuations.2VTB.reach <- fluct.nma(modes.reach.2VTB.A, mode.inds=seq(7,11))
 #-----------------------------------------Tables----------------------------------------------------
-
-
-
-
-#----------------------------------------Figures----------------------------------------------------
+#------------------------------Figures to be discussed in the Classroom----------------------------------------------------
 
 Figure.1<-plot(modes.ANM.2VTB.A, sse=pdb_2VTB.open)
 Figure.2<-plot(modes.calpha.2VTB.A,sse=pdb_2VTB.open)
@@ -112,7 +92,7 @@ legend("topright", legend=c("Mode:7-11",
                             "Mode:7-11 Reach")
        , bty = "n",lwd=2, 
        cex=0.75, col=cols, text.col=cols, lty=1:4)
-#---------------------------------------Function Library--------------------------------------------
+#----------Function Library to modified by Students in the Classroom--------------------------------------------
 energy.Function<-function(x)
 {
     #Theoretical 
