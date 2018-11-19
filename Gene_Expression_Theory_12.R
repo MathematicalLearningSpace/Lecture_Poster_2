@@ -1,15 +1,10 @@
-library(xtable)
-library(RJaCGH)
-library(GLAD)
-library(seqCNA)
-#----------------------------------Data-----------------------------------------
-data(snijders) 
-data(cytoband)
-data(arrayCGH)
+#---------------------------------R API ---------------------------------------
+library(xtable);library(RJaCGH);library(GLAD);library(seqCNA)
+#----------------------------------Data for Classroom-----------------------------------------
+data(snijders) ;data(cytoband);data(arrayCGH)
 
 array <- list(arrayValues=array2, 
               arrayDesign=c(4,4,21,22))
-
 class(array) <- "arrayCGH"
 
 profileCGH <- as.profileCGH(gm07408)
@@ -138,7 +133,7 @@ seq.states <- modelAveraging(fit.arrays, array = "gm07408LR")[["gm07408LR"]]$sta
 Table.2<-xtable(table(seq.states, gm07408$Statut[not.NA]))
 Table.3<-xtable(RG.df)
 
-#--------------------------------Figures--------------------------------------
+#----------Figures to be presented in the Classroom--------------------------
 
 Figure.1<-plotProfile(res, unit=3, Bkp=TRUE, labels=FALSE,
             Smoothing="Smoothing", plotband=TRUE, cytoband = cytoband)
