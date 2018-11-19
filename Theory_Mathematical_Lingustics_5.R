@@ -1,9 +1,8 @@
-library(readr)
-library(xtable)
+#--------------------------------------R API -----------------------------------------
+library(readr);library(xtable)
 
 #---------------------------------------Data from Pharos (https://pharos.nih.gov)---------------------------------------------
-
-
+#---------------------------------------Student build the csv files in the classroom-----------------------------------------
 #---------------------------------------Cancer Research Publications---------------------------------------------------------
 
 AML_Cancer.publications <- read_csv("AML/publications.csv")
@@ -170,17 +169,12 @@ colNames(Cancer.publications.df)<-c("AML_Cancer",
                                     "smallCellLung_Cancer",
                                     "Thyroid_Cancer")
 
-
-
 #----------------------------------------------Tables------------------------------------------------------
 
 Table.1<-xtable(Cancer.publications.df)
 Table.2<-xtable(Network.signaling.df)
 
-
-#----------------------------------------------Figures-----------------------------------------------------
-
-
+#----------------------Figures to be added by Students-----------------------------------------------------
 
 
 
