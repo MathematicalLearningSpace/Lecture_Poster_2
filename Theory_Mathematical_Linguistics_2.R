@@ -1,33 +1,11 @@
-library(europepmc)
-library(rentrez)
-library(tm)
-library(slam)
-library(NLP)
-library(openNLP)
-library(XML)
-library(RTextTools)
-library(Rstem)
-library(topicmodels)
-library(wordcloud)
-library(wordnet)
-library(proxy)
-library(plyr)
-library(wordmatch)
-library(xml2)
-library(XML)
-library(xtable)
-library(igraph)
-library(netgen)
-library(ggplot2)
-library(ergm)
-library(qdap)
-library(reutils)
-library(ontologyIndex)
-library(RNeXML)
-library(Rstem)
+#------------------------------------------------R API --------------------------------------------
+library(europepmc);library(rentrez);library(tm);library(slam);library(NLP);library(openNLP);library(XML)
+library(RTextTools);library(Rstem);library(topicmodels);library(wordcloud);library(wordnet);library(proxy)
+library(plyr);library(wordmatch);library(xml2);library(XML);library(xtable);library(igraph);library(netgen)
+library(ggplot2);library(ergm);library(qdap);library(reutils);library(ontologyIndex);library(RNeXML);library(Rstem)
 library(RODBC)
 
-#-------------------------------------------------Data----------------------------------------------------------------
+#---------------------Data Sets for Students in the Classroom----------------------------------------------------------------
 StatementOfResearchHypothesis<-c("Avian Spatial Intelligence")
 
 channel<-odbcConnect("AvianDB",rows_at_time = 1)
@@ -117,10 +95,8 @@ g <- graph.data.frame(RDAssociationDF, directed = TRUE)
 g <- graph.adjacency(termMatrix, weighted=T, mode = 'undirected')
 gRanked <- graph.adjacency(RankedTermMatrix, weighted=T, mode = 'undirected')
 #-------------------------------------------------Tables--------------------------------------------------------------
-
 Table.1<-xtable(RDAssociationDF)
-
-#-------------------------------------------------Figures-------------------------------------------------------------
+#-------------------------------------------------Figures to be added in the classroom-------------------------------------------------------------
 Figure.1<-plot(g,layout=layout.kamada.kawai, vertex.size=1, vertex.color="green")
 
 #------------------------------------------------Function Library----------------------------------------------------
