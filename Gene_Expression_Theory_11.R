@@ -1,9 +1,5 @@
-library(HDMD)
-library(xtable)
-library(pdc)
-library(lattice)
-library(fracdiff)
-library(tseriesEntropy)
+#------------------------------------------------R API -----------------------------
+library(HDMD);library(xtable);library(pdc);library(lattice);library(fracdiff);library(tseriesEntropy)
 #---------------------------------Data------------------------------------------------
 
 grp1 <- replicate(10, arima.sim(n = 48, list(ar = c(0.8, -0.4), 
@@ -32,7 +28,6 @@ heuristic.delay.3 <-  entropyHeuristic(grp3[,1], t.min=1, t.max=6 )
 heuristic.4 <-  entropyHeuristic(grp4[,1]$series )
 heuristic.delay.4 <-  entropyHeuristic(grp4[,1]$series, t.min=1, t.max=6 )
 
-
 #----------Permutation Distribution Clustering for time series---------------------------
 
 Group.X <- cbind(grp1,grp2,grp3)
@@ -45,8 +40,7 @@ y <- codebook(grp4[,1]$series,m=4)
 D.hellinger<-hellingerDistance(x,y)
 D.hellinger.squared<-squaredHellingerDistance(x,y)
 Divergence<-symmetricAlphaDivergence(x,y)
-
-
+                                
 #----------Hierarchical cluster analysis for time series---------------------------
 
 hc.1<-hclust(dist(Group.X))
@@ -81,12 +75,10 @@ diagnostics.df<-cbind(clustering.Kmeans[c("betweenss", "tot.withinss", "totss")]
       c(metric.ss(clustering.Kmeans.fitted), 
         metric.ss(clustering.Kmeans.resid),    
         metric.ss(Group.X)))
-
-
 #-------------------------------Tables-----------------------------------------------
 
 Table.1<-xtable(diagnostics.df)
-#------------------------------Figures----------------------------------------------
+#---------------Figures to be presented in the Classroom----------------------------------------------
 par(mfrow = c(2,1))
 Figure.1<-plot(grp1[,1], type="l", 
                lty=1,col="black",
@@ -129,7 +121,6 @@ Figure.6<-plot(clustering, labels=1:30, cols=c(rep("red",10),
 Figure.6A<-plot(clustering, cols=c(rep("red",10),
                                    rep("blue",10),
                                    rep("green",10)))
-
 par(mfrow = c(2,2))
 Figure.7A<-plot(hc.1)
 Figure.7B<-plot(hc.2)
@@ -139,20 +130,11 @@ Figure.7D<-plot(hc.4)
 Figure.8<-plot(Group.X, col = clustering.Kmeans$cluster)
 points(clustering.Kmeans$centers, col = 1:3, pch = 8, cex = 2)
 
-
-#------------------------------References------------------------------------------
+#----------References to be added by Students------------------------------------------
 
 Reference.1<-c("",
                "",
                "")
-#------------------------------Functional Library----------------------------------
-
-
-
-
-
-
-
-
+#----------Functional Library to be added by Students----------------------------------
 
 
