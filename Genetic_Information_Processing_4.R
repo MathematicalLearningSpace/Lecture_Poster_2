@@ -1,16 +1,8 @@
-library(KEGG.db)
-library(KEGGgraph)
-library(KEGGprofile)
-library(KEGGREST)
-library(rentrez)
-library(xtable)
-library(stringi)
-library(readr)
-library(Matrix)
-library(igraph)
-library(visNetwork)
+#-----------------------------------------R API -----------------------------------------------
+library(KEGG.db);library(KEGGgraph);library(KEGGprofile);library(KEGGREST);library(rentrez);library(xtable)
+library(stringi);library(readr);library(Matrix);library(igraph);library(visNetwork)
 
-#-------------------------------------------------Data-------------------------------------------------------------------------
+#---------------------Data Sets for the Classroom-------------------------------------------------------------------------
 #
 KEGG.IDs.df <- as.data.frame(read_csv("data/KEGG_IDs_For_Query.txt"))
 KEGG.Cancer.IDs.df<- as.data.frame(read_csv("data/KEGG_Cancer_IDs_For_Query.txt"))
@@ -122,13 +114,11 @@ HR.Eurkarytoic.Strand.Double.Break.Repair.df<-as.data.frame(c(
 Eurkarytoic.Strand.Double.Break.Repair.Formation.Filament.publications<-entrez_search(db="pubmed", term="Eurkarytoic.Strand.Double.Break.Repair.Formation.Filament", retmax=40)
 
 #-----------------------------------------------Tables-------------------------------------------------------------------------
-
-
 Table.1<-xtable(Genetic.Information.Processing.df)
 
 Table.2<-HR.Eurkarytoic.Strand.Double.Break.Repair.df
 
-#-----------------------------------------------Figures------------------------------------------------------------------------
+#-----------------------Figures to be Added by Students-------------------------------------------------------------
 
 Figure.1<-plot()
 
