@@ -1,12 +1,6 @@
-library(triplex)
-library(xtable)
-library(seqinr)
-library(Biostrings)
-library(BSgenome.Hsapiens.UCSC.hg19)
-library(heatmaps)
-library(BSgenome)
-library(GenomeGraphs)
-library(biomaRt)
+#-----------------------------------R API -----------------------------------------------------------
+library(triplex);library(xtable);library(seqinr);library(Biostrings);library(BSgenome.Hsapiens.UCSC.hg19)
+library(heatmaps);library(BSgenome);library(GenomeGraphs);library(biomaRt)
 #--------------------------------Data--------------------------------------
 strand.types<-c("Parallel-First-0","Parallel-First-1",
                 "Parallel-Second-2","Parallel-Second-3",
@@ -24,7 +18,7 @@ t.18.3.decreasing<-t.18.3[order(score(t.18.3), decreasing=TRUE)]
 
 #-------------------------------Tables--------------------------------------
 
-#--------------------------------Figures---------------------------------
+#-----Figures to be presented in the Classroom---------------------------------
 par(mfrow = c(2,2))
 Figure.1<-hist(t.18.3@elementMetadata@listData$type)
 Figure.2<-hist(t.18.3@elementMetadata@listData$score)
@@ -66,12 +60,12 @@ Figure.7<-gdPlot(list(fwd = genesplus,
             minBase = 0, 
             maxBase =n, labelRot = 0,overlays = list(hr1, hr2,roR))
 
-#--------------------------------References -----------------------------
+#-------------References to be added by Students in the Classroom -----------------------------
 
 Reference.1<-c("",
                "",
                "")
 
-#-------------------------------Function Library--------------------------
+#-----Function Library to be added by Students in the Classroom--------------------------
 
 
