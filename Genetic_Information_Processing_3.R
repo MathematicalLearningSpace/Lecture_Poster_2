@@ -1,19 +1,8 @@
-library(KEGG.db)
-library(KEGGgraph)
-library(KEGGprofile)
-library(KEGGREST)
-library(rentrez)
-library(xtable)
-library(stringi)
-library(readr)
-library(Matrix)
-library(igraph)
-library(visNetwork)
-library(Hmm)
-library(markovchain)
+#-------------------------------------------R API ----------------------------------------------------------
+library(KEGG.db);library(KEGGgraph);library(KEGGprofile);library(KEGGREST);library(rentrez);library(xtable)
+library(stringi);library(readr);library(Matrix);library(igraph);library(visNetwork);library(Hmm);library(markovchain)
 
-#-------------------------------------------------Data-------------------------------------------------------------------------
-
+#-------------------Data Sets for the Classroom-------------------------------------------------------------------------
 KEGG.IDs.df <- as.data.frame(read_csv("data/KEGG_IDs_For_Query.txt"))
 KEGG.Cancer.IDs.df<- as.data.frame(read_csv("data/KEGG_Cancer_IDs_For_Query.txt"))
 Genetic.Information.Processing.df <- as.data.frame(read_csv("Data/Genetic_Information_Processing.txt"))
@@ -76,11 +65,11 @@ Table.1<-xtable(Genetic.Information.Processing.df)
 Table.2<-xtable(ER.Protein.Path.1.df)
 Table.3<-xtable(ER.Protein.Path.2.df)
 
-#-----------------------------------------------Figures------------------------------------------------------------------------
+#-----------------Figures to be Designed by Students in the Classroom----------------------------------------------------------
 
 Figure.1<-plot()
 
-#-----------------------------------------------References---------------------------------------------------------------------
+#-----------------References---------------------------------------------------------------------
 
 #----------------------------------------------Function Library----------------------------------------------------------------
 
