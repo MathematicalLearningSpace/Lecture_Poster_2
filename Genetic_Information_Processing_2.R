@@ -1,12 +1,15 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #------------------------------------------R API -----------------------------------------------------
 library(KEGG.db);library(KEGGgraph);library(KEGGprofile);library(KEGGREST);library(rentrez);library(xtable)
 library(stringi);library(readr);library(Matrix);library(igraph);library(visNetwork)
 
 #----------------------------Data Sets for Reading in the Classroom-------------------------------------------------------------------------
-#
+#---------------------Formatted Student Notes-----------------------
 KEGG.IDs.df <- as.data.frame(read_csv("data/KEGG_IDs_For_Query.txt"))
 KEGG.Cancer.IDs.df<- as.data.frame(read_csv("data/KEGG_Cancer_IDs_For_Query.txt"))
 Genetic.Information.Processing.df <- as.data.frame(read_csv("Data/Genetic_Information_Processing.txt"))
+
+
 GIP.Folding.Sorting.Degradation.df<-Genetic.Information.Processing.df[9:15,]
 
 #-----------------------------------------------Ubiquitin mediated proteolysis------------------------------------------
@@ -46,4 +49,23 @@ Figure.1<-plot()
 Reference.1<-c("","","")
 
 #----------------------------------------------Function Library----------------------------------------------------------------
-
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
