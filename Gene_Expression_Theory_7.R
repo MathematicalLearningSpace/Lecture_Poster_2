@@ -28,10 +28,15 @@ AA.df<-AA.df[with(AA.df,order(AA.df$mass,decreasing=TRUE)),]
 #------Ratios Designs for the Classroom------------------------------------------------------
 
 #--------------------------------------FASTA Files for Classroom---------------------------
+AT.Chromosome.3<-read.fasta(file ='Arabidopsis_thaliana.TAIR10.31.dna.chromosome.3.fa.gz')
+AT.Chromosome.3[[1]][20339504:20341103]
+AA.AT3G54890.3<-seq2aa("AT3G54890",AT.Chromosome.3[[1]][20339961:20340922])
+#----------------------------Formatted Student Notes of FASTA Files------------------------
 AT.Protein.Mitochondrion.1<-readFASTA('ArabidopsisThalianaProteinMitochondrion.txt')
 AT.Protein.Mitochondrion.1.117<-AT.Protein.Mitochondrion.1[[117]]
 AT.Protein.Mitochondrion.1.117.Motif.RRRR<-stri_locate_all_regex(AT.Protein.Mitochondrion.1.117, "(?=RRRR)")
 #AT.Protein.Mitochondrion.1.117<-s2c(AT.Protein.Mitochondrion.1.117)
+#------------------------------------------Properties--------------------------------------
 AT.Protein.Mitochondrion.1.117.AA<-seq2aa("117",AT.Protein.Mitochondrion.1.117)
 AT.Protein.Mitochondrion.1.117.mass<-mass(as.chemical.formula(protein.formula(AT.Protein.Mitochondrion.1.117.AA)))
 AT.Protein.Mitochondrion.1.117.entropy<-entropy(as.chemical.formula(protein.formula(AT.Protein.Mitochondrion.1.117.AA)))
@@ -43,13 +48,10 @@ AT.Protein.Mitochondrion.1.117.Nitrogen.Carbon.ratio<-Nitrogen.Carbon.ratio(AT.P
 AT.Protein.Mitochondrion.1.117.Sulfur.Carbon.ratio<-Sulfur.Carbon.ratio(AT.Protein.Mitochondrion.1.117.Protein.Formula)
 AT.Protein.Mitochondrion.1.117.carbon.Oxidation.average<-carbon.Oxidation.average(AT.Protein.Mitochondrion.1.117.Protein.Formula)
 
+#---------------------------Table Design----------------------
 AT.Protein.Mitochondrion.1.117.Statistics.df<-data.frame()
 AT.Protein.Mitochondrion.1.117.Statistics.df<-rbind(c(AT.Protein.Mitochondrion.1.117.mass))
 colnames(AT.Protein.Mitochondrion.1.117.Statistics.df)<-c("Total Mass")
-
-AT.Chromosome.3<-read.fasta(file ='Arabidopsis_thaliana.TAIR10.31.dna.chromosome.3.fa.gz')
-AT.Chromosome.3[[1]][20339504:20341103]
-AA.AT3G54890.3<-seq2aa("AT3G54890",AT.Chromosome.3[[1]][20339961:20340922])
 
 #-------------Transformations to be designed by Students with this Design Pattern-------------------------------------------------
 Transformation.1<-function(X)
