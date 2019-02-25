@@ -1,14 +1,9 @@
-library(xtable)
-library(text2vec)
-library(data.table)
-library(magrittr)
-library(glmnet)
-library(rentrez)
-library(readr)
-library(LDAvis)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+library(xtable);library(text2vec);library(data.table);library(magrittr);library(glmnet);library(rentrez);library(readr);library(LDAvis)
 
 #------------------------------------------Data-----------------------------------------------
 article.files <- list.files(patt='*.*csv$')
+#-------------------------------Formatted Student Notes------------------------------------------
 print(article.files)
 #[1] "publications_AML.csv"             
 #[2] "publications_Apoptosis.csv"       
@@ -42,7 +37,7 @@ z.df<-data.frame()
 z.df<-read_csv(article.files[25])
 x<-rbinom(nrow(z.df),1,0.5)
 z.df<-cbind(z.df,score=x)
-
+#-----------------------Filter, Search and Sort Data Set---------------------------
 View(z.df)
 
 Data_Dictionary <- read_csv("Data_Dictionary.txt")
