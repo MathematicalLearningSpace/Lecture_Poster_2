@@ -52,6 +52,8 @@ Hydrogen.Carbon.ratio(pf.test.df)
 #-----------------------------------------WDR5---------------------------------------------------------------------------
 
 sentence.1<- stri_paste("There are ", length(WDR5.df$Repeats)," repeats.")
+
+#---------------------------------------Properties----------------------------------------------------------------------
 aa.strand.d.Face.Side <- seq2aa('WDR5.Strand.D',WDR5.df$Strand_d)
 aa.strand.c.Core.Inner.Interior.1 <- seq2aa('WDR5.Strand.c',WDR5.df$Strand_c)
 aa.strand.b.Core.Inner.Interior.2<- seq2aa('WDR5.Strand.b',WDR5.df$Strand_b)
