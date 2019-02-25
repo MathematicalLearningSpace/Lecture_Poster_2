@@ -31,6 +31,9 @@ addParameters(Gene.Expression.Model.1, "k3r", 1)
 addParameters(Gene.Expression.Model.1, "k4", 1.5)
 addParameters(Gene.Expression.Model.1, "k5", 1)
 #-------------------------------------------Design, Modify, Add and Activate Rules--------------------------------------------------
+#------------Biology Rules
+#------------Botany Rules
+#------------Chemistry Rules
 addRule(Gene.Expression.Model.1, "rule 1","ODEs","DNA_protein=0.5*DNA")
 #addRule(Gene.Expression.Model.1, "rule 2","ODEs","DNA_protein=0.5*DNA")
 #addRule(Gene.Expression.Model.1, "rule 3","ODEs","DNA_protein=0.5*DNA")
