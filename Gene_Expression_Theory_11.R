@@ -104,12 +104,13 @@ lines(grp3[,3], lty=3,col="blue")
 lines(grp3[,4], lty=4,col="green")
 lines(grp3[,5], lty=5,col="yellow")
 lines(grp3[,6], lty=6,col="orange")
-
+#----------------------------------Figure Groups 1------------------------------------
 par(mfrow = c(2,2))
 Figure.3A<-plot(heuristic.1)
 Figure.3B<-plot(heuristic.2)
 Figure.3C<-plot(heuristic.3)
 Figure.3D<-plot(heuristic.4)
+#----------------------------------Figure Groups 2------------------------------------			
 par(mfrow = c(2,2))
 Figure.4A<-plot(heuristic.delay.1)
 Figure.4B<-plot(heuristic.delay.2)
@@ -118,14 +119,11 @@ Figure.4D<-plot(heuristic.delay.4)
 
 Figure.5<-levelplot(as.matrix(D), col.regions=grey.colors(20,start=0.1, end=0.95))
 
+#----------------------------------Figure Groups 4------------------------------------	
 par(mfrow = c(1,2))
-Figure.6<-plot(clustering, labels=1:30, cols=c(rep("red",10),
-                                               rep("blue",10),
-                                               rep("green",10)))
-
-Figure.6A<-plot(clustering, cols=c(rep("red",10),
-                                   rep("blue",10),
-                                   rep("green",10)))
+Figure.6<-plot(clustering, labels=1:30, cols=c(rep("red",10),rep("blue",10),rep("green",10)))
+Figure.6A<-plot(clustering, cols=c(rep("red",10),rep("blue",10),("green",10)))
+#----------------------------------Figure Groups 4------------------------------------	
 par(mfrow = c(2,2))
 Figure.7A<-plot(hc.1)
 Figure.7B<-plot(hc.2)
