@@ -1,4 +1,5 @@
-
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+#---------------------------------------------------R API --------------------------------------------------------
 library(xtable);library(text2vec);library(data.table);library(magrittr);library(glmnet);library(rentrez);library(readr);library(LDAvis)
 library(GSVAdata);library(org.Hs.eg.db);library(GSEABase);library(GSAR);library(MASS)
 #------------------------------------------Data-----------------------------------------------
