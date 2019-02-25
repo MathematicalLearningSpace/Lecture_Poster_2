@@ -1,20 +1,10 @@
-library(githubinstall)
-library(devtools)
-library(europepmc)
-library(rentrez)
-library(aRxiv)
-library(XML)
-library(pubmed.mineR)
-library(stringi)
-library(stringr)
-library(xtable)
-library(NLP)
-library(openNLP)
-library(tm)
-library(wordcloud)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+library(githubinstall);library(devtools);library(europepmc);library(rentrez);library(aRxiv);library(XML);library(pubmed.mineR);library(stringi)
+library(stringr);library(xtable);library(NLP);library(openNLP);library(tm);library(wordcloud)
 
 #----------------------------------------------------Data--------------------------------------------------------------
 P53.data<- epmc_search(query = 'P53',limit = 250)
+
 View(P53.data)
 #----------------------------------------------------100 most cited atricles from PLOS ONE-----------------------------
 PLOS.data<-epmc_search(query = 'ISSN:	1932-6203', sort = 'CITED desc')
@@ -139,3 +129,23 @@ filter_abstract<-function(x,y)
   }
   return(LiteratureReview)
 }
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
