@@ -1,3 +1,4 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #------------------------------------R API --------------------------------------------------------------
 library(sysBio);library(deSolve);library(ReacTran);library(rootSolve);library(fda)
 library(phaseR);library(xtable);library(tseriesChaos);library(corrplot)
@@ -45,14 +46,31 @@ distribution.moments.1.df<-rbind(c("ES_1","Protein",empMoments(simResults.1$prot
 colnames(distribution.moments.1.df)<-c("Equation","Variable","Moment 1", "Moment 2","Moment 3","Moment 4")
 #--------------------------------------------Tables-------------------------------------------------------
 Table.1<-xtable(distribution.moments.1.df)
-
-
 #-------------------------------------------Figures for Presentation in the Classroom-------------------------------------------------------
 Figure.1<-plotResults(simResults.1, title="Gene Expression") 
 Figure.2<-plotResults(simResults.1.stoch, title="Gene Expression Stochastic")
 
 #------------------------------------------Function Library (To be Added by Students)-----------------------------------------------
-
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
 
 
 
