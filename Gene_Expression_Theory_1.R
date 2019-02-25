@@ -1,10 +1,9 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #-----------------------------------R API ----------------------------------------------------
 library(fractal); library(fracdiff);library(timeSeries);library(RandomFields);library(boot);library(vars)
 library(urca);library(PearsonDS);library(stringr);library(stringi);library(corrplot);library(ggplot2);library(xtable)
-
-pearson.N<-100
+pearson.N<-10^2
 #-------------------------------------Moment Parameters for the Distributions-------------------------------------------------
-
 p0pars <- list(mean=1, sd=1)
 pIpars <- list(a=1, b=1, location=1, scale=1) 
 pIIpars <- list(a=1, location=1, scale=1) 
@@ -13,9 +12,7 @@ pIVpars <- list(m=3, nu=1, location=1, scale=1)
 pVpars <- list(shape=1, location=1, scale=1) 
 pVIpars <- list(a=1, b=1, location=1, scale=1) 
 pVIIpars <- list(df=10, location=1, scale=1)
-
 #-------------------------------------Generate Random variables from the Distributions----------------------------------------
-
 error.pearson.0<-rpearson0(pearson.N,params=p0pars)
 error.pearson.1<-rpearsonI(pearson.N,params=pIpars)
 error.pearson.2<-rpearsonII(pearson.N,params=pIIpars)
@@ -25,21 +22,27 @@ error.pearson.5<-rpearsonV(pearson.N,params=pVpars)
 error.pearson.6<-rpearsonVI(pearson.N,params=pVIpars)
 error.pearson.7<-rpearsonVII(pearson.N,params=pVIIpars)
 
-#-------------------------------Create Gene Theoretical Data Set based on CDF Hypothesis 
-#--------------for Analysis Workflow based on Simulated Network Data for the Classroom-------------------------------------
+#--------------Create Gene Theoretical Data Set based on CDF Hypothesis 
+#--------------for Analysis Workflow based on Simulated Network Data for the Classroom Teaching-------------------------------------
 
-MOV10<-window(error.pearson.0,start = 25,end=75)
-CSNK2B<-window(error.pearson.1,start = 25,end=75)
-AMMECR1<-window(error.pearson.2,start = 25,end=75)
-VRK1<-window(error.pearson.3,start = 25,end=75)
-BRCA1<-window(error.pearson.4,start = 25,end=75)
-P53<-window(error.pearson.5,start = 25,end=75)
-GNE<-window(error.pearson.6,start = 25,end=75)
-GABPA<-window(error.pearson.7,start = 25,end=75)
+MOV10.1<-window(error.pearson.0,start = 25,end=75) # Theoretical Distributions and reading frame
+CSNK2B.1<-window(error.pearson.1,start = 25,end=75)
+AMMECR1.1<-window(error.pearson.2,start = 25,end=75)
+VRK1.1<-window(error.pearson.3,start = 25,end=75)
+BRCA1.1<-window(error.pearson.4,start = 25,end=75)
+P53.1<-window(error.pearson.5,start = 25,end=75)
+GNE.1<-window(error.pearson.6,start = 25,end=75)
+GABPA.1<-window(error.pearson.7,start = 25,end=75)
 
-Gene.Study<-as.matrix(cbind(MOV10,CSNK2B,AMMECR1,VRK1,
-                            BRCA1,P53,GNE,GABPA))
-Gene.Study.Names<-c("MOV10","CSNK2B","AMMECR1","VRK1","BRCA1","P53","GNE","GABPA")
+Gene.Study<-as.matrix(cbind(MOV10.1,CSNK2B.1,AMMECR1.1,VRK1.1,
+                            BRCA1.1,P53.1,GNE.1,GABPA.1))
+Gene.Study.Names<-c("MOV10 Simulated",
+                    "CSNK2B Simulated",
+                    "AMMECR1 Simulated",
+                    "VRK1 Simulated",
+                    "BRCA1 Simulated",
+                    "P53 Simulated",
+                    "GNE Simulated","GABPA Simulated")
 
 #-------------------------------Five different expression profiles (G1/S, S, G2, G2/M, and M/G1)-----
 
