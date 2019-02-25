@@ -1,12 +1,6 @@
-library(WikipediR)
-library(xtable)
-library(RWeka)
-library(tm)
-library(RCurl)
-library(topicmodels)
-library(wordcloud)
-library(stringi)
-library(corpora)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+#---------------------------------------------------R API 
+library(WikipediR);library(xtable);library(RWeka);library(tm);library(RCurl);library(topicmodels);library(wordcloud);library(stringi);library(corpora)
 library(zipfR)
 #-----------------------------------------Data-----------------------------------------------------------
 
@@ -87,4 +81,23 @@ remove.HTML.markup<-function(s)
     doc.1<-NULL
     doc.1 <- htmlTreeParse(paste("<!DOCTYPE html>", s),asText = TRUE, trim = FALSE)
     xmlValue(xmlRoot(doc.1))
-  } 
+  } #-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
