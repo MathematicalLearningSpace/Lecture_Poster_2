@@ -60,29 +60,13 @@ test = z.dt[J(test.ids)]
 prep.fun = tolower
 tok.fun = word_tokenizer
 
-Abstract.train.tokens = train$Abstract %>% 
-  prep.fun %>% 
-  tok.fun
+Abstract.train.tokens = train$Abstract %>% prep.fun %>% tok.fun
+Title.train.tokens = train$Title %>% prep.fun %>% tok.fun
+Abstract.it.train = itoken(Abstract.train.tokens, ids = train$`Pubmed ID`,progressbar = FALSE)
+Abstract.it.test = test$Abstract %>% prep.fun %>% tok.fun %>% itoken(ids = test$`Pubmed ID`, progressbar = FALSE)
 
-Title.train.tokens = train$Title %>% 
-  prep.fun %>% 
-  tok.fun
-
-Abstract.it.train = itoken(Abstract.train.tokens, 
-                  ids = train$`Pubmed ID`,
-                  progressbar = FALSE)
-
-Abstract.it.test = test$Abstract %>% 
-  prep.fun %>% tok.fun %>% 
-  itoken(ids = test$`Pubmed ID`, progressbar = FALSE)
-
-Title.it.train = itoken(Title.train.tokens, 
-                           ids = train$`Pubmed ID`,
-                           progressbar = FALSE)
-
-Title.it.test = test$Title %>% 
-  prep.fun %>% tok.fun %>% 
-  itoken(ids = test$`Pubmed ID`, progressbar = FALSE)
+Title.it.train = itoken(Title.train.tokens, ids = train$`Pubmed ID`,progressbar = FALSE)
+Title.it.test = test$Title %>% prep.fun %>% tok.fun %>% itoken(ids = test$`Pubmed ID`, progressbar = FALSE)
 
 
 #--------------------------Vocabulary Work on Abstracts and Titles-----------------------------
@@ -96,8 +80,7 @@ stop_words = c("i", "me", "my", "myself",
                "we", "our", "ours", "ourselves", 
                "you", "your", "yours")
 
-vocab = create_vocabulary(Abstract.it.train, 
-                          stopwords = stop_words)
+vocab = create_vocabulary(Abstract.it.train, stopwords = stop_words)
 vocab
 vectorizer = vocab_vectorizer(vocab)
 
@@ -125,19 +108,11 @@ v = prune_vocabulary(v, term_count_min = 3,
 it = itoken(tokens)
 vectorizer.tokens = vocab_vectorizer(v)
 
-vocab.grams.2 = create_vocabulary(Abstract.it.train, 
-                                  ngram = c(1L, 2L))
-vocab.grams.2 = prune_vocabulary(vocab.grams.2, 
-                                 term_count_min = 3, 
-                         doc_proportion_max = 0.75)
-vocab.grams.2
+vocab.grams.2 = create_vocabulary(Abstract.it.train, ngram = c(1L, 2L))
+vocab.grams.2 = prune_vocabulary(vocab.grams.2, term_count_min = 3, doc_proportion_max = 0.75)
+vocab.grams.3 = create_vocabulary(Abstract.it.train, ngram = c(1L, 3L))
+vocab.grams.3 = prune_vocabulary(vocab.grams.3, term_count_min = 3, doc_proportion_max = 0.75)
 
-vocab.grams.3 = create_vocabulary(Abstract.it.train, 
-                                  ngram = c(1L, 3L))
-vocab.grams.3 = prune_vocabulary(vocab.grams.3, 
-                                 term_count_min = 3, 
-                                 doc_proportion_max = 0.75)
-vocab.grams.3
 
 #------------------------Bi and Tr-Gram Approach to the Vocabulary--------------------------
 
