@@ -1,14 +1,18 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #-----------------------------------------R API --------------------------------------------
 library(fractal);library(fractaldim);library(fracdiff);library(timeSeries);library(RandomFields);library(fNonlinear)
 library(stats);library(boot);library(vars);library(urca);library(xtable);library(gridExtra);library(wmtsa);library(stringr)
 library(stringi);library(Hmisc);library(Kendall);library(Deducer);library(corrplot);library(PearsonDS)
 library(dplyr);library(readr);library(readxl)
 
-#---------------------------------------Data Sets for Classroom--------------------------------------------------------
+#---------------------------------------Data Sets for Classroom----------------------------------------
+#----------------------------Formatted Student Notes for the Classroom Lecture-----------
 article.Notes<-readlines('Notes_Gene_Expression_Theory_5.txt')
 AvailableResources <- read_csv("AvailableResources.txt")
+#----------------------------Filter and Sort the Features------------------------------------------------
 View(AvailableResources)
 #---------------------------------------Gene By Cell Cycle Phase------------------------------------
+#----------------------------Formatted Student Notes for the Classroom Lecture-----------
 Gene.Cell.Cycle <- read_delim("Gene_Cell_Cycle.txt", 
                               "\t", escape_double = FALSE, trim_ws = TRUE)
 View(Gene.Cell.Cycle)
