@@ -1,11 +1,5 @@
-library(KEGG.db)
-library(KEGGgraph)
-library(KEGGprofile)
-library(KEGGREST)
-library(rentrez)
-library(xtable)
-library(stringi)
-library(readr)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+library(KEGG.db);library(KEGGgraph);library(KEGGprofile);library(KEGGREST);library(rentrez);library(xtable);library(stringi);library(readr)
 #------------------------------------------Data-------------------------------------------------------------------------
 
 KEGG.IDs.df <- as.data.frame(read_csv("data/KEGG_IDs_For_Query.txt"))
@@ -99,12 +93,29 @@ Table.5<-xtable(head(KEGG.pathways.04010.Articles.References.df))
 
 Figure.1<-plot()
 
-
-
 #----------------------------------------References----------------------------------------
 References<-c("",
               "",
               "")
 
-
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
 #---------------------------------------Function Library-----------------------------------
