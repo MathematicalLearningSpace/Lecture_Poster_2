@@ -6,6 +6,7 @@ library(igraph);library(netgen);library(ggplot2);library(ergm);library(qdap);lib
 library(Rstem);library(RODBC)
 
 #-----------------------------------Data-------------------------------------------------------------------------
+#---------------------Formatted Student Notes----------------------------------------------------------
 abstracts<-c("This is a biology paper 1.",
              "This is a botany paper 2.")
 #----------------------------------Process Data---------------------------------------------------------
@@ -21,7 +22,7 @@ RDCorpus = tm_map(RDCorpus, content_transformer(removeWords), RDStopwords);
 dictCorpus = RDCorpus;
 RDCorpus = tm_map(RDCorpus, stemDocument);
 RDDtm = DocumentTermMatrix(RDCorpus, control = list(minWordLength = 3));
-WordList<-c("math","paper","avian")
+WordList<-c("math","paper","differential equations")
 WordListTDM <- TermDocumentMatrix(RDCorpus, control = list(dictionary = WordList))
 k=5
 rownames(RDDtm)
