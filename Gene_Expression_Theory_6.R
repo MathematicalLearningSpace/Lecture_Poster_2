@@ -1,10 +1,9 @@
-library(xtable)
-library(stringr)
-library(stringi)
-library(chinese.misc)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+#---------------------------------------------------R API --------------------------------------------------------
+library(xtable);library(stringr);library(stringi);library(chinese.misc)
 
 #-------------------------------------------Data----------------------------------------------------------
-#-------------------------------------------HGNC Gene Family --------------------------------------------------
+#---------------HGNC Gene Family Data Set For Classroom --------------------------------------------------
 Gene.Family.HGNC <- read_delim("HGNC_Gene_Family_Data.txt", 
                               "\t", escape_double = FALSE, trim_ws = TRUE)
 View(Gene.Family.HGNC)
@@ -50,12 +49,12 @@ colnames(Chromosome_Analysis.df)<-c("Transformation")
 rownames(Chromosome_Analysis.df)<-c("Chromosome_1")
 
 #------------------------------------------Definitions----------------------------------------------------
-
+#----------------------------------Formatted Student Notes------------------------------------------------
 Definitions.df<-as.data.frame(read_delim("Gene_Expression_Definitions.txt", 
                                       "\t", escape_double = FALSE, trim_ws = TRUE))
 
 #------------------------------------------Theorems-------------------------------------------------------
-
+#----------------------------------Formatted Student Notes------------------------------------------------
 Theorems.df<-as.data.frame(read_delim("Gene_Expression_Theorems.txt", 
                                       "\t", escape_double = FALSE, trim_ws = TRUE))
 
@@ -77,3 +76,23 @@ TF_1->function(x)
   return(list(TF.Local=TF.data.local))
   
 }
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
