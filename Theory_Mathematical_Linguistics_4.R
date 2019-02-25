@@ -1,3 +1,4 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #----------------------------------------------------R API ----------------------------------------------------
 library(protr);library(CHNOSZ);library(bio3d);library(VarfromPDB);library(dplyr);library(HMM)
 library(markovchain);library(mcmc);library(combinat);library(permute);library(permutations);library(Peptides)
@@ -8,7 +9,7 @@ peptide.properties<-colnames(pepdata)
 
 Amino.Study<-c("A","P","S","T")
 amino.study.df<-data.frame()
-
+#--------------------------------Formatted Student Notes for the Classroom------------------------------
 Amino.Study.Notes<-readLines('AminoAcidNotes.txt')
 
 Amino.Study.A.Notes<-Amino.Study.Notes[grep("Alanine",Amino.Study.Notes)]
@@ -58,6 +59,7 @@ sequence.properties.df<-cbind("Octapeptide",sequence.octapeptide.boman[[1]],
                               sequence.octapeptide.instaIndex[[1]],
                               sequence.octapeptide.mw[[1]])
 colnames(sequence.properties.df)<-c("Type","Boman","instaIndex","MW")
+                                
 #---------------------------------------------Tables------------------------------------------------------
 
 Table.1<-xtable(amino.study.df)
@@ -81,3 +83,24 @@ legend("topright",legend=c('T=25','T=100','T=150'),
        col=c('blue','red','green',
              'yellow','purple','orange','violet'),lty=1:8)
 #-------------------------------------------Function Library----------------------------------------------
+                                
+ #-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
