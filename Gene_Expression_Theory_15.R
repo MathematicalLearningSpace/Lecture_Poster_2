@@ -4,13 +4,10 @@ library(xtable);library(protr);library(randomForest);library(pROC);library(caret
 #-----------------------------------------Data-----------------------------------------------
 data(AAindex)
 head(AAindex,20)
-
+#--------------------------------------------Generate FASTA Data Sets------------------------
 fasta.files <- list.files(patt='*.*fasta$')
-
-extracell = readFASTA(system.file(
-  "protseq/extracell.fasta", package = "protr"))
-mitonchon = readFASTA(system.file(
-  "protseq/mitochondrion.fasta", package = "protr"))
+extracell = readFASTA(system.file("protseq/extracell.fasta", package = "protr"))
+mitonchon = readFASTA(system.file("protseq/mitochondrion.fasta", package = "protr"))
 
 AT.mitonchon=readFASTA("ArabidopsisThalianaMitochondrion.fasta")
 
