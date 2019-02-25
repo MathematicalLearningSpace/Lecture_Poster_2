@@ -40,11 +40,11 @@ z.df<-cbind(z.df,score=x)
 #-----------------------Filter, Search and Sort Data Set---------------------------
 View(z.df)
 
+#----------------------------------Data Dictionary Designed by Students in the Classroom-------
 Data_Dictionary <- read_csv("Data_Dictionary.txt")
 
 #-----------------------------------------Process Titles Data----------------------------------
 Titles<-z.df$Title
-
 #-----------------------------------------Process Abstracts Data-------------------------------
 z.dt<-data.table(z.df)
 #setDT(z.dt)
@@ -68,24 +68,18 @@ Abstract.it.test = test$Abstract %>% prep.fun %>% tok.fun %>% itoken(ids = test$
 Title.it.train = itoken(Title.train.tokens, ids = train$`Pubmed ID`,progressbar = FALSE)
 Title.it.test = test$Title %>% prep.fun %>% tok.fun %>% itoken(ids = test$`Pubmed ID`, progressbar = FALSE)
 
-
 #--------------------------Vocabulary Work on Abstracts and Titles-----------------------------
 
 vocab = create_vocabulary(Abstract.it.train)
-vocab
 Title.vocab=create_vocabulary(Title.it.train)
-Title.vocab
-
 stop_words = c("i", "me", "my", "myself", 
                "we", "our", "ours", "ourselves", 
                "you", "your", "yours")
 
 vocab = create_vocabulary(Abstract.it.train, stopwords = stop_words)
-vocab
 vectorizer = vocab_vectorizer(vocab)
 
 #-------------------------Prune the Absrtract Vocabulary Tree-------------------------------------------
-
 pruned.vocab = prune_vocabulary(vocab, 
                                 term_count_min = 10, 
                                 doc_proportion_max = 0.5,
@@ -94,10 +88,8 @@ pruned.vocab = prune_vocabulary(vocab,
 vectorizer.pruned = vocab_vectorizer(pruned.vocab)
 
 #------------Tokenize the Title and Abstract Vocabulary---------------------------------------------
-
 token.Title<-word_tokenizer(tolower(z.dt$Title))
 vocab.Title<-create_vocabulary(itoken(token.Title),ngram=c(1L,3L))
-
 vectorizer.Title<-vocab_vectorizer(vocab.Title)
 
 tokens = word_tokenizer(tolower(z.dt$Abstract))
@@ -112,22 +104,17 @@ vocab.grams.2 = create_vocabulary(Abstract.it.train, ngram = c(1L, 2L))
 vocab.grams.2 = prune_vocabulary(vocab.grams.2, term_count_min = 3, doc_proportion_max = 0.75)
 vocab.grams.3 = create_vocabulary(Abstract.it.train, ngram = c(1L, 3L))
 vocab.grams.3 = prune_vocabulary(vocab.grams.3, term_count_min = 3, doc_proportion_max = 0.75)
-
-
 #------------------------Bi and Tr-Gram Approach to the Vocabulary--------------------------
-
 bigram_vectorizer = vocab_vectorizer(vocab.grams.2)
 trigram_vectorizer=vocab_vectorizer(vocab.grams.3)
-
-#-----------------------------------------Models----------------------------------------------
+#-----------------------------------------Model Data Design----------------------------------------------
 dtm_train = create_dtm(Abstract.it.train, vectorizer)
 dtm_test = create_dtm(Abstract.it.test, vectorizer)
-
 tfidf = TfIdf$new()
 dtm_train_tfidf = fit_transform(dtm_train, tfidf)
 dtm_test_tfidf = create_dtm(Abstract.it.test, vectorizer)
 dtm_test_tfidf = transform(dtm_test_tfidf, tfidf)
-
+#---------------------------------------Machine Learning Models -----------------------------------
 NFOLDS = 4
 glmnet_classifier.1 = cv.glmnet(x = dtm_train_tfidf, 
                                 y = train[['score']], 
@@ -154,9 +141,7 @@ preds.2 = predict(glmnet_classifier.2, dtm_test, type = 'response')[,1]
 glmnet:::auc(test$score, preds.2)
 
 #-------------------------Vocabulary Changes I------------------------
-
 vectorizer.pruned = vocab_vectorizer(pruned.vocab)
-
 dtm_train  = create_dtm(Abstract.it.train, vectorizer.pruned)
 glmnet_classifier.3 = cv.glmnet(x = dtm_train, y = train[['score']], 
                               family = 'binomial', 
@@ -171,7 +156,6 @@ preds.3 = predict(glmnet_classifier.3, dtm_test, type = 'response')[,1]
 glmnet:::auc(test$score, preds.3)
 
 #------------------------Vocabulary Changes II-------------------------
-
 dtm_train = create_dtm(Abstract.it.train, bigram_vectorizer)
 glmnet_classifier.4 = cv.glmnet(x = dtm_train, y = train[['score']], 
                               family = 'binomial', 
@@ -187,43 +171,32 @@ preds.4 = predict(glmnet_classifier.4, dtm_test, type = 'response')[,1]
 glmnet:::auc(test$score, preds.4)
 
 #-------------------------------Relaxed Word Movers Model-------------------------------
-
 dtm = create_dtm(Abstract.it.train, vectorizer.tokens)
 tcm = create_tcm(Abstract.it.train, vectorizer.tokens, skip_grams_window = 5)
-
 glove_model = GloVe$new(word_vectors_size = 50, vocabulary = v, x_max = 10)
 wv = glove_model$fit_transform(tcm, n_iter = 10)
 wv = wv + t(glove_model$components)
-
 rwmd_model = RWMD$new(wv)
-rwmd_dist = dist2(dtm[1:100, ], dtm[1:10, ], 
-                  method = rwmd_model, norm = 'none')
+rwmd_dist = dist2(dtm[1:100, ], dtm[1:10, ], method = rwmd_model, norm = 'none')
 
 #-----------------------------Binormal separation----------------------------------------
-
 model_bns = BNS$new()
 dtm_bns = model_bns$fit_transform(dtm, head(z.dt$score, 100))
 
-#----------------------------LDA Model--------------------------------------------------
+#----------------------------Machine Learning LDA Model--------------------------------------------------
 n.topics<-10
 dtm = create_dtm(Abstract.it.train, vectorizer.tokens)
-
 lda_model = LDA$new(n.topics)
-
 doc_topic_distr = lda_model$fit_transform(dtm, n_iter = 20)
 doc_topic_word_distr_10<-lda_model$topic_word_distribution
-
 lda_model$topic_word_distribution
 #lda_model$components
 
 lda_model.Top.10<-lda_model$get_top_words(n=10)
-
 lda_model.perplexity<-perplexity(dtm,doc_topic_word_distr_10,doc_topic_distr)
 
 #----------------------------LSA Model---------------------------------------------------
-
 lsa_model = LatentSemanticAnalysis$new(n.topics,method="randomized")
-
 doc_topic_distr.1 = lsa_model$fit_transform(dtm)
 doc_topic_distr.2 = fit_transform(dtm, lsa_model)
 lsa_model$components
