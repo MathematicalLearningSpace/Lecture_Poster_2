@@ -1,17 +1,6 @@
-library(Biobase)
-library(dnet)
-library(xtable)
-library(rjson)
-library(jsonlite)
-library(RJSONIO)
-library(rentrez)
-library(XML)
-library(tm)
-library(ape)
-library(topicmodels)
-library(RODBC)
-library(stringr)
-library(stringi)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+library(Biobase);library(dnet);library(xtable);library(rjson);library(jsonlite);library(RJSONIO);library(rentrez);library(XML);library(tm)
+library(ape);library(topicmodels);library(RODBC);library(stringr);library(stringi)
 #----------------------------------Data-----------------------------------------------------
 
 Ontology.AT.GOBP<-dRDataLoader(genome='At', ontology='GOBP')
@@ -201,3 +190,24 @@ interactions.from.gene <- function(gene.id){
                    "//Gene-commentary[Gene-commentary_heading[./text()='Interactions']]//Other-source[Other-source_src/Dbtag/Dbtag_db[./text()='GeneID']]//Other-source_anchor",
                    XML::xmlValue)                                                                                                                                  
 }
+                         #-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
+  
