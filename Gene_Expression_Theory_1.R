@@ -62,7 +62,7 @@ colnames(Gene.Expression.Table.df)<-c(CellCycle.Type[1],
                                       CellCycle.Type[3],
                                       CellCycle.Type[4],
                                       CellCycle.Type[5])
-
+#-------------------Second Moments of the Joint Distribution--------------------------------------
 Gene.Matrix.Correlation<-cor(Gene.Study)
 Gene.Matrix.Correlation.Test<-correlation.Test(Gene.Study,0.99)
 
