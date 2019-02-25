@@ -1,15 +1,11 @@
-library(xtable)
-library(wordcloud)
-library(VarfromPDB)
-library(tm)
-library(mRMRe)
-library(europepmc)
-library(rentrez)
-library(aRxiv)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+#---------------------------------------------------R API --------------------------------------------------------
+library(xtable);library(wordcloud);library(VarfromPDB);library(tm);library(mRMRe);library(europepmc);library(rentrez);library(aRxiv)
 #--------------------------Data--------------------------------------
 data(cgps)
 cgps.ge
 cgps.ic50
+#------------------------------Student Formatted Notes from Independent Readings---------------------------
 publications <- read_csv("search-results/publications.csv")
 TERT.publications.df<-as.data.frame(publications[grep("TERT", publications$Abstract),])
 TERT.publications.df$Title
@@ -26,6 +22,7 @@ colnames(Gene.study.df)<-c("Gene Name","Description")
 
 gene.expression.df<-as.data.frame(cgps.ge)
 x<-list()
+#-----------------------------------------------SQL for First Search-----------------
 for(i in 1:length(chromosome.5))
 {
   x[i]<-gene.expression.df[rownames(chromosome.5)[i]]
@@ -33,12 +30,10 @@ for(i in 1:length(chromosome.5))
 y<-list()
 for(i in 1:length(chromosome.5$hgnc_symbol))
 {
-  y[i]<-entrez_search(db="pubmed",
-                          term=paste(chromosome.5$hgnc_symbol[i]," AND (2017[PDAT])"),retmax = 10)
+  y[i]<-entrez_search(db="pubmed",term=paste(chromosome.5$hgnc_symbol[i]," AND (2017[PDAT])"),retmax = 10)
 }
-
-search.pubmed <- entrez_fetch(db = "pubmed", id = y[14][[1]],
-                              rettype = "xml", parsed = T)
+#--------------------------Parse XML Data Structure---------------------------
+search.pubmed <- entrez_fetch(db = "pubmed", id = y[14][[1]],rettype = "xml", parsed = T)
 
 abstracts = xpathApply(search.pubmed, '//PubmedArticle//Article', function(x)
   xmlValue(xmlChildren(x)$Abstract))
@@ -67,9 +62,9 @@ Top.Terms
 Table.1<-xtable(as.data.frame(moment.analytics(x,chromosome.5$hgnc_symbol,FALSE)))
 
 #-----------------------Figures-----------------------------------------------------
-Figure.1<-plot(chromosome.5$jetset.overall, xaxt = "n",type="l")
-axis(1, 1:length(chromosome.5$hgnc_symbol),chromosome.5$hgnc_symbol)
+Figure.1<-plot(chromosome.5$jetset.overall, xaxt = "n",type="l") axis(1, 1:length(chromosome.5$hgnc_symbol),chromosome.5$hgnc_symbol)
 
+#-------------------------------Figure Group 1-----------------------------------
 par(mfcol = c(3, 3))
 for(i in 1:9)
 {
@@ -78,6 +73,7 @@ for(i in 1:9)
   mtext(outer = FALSE, side = 3, paste("mean=",mean(x[i][[1]]),
                                        "sd=",sd(x[i][[1]])), cex = 0.5)
 }
+#-------------------------------Figure Group 2-----------------------------------
 par(mfcol = c(3, 3))
 for(i in 10:18)
 {
@@ -86,6 +82,7 @@ for(i in 10:18)
   mtext(outer = FALSE, side = 3, paste("mean=",mean(x[i][[1]]),
                                        "sd=",sd(x[i][[1]])), cex = 0.5)
 }
+#-------------------------------Figure Group 3-----------------------------------
 par(mfcol = c(2, 2))
 Figure.2<-wordcloud(corp, min.freq=2,random.order=FALSE)
 Figure.3<-wordcloud(TERT.publications.df$Abstract, min.freq=2,random.order=FALSE)
@@ -153,3 +150,24 @@ filter_abstract<-function(x,y)
   }
   return(LiteratureReview)
 }
+                         
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1                         
