@@ -1,8 +1,6 @@
-library(xtable)
-library(protr)
-library(randomForest)
-library(pROC)
-library(caret)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+#---------------------------------------------------R API --------------------------------------------------------
+library(xtable);library(protr);library(randomForest);library(pROC);library(caret)
 #-----------------------------------------Data-----------------------------------------------
 data(AAindex)
 head(AAindex,20)
@@ -85,7 +83,7 @@ labels.2 = as.factor(c(rep(0,
 y.2.train = labels.2[X.2.train.idx]
 y.2.test = labels.2[X.2.test.idx]
 
-#---------------------------Classification Model--------------------------------------------------
+#---------------------------Machine Learning Classification Model--------------------------------------------------
 
 rf.fit.1 = randomForest(X.1.train, y.1.train, cv.fold = 5)
 rf.predict.1 = predict(rf.fit.1, newdata = X.1.test, type = "prob")[, 1]
@@ -108,5 +106,24 @@ Reference.1<-c("Kuo-Chen Chou.",
 "Prediction of Protein Cellular Attributes Using Pseudo-Amino Acid Composition.", 
 "PROTEINS: Structure, Function, and Genetics, 2001, 43: 246-255.")
 
-
-#---------------------------------------Function Library------------------------------------
+#----------------------------------------------Function Library------------------------------------
+#--------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
