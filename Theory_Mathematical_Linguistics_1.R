@@ -74,10 +74,10 @@ aa.composition.average.loop.df<-rbind(aasum(aa.loop.da.Face.Top, average=TRUE),
                                       aasum(aa.loop.ab.Face.Bottom.1, average=TRUE),
                                       aasum(aa.loop.cd.Face.Bottom.2, average=TRUE))
 
+#----------------------Categories of the Components-----------------------------------
 WDR.components<-c('Bulge','Face.Top','Face.Side','Face.Bottom','Core')
 WDR.components.df<-data.frame()
-WDR.components.df<-rbind(aa.composition.average.strand.df,
-                         aa.composition.average.loop.df)
+WDR.components.df<-rbind(aa.composition.average.strand.df,aa.composition.average.loop.df)
 
 #---------------------------------------Tables-------------------------------------------------------------------------
 Table.1<-xtable(aa.composition.average.loop.df)
