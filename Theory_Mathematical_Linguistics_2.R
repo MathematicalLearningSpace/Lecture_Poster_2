@@ -1,4 +1,5 @@
-#------------------------------------------------R API --------------------------------------------
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+#---------------------------------------------------R API --------------------------------------------------------
 library(europepmc);library(rentrez);library(tm);library(slam);library(NLP);library(openNLP);library(XML)
 library(RTextTools);library(Rstem);library(topicmodels);library(wordcloud);library(wordnet);library(proxy)
 library(plyr);library(wordmatch);library(xml2);library(XML);library(xtable);library(igraph);library(netgen)
@@ -7,13 +8,15 @@ library(RODBC)
 
 #---------------------Data Sets for Students in the Classroom----------------------------------------------------------------
 StatementOfResearchHypothesis<-c("Avian Spatial Intelligence")
-
+#----------------------------------------Connect to the Data Frame to SQL Table Data Store----------------------------------
 channel<-odbcConnect("AvianDB",rows_at_time = 1)
+#--------------------------------SQL String Design---------------------------------------------------------------------------
 SQLSelect<-"SELECT [AvianName]
 FROM [AvianDB].[dbo].[AvianMathPapers]
 Where [AvianName] Like '%ZebraFinch%'"
 ZebraFinch.DF<- as.data.frame(sqlQuery(channel,paste(SQLSelect)))
 odbcClose(channel)
+#------------------------------Filter and Sort the Data Set------------------------------------------------------------------
 View(ZebraFinch.DF)
 
 #------------------------------------------------Update Database-----------------------------------------------------
@@ -29,10 +32,12 @@ length(abstracts)
 AbstractsArray<-as.array(abstracts)
 abstracts.DF=as.data.frame(AbstractsArray)
 TempAbstractPreDataMathIQ<-abstracts.DF
+
 View(abstracts.DF)
 
 channel<-odbcConnect("ScientificPublicationsDB",rows_at_time = 1)
 sqlSave(channel, TempAbstractPreDataMathIQ, rownames = FALSE)
+#--------------------------------SQL String Design---------------------------------------------------------------------------
 sqlQuery(channel, 'INSERT INTO [dbo].[Abstract]
          ([AbstractContextPre])
          select AbstractsArray from SciencePublicationsDB.dbo.TempAbstractPreData')
@@ -88,6 +93,7 @@ RDAssociations<-findAssocs(WordListTDM,research.keywords, c(0.9,0.9,0.9))
 RDAssociationDF<-data.frame()
 #RDAssociationDF<-head(as.data.frame(findAssocs(RDTdm,research.keywords,0.1)),n=5)
 RDAssociationDF<-cbind(RDAssociationDF,rownames(RDAssociationDF))
+       
 View(RDAssociationDF)
 
 #------------------------------------------------Graph Theory--------------------------------------------------------
@@ -100,4 +106,23 @@ Table.1<-xtable(RDAssociationDF)
 Figure.1<-plot(g,layout=layout.kamada.kawai, vertex.size=1, vertex.color="green")
 
 #------------------------------------------------Function Library----------------------------------------------------
-
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
