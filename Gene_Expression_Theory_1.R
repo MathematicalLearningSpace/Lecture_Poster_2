@@ -44,7 +44,8 @@ Gene.Study.Names<-c("MOV10 Simulated",
                     "P53 Simulated",
                     "GNE Simulated","GABPA Simulated")
 
-#-------------------------------Five different expression profiles (G1/S, S, G2, G2/M, and M/G1)-----
+#---Five different expression profile categories (G1/S, S, G2, G2/M, and M/G1) with additional checkpoints developed-----------
+#------------------in the classroom-----
 
 CellCycle.Type<-c('G1/S','S','G2','G2/M','M/G1')
 CellCycle.Type.G1<-c('E2F1')
