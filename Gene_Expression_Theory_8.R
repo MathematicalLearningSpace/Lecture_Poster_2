@@ -29,7 +29,7 @@ AA.sequence.group.matrix.1<-matrix(c(AA.seq.1,
                               AA.seq.3),nrow=3,ncol=10)
 
 #-------------------------------------------Analysis-------------------------------------------
-Notes<-c("Flow cytometry can be used to quantitatively measure a given proteins expression level and can also include measures of protein-modification states such as phosphorylation")
+Notes<-c("Flow cytometry measure protein expression level and measures of protein-modification states-phosphorylation")
 
 summary(Sachs)
 
