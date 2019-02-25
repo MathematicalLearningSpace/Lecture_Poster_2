@@ -1,3 +1,4 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #-------------------------------------------------------R API ---------------------------------------------
 library(HDMD);library(xtable);library(Matrix);library(GSEABase);library(Peptides);library(ActiveDriver)
 library(Bio3d);library(protr);library(seqinr);library(CHNOSZ);library(gss);library(PearsonDS);library(fitdistrplus)
@@ -66,17 +67,17 @@ colnames(Pearson.data.df)<-c("Distribution")
 rownames(Pearson.data.df)<-c(Sachs.names.description[seq(1,22,2)])
 
 distribution.moments.1.df<-data.frame()
-distribution.moments.1.df<-rbind(c(Sachs.names.description[1],pearson.MLE.praf$type,empMoments.mutation(Sachs$praf)),
-                                 c(Sachs.names.description[3],pearson.MLE.pmek$type,empMoments.mutation(Sachs$pmek)),
-                                 c(Sachs.names.description[5],pearson.MLE.plcg$type,empMoments.mutation(Sachs$plcg)),
-                                 c(Sachs.names.description[7],pearson.MLE.pip2$type,empMoments.mutation(Sachs$pip2)),
-                                 c(Sachs.names.description[9],pearson.MLE.pip3$type,empMoments.mutation(Sachs$pip3)),
-                                 c(Sachs.names.description[11],pearson.MLE.p44.42$type,empMoments.mutation(Sachs$p44.42)),
-                                 c(Sachs.names.description[13],pearson.MLE.pakts473$type,empMoments.mutation(Sachs$pakts473)),
-                                 c(Sachs.names.description[15],pearson.MLE.pka$type,empMoments.mutation(Sachs$pka)),
-                                 c(Sachs.names.description[17],pearson.MLE.pkc$type,empMoments.mutation(Sachs$pkc)),
-                                 c(Sachs.names.description[19],pearson.MLE.p38$type,empMoments.mutation(Sachs$p38)),
-                                 c(Sachs.names.description[21],pearson.MLE.pjnk$type,empMoments.mutation(Sachs$pjnk))
+distribution.moments.1.df<-rbind(c(Sachs.names.description[1],pearson.MLE.praf$type,empMoments.Version.1(Sachs$praf)),
+                                 c(Sachs.names.description[3],pearson.MLE.pmek$type,empMoments.Version.1(Sachs$pmek)),
+                                 c(Sachs.names.description[5],pearson.MLE.plcg$type,empMoments.Version.1(Sachs$plcg)),
+                                 c(Sachs.names.description[7],pearson.MLE.pip2$type,empMoments.Version.1(Sachs$pip2)),
+                                 c(Sachs.names.description[9],pearson.MLE.pip3$type,empMoments.Version.1(Sachs$pip3)),
+                                 c(Sachs.names.description[11],pearson.MLE.p44.42$type,empMoments.Version.1(Sachs$p44.42)),
+                                 c(Sachs.names.description[13],pearson.MLE.pakts473$type,empMoments.Version.1(Sachs$pakts473)),
+                                 c(Sachs.names.description[15],pearson.MLE.pka$type,empMoments.Version.1(Sachs$pka)),
+                                 c(Sachs.names.description[17],pearson.MLE.pkc$type,empMoments.Version.1(Sachs$pkc)),
+                                 c(Sachs.names.description[19],pearson.MLE.p38$type,empMoments.Version.1(Sachs$p38)),
+                                 c(Sachs.names.description[21],pearson.MLE.pjnk$type,empMoments.Version.1(Sachs$pjnk))
                                  
 )
 colnames(distribution.moments.1.df)<-c("Variable","Type", "Moment 1", "Moment 2","Moment 3","Moment 4","Theta")
@@ -183,7 +184,7 @@ empMoments.table.caption<-function(nouns, references)
   return(sentences)
 }
 
-empMoments.mutation<-function (x) 
+empMoments.Version.1<-function (x) 
 {
   n <- length(x)
   moment.1 <- mean(x)
@@ -203,3 +204,24 @@ empMoments.mutation<-function (x)
     kurtosis = moment.4, 
     theta=theta.1)
 }
+
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
