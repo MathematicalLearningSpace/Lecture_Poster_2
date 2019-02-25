@@ -1,3 +1,4 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #-----------------------------------------------R API ----------------------------------------
 library(circlize);library(PearsonDS);library(igraph);library(Matrix);library(matrixStats)
 library(matrixcalc);library(MatrixModels);library(mathgraph);library(stringi);library(deSolve);library(xtable)
@@ -146,3 +147,24 @@ f.polynomial<-function(polynomial.max) {
   }
   return(strPoly)
 }
+                                     
+ #-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1                                    
