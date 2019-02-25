@@ -94,9 +94,23 @@ Table.5<-xtable(head(KEGG.pathways.04010.Articles.References.df))
 Figure.1<-plot()
 
 #----------------------------------------References----------------------------------------
-References<-c("",
-              "",
-              "")
+References<-stringr:str_c("
+"\\subsection{KEGG}",
+"\\bibitem[400]{key4000} Kanehisa, Furumichi, M., Tanabe, M., Sato, Y., and Morishima, K.", 
+ "\\newblock KEGG: new perspectives on genomes, pathways, diseases and drugs.", 
+ "\\newblock Nucleic Acids Res. 45, D353-D361 (2017).",
+ "",
+ "\\bibitem[401]{key4001} Kanehisa, M., Sato, Y., Kawashima, M., Furumichi, M., and Tanabe, M.", 
+ "\\newblock KEGG as a reference resource for gene and protein annotation.", 
+ "\\newblock Nucleic Acids Res. 44, D457-D462 (2016).",
+ "",
+ "\\bibitem[402]{key4002} Kanehisa, M. and Goto, S.", 
+ "\\newblock KEGG: Kyoto Encyclopedia of Genes and Genomes.", 
+ "\\newblock Nucleic Acids Res. 28, 27-30 (2000). ",
+ "",
+ "\\bibitem[403]{key4003}Petri, V., Jayaraman, P., Tutaj, M., Hayman, G. T., Smith, J. R., De Pons, J., … Jacob, H. J. (2014).", 
+ "\\newblock The pathway ontology – updates and applications.", 
+ "\\newblock Journal of Biomedical Semantics, 5, 7. http://doi.org/10.1186/2041-1480-5-7")
 
 #-------------Function Template Library for Classroom Presentation and Modification---------------------
 f.1<-function(X)
