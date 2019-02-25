@@ -1,3 +1,4 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #------------------------------------------------R API ----------------------------------------------------------
 library(tm);library(stringi);library(stringr);library(utils);library(CHNOSZ);library(PearsonDS);library(xtable)
 library(bio3d);library(Peptides);library(jsonlite);library(rjson);library(xtable);library(seqinr)
@@ -18,6 +19,7 @@ test.seq.pattern<-stri_locate_all_regex("ACAGAGACTTTAGATAGAGAAGA", "(?=AGA)")
 article.project.files <- list.files(patt='*.*pdf$')
 #----------------------------Examples of WDRs---------------------------------------------
 keywords<-c('coronin','WD40','WDR5','WDR64')
+#-----------------Formatted Student Notes and Examples for the Classroom-------
 WDR5.df<- read.delim("WDR5_HUMAN.txt")
 WDR5<-read.fasta('WDR5_HUMAN.fasta')
 motif = c("VM....CI")
@@ -97,3 +99,23 @@ carbon.Oxidation.average<-function(Hn,Nn,On,Sn,Cn,molecule.charge=0)
   coa<-(-Hn+3*Nn+2*On+2*S*n+molecule.charge)/Cn
   return(coa)
 }
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
