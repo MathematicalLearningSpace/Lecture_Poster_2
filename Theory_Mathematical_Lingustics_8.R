@@ -36,17 +36,18 @@ eukaryotic.Cell.df<-as.data.frame(eukaryotic.Cell)
 save(eukaryotic.Cell.df,file='eukaryotic.Cell.df.RData')
 
 #-----------------------------------------Data Processing------------------------------------------------
-
+#-------------------------------Assemble Vector Components----------------------------------------------
 docs<-c(article.1,article.2)
 docs<-VectorSource(docs)
 corpus <- VCorpus(docs)
+#------------------------------Transformation of Vectors-----------------------------------------------
 corpus<- tm_map(corpus, content_transformer(tolower))
 corpus <- tm_map(corpus, removePunctuation)
 corpus <- tm_map(corpus, removeWords, stopwords("english"))
 corpus <- tm_map(corpus, stripWhitespace)
 corpus <- tm_map(corpus, removeNumbers)
 corpus <- tm_map(corpus, PlainTextDocument)
-
+#---------------------------------------Frequency Analysis------------------------
 dtm <- DocumentTermMatrix(corpus)
 freqs_dtms <- colSums(as.matrix(dtm))
 freqs_dtms
@@ -57,6 +58,7 @@ findFreqTerms(dtm, lowfreq=500)
 findFreqTerms(dtm, highfreq=500)
 
 tdm.1 <- TermDocumentMatrix(corpus, control = list(wordLengths = c(3,10)))
+#------------------------------------Search Associations-----------------------------
 findAssocs(tdm.1,"optimization",.9)
 #------------------------------------Clustering------------------------------------
 articles.cluster<-kmeans(tdm.1, 4)
