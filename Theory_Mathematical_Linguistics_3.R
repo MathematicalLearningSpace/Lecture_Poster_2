@@ -1,38 +1,13 @@
-library(europepmc)
-library(rentrez)
-library(tm)
-library(slam)
-library(NLP)
-library(openNLP)
-library(XML)
-library(RTextTools)
-library(Rstem)
-library(topicmodels)
-library(wordcloud)
-library(wordnet)
-library(proxy)
-library(plyr)
-library(wordmatch)
-library(xml2)
-library(XML)
-library(xtable)
-library(igraph)
-library(netgen)
-library(ggplot2)
-library(ergm)
-library(qdap)
-library(reutils)
-library(ontologyIndex)
-library(RNeXML)
-library(Rstem)
-library(RODBC)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+#---------------------------------------------------R API --------------------------------------------------------
+library(europepmc);library(rentrez);library(tm);library(slam);library(NLP);library(openNLP);library(XML);library(RTextTools);library(Rstem)
+library(topicmodels);library(wordcloud);library(wordnet);library(proxy);library(plyr);library(wordmatch);library(xml2);library(XML);library(xtable)
+library(igraph);library(netgen);library(ggplot2);library(ergm);library(qdap);library(reutils);library(ontologyIndex);library(RNeXML)
+library(Rstem);library(RODBC)
 
 #-----------------------------------Data-------------------------------------------------------------------------
-abstracts<-c("This is an avian math paper 1.",
-             "This is an avian math paper 2.",
-             "This is an avian math paper 3.",
-             "This is an avian paper on spatial intelligence.",
-             "This is an avian paper on the cerebellum.")
+abstracts<-c("This is a math paper 1.",
+             "This is a math paper 2.")
 #----------------------------------Process Data---------------------------------------------------------
 document<-abstracts
 RDCorpus <- Corpus(VectorSource(document));
@@ -95,3 +70,23 @@ Figure.3<-hist(topicProbabilities$V1)
 Figure.4<-hist(ctm.solution@gamma)
 
 #---------------------------------Function Library--------------------------------------------------------------
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
