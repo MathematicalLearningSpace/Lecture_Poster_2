@@ -1,10 +1,5 @@
-library(ontologyIndex)
-library(ontologyPlot)
-library(ontologySimilarity)
-library(stringr)
-library(stringi)
-library(readr)
-library(readxl)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+library(ontologyIndex);library(ontologyPlot);library(ontologySimilarity);library(stringr);library(stringi);library(readr);library(readxl)
 library(xtable)
 
 #------------------------------------------Data---------------------------------------------
@@ -68,3 +63,24 @@ Reference.1<-c("Smith, Cynthia L., Carroll-Ann W. Goldsmith, and Janan T. Eppig.
                "Genome biology 6.1 (2004): 1.")
 
 #----------------------------------------Function Library----------------------------------
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
+
