@@ -2,7 +2,7 @@
 library(xtable);library(text2vec);library(data.table);library(magrittr);library(glmnet);library(rentrez);library(readr);library(LDAvis)
 
 #------------------------------------------Data-----------------------------------------------
-article.files <- list.files(patt='*.*csv$')
+article.files <- list.files(patt='*.*csv$') # Formatted Student Notes from Independent Readings of Journal Articles
 #-------------------------------Formatted Student Notes------------------------------------------
 print(article.files)
 #[1] "publications_AML.csv"             
