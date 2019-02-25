@@ -6,8 +6,8 @@ library(igraph);library(netgen);library(ggplot2);library(ergm);library(qdap);lib
 library(Rstem);library(RODBC)
 
 #-----------------------------------Data-------------------------------------------------------------------------
-abstracts<-c("This is a math paper 1.",
-             "This is a math paper 2.")
+abstracts<-c("This is a biology paper 1.",
+             "This is a botany paper 2.")
 #----------------------------------Process Data---------------------------------------------------------
 document<-abstracts
 RDCorpus <- Corpus(VectorSource(document));
