@@ -1,29 +1,7 @@
-library(gsubfn)
-library(zipfR)
-library(koRpus)
-library(KoNLP)
-library(textreuse)
-library(boilerpipeR)
-library(RCurl)
-library(XML)
-library(tm)
-library(rebus)
-library(stringi)
-library(arules)
-library(qdapRegex)
-library(qdap)
-library(hash)
-library(corpora)
-library(textcat)
-library(textir)
-library(RTextTools)
-library(kernlab)
-library(lda)
-library(topicmodels)
-library(lsa)
-library(readability)
-library(syllable)
-library(sylcount)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+library(gsubfn);library(zipfR);library(koRpus);library(KoNLP);library(textreuse);library(boilerpipeR);library(RCurl);library(XML);library(tm)
+library(rebus);library(stringi);library(arules);library(qdapRegex);library(qdap);library(hash);library(corpora);library(textcat);library(textir)
+library(RTextTools);library(kernlab);library(lda);library(topicmodels);library(lsa);library(readability);library(syllable);library(sylcount)
 
 #-----------------------------------------------------Data------------------------------------------------------------------
 abstract.test<-c("This is an abstract.","This is the definition of a circulant graph.")
@@ -86,3 +64,24 @@ design.dict <- function(text, max.vocab=10000) {
   }
   return (diction1)
 }
+ #-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1                        
+                         
