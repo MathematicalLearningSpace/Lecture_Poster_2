@@ -74,6 +74,7 @@ termMatrix<-termMatrix[1:10,1:10]
 m <- as.matrix(dtms)
 v <- sort(rowSums(m), decreasing=TRUE)
 N<-10
+		      
 RankedTermDocMatrix<-head(v, N)
 RankedTermDocMatrix[RankedTermDocMatrix>=1] <- 1
 RankedTermMatrix <- RankedTermDocMatrix %*% t(RankedTermDocMatrix)
@@ -93,12 +94,15 @@ names.1 = names(v);
 k = which(names(v)=="dna");
 names.1[k] = "dna";
 DNA.df = data.frame(word=names.1, freq=v);
+		      
 research.keywords<-c("cancer")
+		      
 RDAssociations<-findAssocs(dtms, research.keywords, c(0.75,0.75))
 RDAssociations
 RDAssociation.df<-head(as.data.frame(findAssocs(dtms,research.keywords,0.5)),n=10)
 rownames(RDAssociation.df)[1]
 RDAssociation.df<-cbind(RDAssociation.df,rownames(RDAssociation.df))
+		      
 View(RDAssociation.df)
 #-----------------------------Build the Graphs------------------------------------------
 g <- graph.data.frame(RDAssociation.df, directed = TRUE)
