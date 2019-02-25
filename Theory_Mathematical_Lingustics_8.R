@@ -3,10 +3,13 @@
 library(WikipediR);library(xtable);library(RWeka);library(tm);library(RCurl);library(topicmodels);library(wordcloud);library(stringi);library(corpora)
 library(zipfR)
 #-----------------------------------------Data-----------------------------------------------------------
-
+#----------------------------Search Pages for Mathematical and Algorithm Content------------------------------------
 optimization.data<-getURLContent('https://cran.r-project.org/web/views/Optimization.html')
+#------------------Remove Tags from data-------------------------------
 optimization<-remove.HTML.markup(optimization.data)
+
 article.translate <- as.String(optimization)
+#-----------------------------Create subsets-----------------------------------------------
 article.Sentences<-strsplit(article.translate, "[.]")
 article.Words = lapply(article.translate, strsplit, "[[:space:]]")
 
@@ -17,6 +20,7 @@ article.1<-sapply(article.content.1,remove.HTML.markup)
 article.2<-sapply(article.content.2,remove.HTML.markup)
 
 biomolecules.list<-remove.HTML.markup(getURLContent('https://en.wikipedia.org/wiki/List_of_biomolecules'))
+
 chem.term<-grep("c+",biomolecules.list, perl=TRUE, value=TRUE)
 
 Nucleolus<-getURLContent('https://en.wikipedia.org/wiki/Nucleolus')
@@ -54,7 +58,7 @@ findFreqTerms(dtm, highfreq=500)
 
 tdm.1 <- TermDocumentMatrix(corpus, control = list(wordLengths = c(3,10)))
 findAssocs(tdm.1,"optimization",.9)
-
+#------------------------------------Clustering------------------------------------
 articles.cluster<-kmeans(tdm.1, 4)
 
 tdm.1.m <- as.matrix(tdm.1)
@@ -78,10 +82,14 @@ Figure.1<-wordcloud(tdm.1.m.sort.df$word,tdm.1.m.sort.df$freq, scale=c(8,.2),
 
 remove.HTML.markup<-function(s)
   { 
+    #-------------------To be Developed in the Classroom-------------------------------
     doc.1<-NULL
     doc.1 <- htmlTreeParse(paste("<!DOCTYPE html>", s),asText = TRUE, trim = FALSE)
     xmlValue(xmlRoot(doc.1))
-  } #-------------Function Template Library for Classroom Presentation and Modification---------------------
+	
+  } 
+
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
 f.1<-function(X)
  {
   Z<-""
