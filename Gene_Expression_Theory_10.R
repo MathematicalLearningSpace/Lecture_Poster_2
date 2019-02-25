@@ -1,3 +1,4 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #-----------------------------------R API -----------------------------------------------------------
 library(triplex);library(xtable);library(seqinr);library(Biostrings);library(BSgenome.Hsapiens.UCSC.hg19)
 library(heatmaps);library(BSgenome);library(GenomeGraphs);library(biomaRt)
@@ -16,7 +17,10 @@ t.18.3.Parallel.Second <- triplex.search(chromosome.18[1:n],
                                          type=c(2,3), min_score=10, p_value=1)
 t.18.3.decreasing<-t.18.3[order(score(t.18.3), decreasing=TRUE)]
 
-#-------------------------------Tables--------------------------------------
+#-------------------------------Tables to be added by Students--------------------------------------
+Table.1<-""
+Table.2<-""
+Table.3<-""
 
 #-----Figures to be presented in the Classroom---------------------------------
 par(mfrow = c(2,2))
@@ -32,6 +36,7 @@ Figure.6<-triplex.3D(t.18.3[1], A.col = "red", T.col = "brown",
                      bgr.col = "white", bbone.n = 20)
 
 mart=useMart(biomart="ENSEMBL_MART_ENSEMBL", dataset="hsapiens_gene_ensembl")
+
 ideog <- makeIdeogram(chromosome = "18") 
 genomeAxis <- makeGenomeAxis() 
 genesplus <- makeGeneRegion(start = 0, end =n, strand = "+", chromosome = "18", biomart = mart) 
@@ -68,4 +73,23 @@ Reference.1<-c("",
 
 #-----Function Library to be added by Students in the Classroom--------------------------
 
-
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
