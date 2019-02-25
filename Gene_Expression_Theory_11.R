@@ -1,3 +1,4 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #------------------------------------------------R API -----------------------------
 library(HDMD);library(xtable);library(pdc);library(lattice);library(fracdiff);library(tseriesEntropy)
 #---------------------------------Data------------------------------------------------
@@ -78,6 +79,10 @@ diagnostics.df<-cbind(clustering.Kmeans[c("betweenss", "tot.withinss", "totss")]
 #-------------------------------Tables-----------------------------------------------
 
 Table.1<-xtable(diagnostics.df)
+
+#-----Additional Table Designs provided by students--------------------------------------
+                                
+                                
 #---------------Figures to be presented in the Classroom----------------------------------------------
 par(mfrow = c(2,1))
 Figure.1<-plot(grp1[,1], type="l", 
@@ -137,4 +142,23 @@ Reference.1<-c("",
                "")
 #----------Functional Library to be added by Students----------------------------------
 
-
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
