@@ -13,8 +13,7 @@ chromosome.18<<-genome[["chr18"]]
 k<-3
 n<-(length(chromosome.18)/10^k)
 t.18.3 <- triplex.search(chromosome.18[1:n],min_score=17,min_len=8)
-t.18.3.Parallel.Second <- triplex.search(chromosome.18[1:n],
-                                         type=c(2,3), min_score=10, p_value=1)
+t.18.3.Parallel.Second <- triplex.search(chromosome.18[1:n], type=c(2,3), min_score=10, p_value=1)
 t.18.3.decreasing<-t.18.3[order(score(t.18.3), decreasing=TRUE)]
 
 #-------------------------------Tables to be added by Students--------------------------------------
