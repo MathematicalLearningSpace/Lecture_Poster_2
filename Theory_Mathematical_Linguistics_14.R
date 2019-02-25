@@ -1,16 +1,6 @@
-library(xtable)
-library(qdap)
-library(qdapDictionaries)
-library(qdapRegex)
-library(qdapTools)
-library(stringi)
-library(text2vec)
-library(readability)
-library(syllable)
-library(httr)
-library(XML)
-library(psych)
-library(Hmisc)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+library(xtable);library(qdap);library(qdapDictionaries);library(qdapRegex);library(qdapTools);library(stringi);library(text2vec);library(readability)
+library(syllable);library(httr);library(XML);library(psych);library(Hmisc)
 
 #-----------------------------------------Data Set Tables--------------------------------------------------
 url <- "https://en.wikipedia.org/wiki/Ligand"
@@ -93,12 +83,12 @@ print(moment.3(x, "trimmed"))
 
 #-------------------------------References--------------------------------------------------------
 
-Reference.1<-c("",
-               "",
-               "")
+Reference.1<-stringr::str_c("Wikipedia contributors,"
+               "Harmonic oscillator.",
+               "Wikipedia, The Free Encyclopedia, 25 Feb. 2019.")
 
 
-#-------------------------------Function Library---------------------------------------------------
+#-----------Function Library To be Designed and Testing in the Classroom---------------------------------------------------
 
 moment.1 <- function(x, measure) {
   switch(measure,
@@ -146,3 +136,23 @@ Table.choice.template<-function(x,tableChoice)
          })
   
 }
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
