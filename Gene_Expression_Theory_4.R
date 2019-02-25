@@ -8,7 +8,7 @@ library(xtable);library(PearsonDS);library(fitdistrplus)
 
 #----------------Model to be Completed by Students in Classroom---------------------------------------------
 Gene.Expression.Model.1 <- newModel("Gene Regulation Example") 
-#--------------------------------------------Add reactions 
+#--------------------------------------------Design and Add reactions--------------------------------------- 
 addMAreaction(Gene.Expression.Model.1, "DNA -> DNA + mRNA", r1="v1", name="Transcription")
 addMAreaction(Gene.Expression.Model.1, "mRNA -> mRNA + protein", r1="v2", name="Translation")
 addMAreaction(Gene.Expression.Model.1, "DNA + protein -> DNA_protein", r1="v3", name="Binding")
@@ -30,8 +30,14 @@ addParameters(Gene.Expression.Model.1, "k3", 0.2)
 addParameters(Gene.Expression.Model.1, "k3r", 1)
 addParameters(Gene.Expression.Model.1, "k4", 1.5)
 addParameters(Gene.Expression.Model.1, "k5", 1)
-#-------------------------------------------Add Rules--------------------------------------------------
+#-------------------------------------------Design, Modify, Add and Activate Rules--------------------------------------------------
 addRule(Gene.Expression.Model.1, "rule 1","ODEs","DNA_protein=0.5*DNA")
+#addRule(Gene.Expression.Model.1, "rule 2","ODEs","DNA_protein=0.5*DNA")
+#addRule(Gene.Expression.Model.1, "rule 3","ODEs","DNA_protein=0.5*DNA")
+#addRule(Gene.Expression.Model.1, "rule 4","ODEs","DNA_protein=0.5*DNA")
+#addRule(Gene.Expression.Model.1, "rule 5","ODEs","DNA_protein=0.5*DNA")
+#addRule(Gene.Expression.Model.1, "rule 6","ODEs","DNA_protein=0.5*DNA")
+#addRule(Gene.Expression.Model.1, "rule 7","ODEs","DNA_protein=0.5*DNA")
 #-------------------------------------------Evaluate Model----------------------------------------------
 makeModel(Gene.Expression.Model.1)
 #----------------------Simulate the Model in the Classroom-------------------------------------------
