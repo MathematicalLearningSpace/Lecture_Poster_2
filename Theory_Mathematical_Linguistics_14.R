@@ -2,7 +2,7 @@
 library(xtable);library(qdap);library(qdapDictionaries);library(qdapRegex);library(qdapTools);library(stringi);library(text2vec);library(readability)
 library(syllable);library(httr);library(XML);library(psych);library(Hmisc)
 
-#-----------------------------------------Data Set Tables--------------------------------------------------
+#------------------Data Set Tables and Lecture Topics Examples--------------------------------------------------
 url <- "https://en.wikipedia.org/wiki/Ligand"
 url.1<-"https://en.wikipedia.org/wiki/Statistical_data_type"
 url.2<-"https://en.wikipedia.org/wiki/Graph_theory"
