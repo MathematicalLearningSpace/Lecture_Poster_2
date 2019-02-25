@@ -1,23 +1,17 @@
-library(RPostgreSQL)
-library(RSQLite)
-library(RSQLServer)
-library(RODBC)
-require(stringr)
-require(stringi)
-library(XML)
-library(tm)
-library(plyr)
-library(xtable)
-library(lipsum)
-library(wordcloud)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+#---------------------------------------------------R API --------------------------------------------------------
+library(RPostgreSQL);library(RSQLite);library(RSQLServer);library(RODBC);require(stringr);require(stringi);library(XML);library(tm);library(plyr)
+library(xtable);library(lipsum);library(wordcloud)
 
 #----------------------------------------Data--------------------------------------------------------------------
 q <- c(1,2)
+#----------------------------------------Search Engine Design------------------------------------------
 gene.journal.articles<-lapply(q, function(x)  article.search(terms = x))
 
-Journal.Articles.Curated <- read_csv("Journal_Articles_Curated.txt", 
-                                     col_names = FALSE)
+#--------------------Student Formatted Notes from Independent Readings of Journal Articles-----------------------
+Journal.Articles.Curated <- read_csv("Journal_Articles_Curated.txt", col_names = FALSE)
 View(Journal.Articles.Curated)
+                              
 Journal.Articles.Curated.df<-as.data.frame(Journal.Articles.Curated)
 Journal.Articles.Curated.author.list<-JournalArticles.1.df$authors
 Journal.Articles.Curated.Title.list<-JournalArticles.1.df$titles
@@ -70,3 +64,26 @@ findFreqTerms.modification<-function (x, lowfreq = 0, highfreq = Inf)
   rn <-slam::row_norms(x)
   list(rowSum=names(rs[rs >= lowfreq & rs <= highfreq]),rowNorm=rn)
 }
+                              
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1            
+                              
+                              
