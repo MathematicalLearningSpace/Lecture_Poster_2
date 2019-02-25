@@ -1,3 +1,4 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #------------------------------------------------R API -----------------------------------------------------------------
 library(xtable);
 #-------------------------------------------------Normal Mode Analysis---------------------------------------------------
@@ -24,7 +25,8 @@ AA.list<-unique(AA.df$aa1)
 AA.df.mass<-AA.df$mass
 AA.df<-AA.df[with(AA.df,order(AA.df$mass,decreasing=TRUE)),]
 
-#------------------------------------------------Ratios------------------------------------------------------
+#------Ratios Designs for the Classroom------------------------------------------------------
+
 #--------------------------------------FASTA Files for Classroom---------------------------
 AT.Protein.Mitochondrion.1<-readFASTA('ArabidopsisThalianaProteinMitochondrion.txt')
 AT.Protein.Mitochondrion.1.117<-AT.Protein.Mitochondrion.1[[117]]
@@ -105,3 +107,26 @@ Hydrogen.Carbon.ratio <- function(d) d$H/d$C
 Oxygen.Carbon.ratio <- function(d) d$O/d$C
 Nitrogen.Carbon.ratio <- function(d) d$N/d$C
 Sulfur.Carbon.ratio <- function(d) d$S/d$C
+
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
+
+
