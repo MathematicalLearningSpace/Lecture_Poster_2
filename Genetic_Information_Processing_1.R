@@ -8,7 +8,7 @@ KEGG.IDs.df <- as.data.frame(read_csv("data/KEGG_IDs_For_Query.txt"))
 KEGG.Cancer.IDs.df<- as.data.frame(read_csv("data/KEGG_Cancer_IDs_For_Query.txt"))
 
 View(KEGG.IDs.df)
-
+#-----------------------------------Formatted Student Notes------------------------
 Genetic.Information.Processing.df <- as.data.frame(read_csv("Data/Genetic_Information_Processing.txt"))
 View(Genetic.Information.Processing.df)
 
@@ -26,6 +26,7 @@ View(uniprot.species.human.df)
 uniprot.species.human.CDK7.df<-uniprot.species.human.df[grep("CDK7",uniprot.species.human.df$`Gene names`),]
 CDK7.pdb<-getUniProt(uniprot.species.human.CDK7.df$Entry[1])
 
+#-----------------------------------Formatted Student Notes------------------------
 Protein_Report_RCSB_PDB_Results.df <- as.data.frame(read_csv("data/Protein_Report_RCSB_PDB_Results.csv"))
 View(Protein_Report_RCSB_PDB_Results.df)
 #------------------------------------------------Notes on Ubiquitin System and Proteasome Assembly----------------------------------'
