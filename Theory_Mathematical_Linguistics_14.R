@@ -15,9 +15,11 @@ document <- readHTMLTable(doc=content(url.content, "text"))
 document[1]
 
 document.mitochondrial.DNA<-as.data.frame(document[1])
+#----------------------------Formatted Student Notes from Classroom Lecture-----------------
 write.csv(document.mitochondrial.DNA, file="Mitochondrial_DNA.csv",row.names = F)
 
 document.ligand<-as.data.frame(document[2])
+#----------------------------Formatted Student Notes from Classroom Lecture-----------------
 write.csv(document.ligand, file="ligand.csv",row.names = F)
 
 Table.1.data.set <- data.frame(y=rnorm(5), 
