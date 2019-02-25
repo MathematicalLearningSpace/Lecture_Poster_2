@@ -17,6 +17,9 @@ arXiv.categories<-arxiv_cats
 
 #----------------------------------------------------R Methods for Math Biology----------------------------------------
 Pubmed.R.Methods<- entrez_search(db="pubmed", term="R Language", retmax=100)
+Pubmed.R.Methods.Equations.Differential.Stochastic<- entrez_search(db="pubmed", term="Stochastic Differential Equations", retmax=100)
+Pubmed.R.Methods.Equations.Differential.Delayed<- entrez_search(db="pubmed", term="Delayed Differential Equations", retmax=100)
+Pubmed.R.Methods.Equations.Differential.Fractional<- entrez_search(db="pubmed", term="Fractional Differential Equations", retmax=100)
 
 #----------------------------------------------------Pubmed------------------------------------------------------------
 year <- 2000:2017
