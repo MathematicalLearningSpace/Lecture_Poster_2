@@ -1,18 +1,8 @@
-library(xtable)
-library(text2vec)
-library(data.table)
-library(magrittr)
-library(glmnet)
-library(rentrez)
-library(readr)
-library(LDAvis)
 
-library(GSVAdata)
-library(org.Hs.eg.db) 
-library(GSEABase)
-library(GSAR)
-library(MASS)
+library(xtable);library(text2vec);library(data.table);library(magrittr);library(glmnet);library(rentrez);library(readr);library(LDAvis)
+library(GSVAdata);library(org.Hs.eg.db);library(GSEABase);library(GSAR);library(MASS)
 #------------------------------------------Data-----------------------------------------------
+
 data(p53DataSet) #p53 Dataset of the NCI-60 Cell Lines
 data(c2BroadSets) #C2 collection of canonical pathways from MSigDB 3.0
 data(leukemia) #Leukemia Data by Armstrong et al. (2002) from the Broad Institute
@@ -169,6 +159,7 @@ Table.3
 par(mfcol = c(1, 1))
 Figure.1<-plot(target.pathway[,1], xaxt = "n",type="l")
 axis(1, 1:length(target.pathway[,1]),names(target.pathway[,1]),col.axis="purple",cex.axis=0.5)
+#-----------------Add Additional Figures----------------------------
 for(i in 2:ncol(target.pathway))
 {
   if(i > 17)
@@ -182,6 +173,7 @@ Figure.2<-plot(target.pathway.2[,1], xaxt = "n",type="l",ylim=c(2,8))
 axis(1, 1:length(target.pathway.2[,1]),names(target.pathway.2[,1]),col.axis="purple",cex.axis=0.5)
 for(i in 2:ncol(target.pathway.2))
 {
+  #-----------------Add Additional Figures----------------------------
   if(i > 17)
     lines(target.pathway.2[,i],lty=i,col="red")
   else{
@@ -198,6 +190,8 @@ Figure.4<-plotMST2.pathway(object=p53DataSet[c2.pathways[[path.index.2]],],
                            group=c(rep(1,17), rep(2,33)), name="LU_TUMOR_VASCULATURE_DN", 
                            legend.size=1.2, leg.x=-1.2, leg.y=2, 
                            label.size=1, label.dist=0.8, cor.method="pearson")
+
+#-------------------------Figure Group 1-------------------------
 par(mfcol = c(2, 2))
 Figure.5<-plot(gr)
 Figure.6<-plot(MST)
@@ -212,4 +206,23 @@ Reference.2<-c("Gene Set Enrichment Analysis",
                "http://software.broadinstitute.org/gsea/datasets.jsp")
 
 #---------------------------------Function Library-----------------------------------------------
-
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
