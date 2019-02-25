@@ -1,3 +1,4 @@
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
 #-------------------------------------------R API --------------------------------------------------
 library(seqinr);library(ape);library(xtable);library(Biostrings);library(protr)
 library(Peptides);library(HDMD);library(genoPlotR);library(SetRank);library(stringr);library(stringi)
@@ -23,7 +24,7 @@ AA.DNA.Sequence.3<-c2s(translate(as.character(DNA.Sequence.3),frame=0,sens='F',n
 AA.DNA.Sequence.4<-c2s(translate(as.character(DNA.Sequence.4),frame=0,sens='F',numcode=1))
 
 Gene.Study.Names<-c("AA.DNA.Sequence.1","AA.DNA.Sequence.2","AA.DNA.Sequence.3","AA.DNA.Sequence.4")
-#------------------Residue Properties for Classroom Discussion-----------------------------------------
+#---------Example Residue Properties for Classroom Discussion, Function Modification and Table Design------------------------
 Index.Boman<-c(boman(AA.DNA.Sequence.1))
 Index.Stability<-c(instaIndex(AA.DNA.Sequence.1))
 Index.Aliphatic<-c(aIndex(AA.DNA.Sequence.1))
@@ -31,12 +32,11 @@ Index.Aliphatic<-c(aIndex(AA.DNA.Sequence.1))
 Gene.Index.Table.df<-data.frame()
 Gene.Index.Table.df<-cbind(Index.Boman,Index.Stability,Index.Aliphatic)
 colnames(Gene.Index.Table.df)<-c("Boman","Stability","Aliphatic")
-
-table(s2c(AA.DNA.Sequence.1)) -> AA.DNA.Sequence.1.tmp
-names(AA.DNA.Sequence.1) <- aaa(names(AA.DNA.Sequence.1))
 #-----------------------------------Tables------------------------------------------------------
-
 Table.1<-xtable(Gene.Index.Table.df)
+Table.2<-table(s2c(AA.DNA.Sequence.1)) -> AA.DNA.Sequence.1.tmp
+names(AA.DNA.Sequence.1) <- aaa(names(AA.DNA.Sequence.1))
+
 #----------Figures for Classroom Presentation------------------------------------------------------
 
 Figure.1<-dotchart(AA.DNA.Sequence.1.tmp,pch=19,main='Frequency of Amino Acids', xlab='Frequency', ylab='Amino Acid')
@@ -54,3 +54,23 @@ slidingwindowplot <- function(windowsize, inputseq)
                       # Additional Figures and Tables to be placed here with caption
                       plot(starts,chunkGCs,type="b",xlab="Nucleotide start position",ylab="GC content")
 }
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
