@@ -1,14 +1,8 @@
-library(xtable)
-library(Rknots)
-library(bio3d)
-library(igraph)
-library(Rpdb)
-library(DNAtools)
-library(stringr)
-library(stringi)
-library(sfsmisc)
-library(readr)
-library(graphics)
+#-----------------------------R Code To Modify in the Classroom Lecture with Students-----------------------
+#------------------------------------------R API -----------------------------------------------------
+
+library(xtable);library(Rknots);library(bio3d);library(igraph);library(Rpdb);library(DNAtools);library(stringr);library(stringi);library(sfsmisc)
+library(readr);library(graphics)
 
 #------------------Data------------------------------------------------
 
@@ -130,3 +124,23 @@ difference.quotient<- function(x, y) {
     diff(y[i2]) / diff(x[i2]))
 }
 
+#-------------Function Template Library for Classroom Presentation and Modification---------------------
+f.1<-function(X)
+ {
+  Z<-""
+  a<-1
+  W<-runif(length(X),0,1)
+  for(i in 1:length(X))
+  {  
+	Z<-stringr::str_c(Z,X[i])
+	W[i]<-a*W[i]
+  }
+  output<-list()
+  output$X<-X
+  output$a<-a
+  output$Z<-Z
+  output$W<-W
+  return(output)
+ } 
+test.f.1<-f.1(letters)
+test.f.1
