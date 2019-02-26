@@ -6,6 +6,14 @@ library(markovchain);library(mlr);library(mlrMBO);library(mlrCPO);library(rpubch
 library(data.table);library(fuzzyjoin);library(tidytext);library(dplyr);library(tm)
 library(pROC);library(MASS);library(rpubchem);library(readr);library(rjson);library(e1071);library(ROCR)
 
+#--------------------------------\section{Patent Applications}-------------------------------------------
+#----------Formatted Student Notes for Classroom Lectures------------------------------------------------
+DAHP.Synthase.patent.df<-as.data.frame(read.csv("DAHP.Synthase.patent.csv"))
+three.dehydroquinate.synthase.patent.df<-as.data.frame(read.csv("three.dehydroquinate.synthase.patent.csv"))
+three.dehydroquinate.dehydratase.patents.df<-as.data.frame(read.csv("three.dehydroquinate.dehydratase.patents.csv"))
+chorismate.synthase.patents.df<-as.data.frame(read.csv("chorismate.synthase.patents.csv"))
+EPSP.syhthase.patents.df<-as.data.frame(read.csv("EPSP.synthase.patents.csv"))
+
 
 
 section.ids <- "Names and Identifiers"
