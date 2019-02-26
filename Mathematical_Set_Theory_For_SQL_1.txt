@@ -1,4 +1,5 @@
-#-------------------------------Create the Key Sequence for Postresql------------------------------
+#--Examples for Students to Translate Data Frames from Lectures in the Classroom to Database Tables------
+#-----------------Create the Key Sequence for Postresql------------------------------
 CREATE SEQUENCE public."A_ID_seq"
     INCREMENT 1
     START 1
