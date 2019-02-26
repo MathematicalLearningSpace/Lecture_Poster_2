@@ -6,7 +6,9 @@ library(Decipher);library(msa);library(seqLogo);library(seqinr);library(odseq);l
 library(ips);library(cba)
 
 #------------------------------------------------------Data-----------------------------------------------------------------
+#------------------Formatted Student Notes---------------------------------------------------------------------------------- 
 Protein_Report_RCSB_PDB_Results.df <- as.data.frame(read_csv("data/Protein_Report_RCSB_PDB_Results.csv"))
+
 View(Protein_Report_RCSB_PDB_Results.df)
 
 #-----------------------------------------------------Classification Categories---------------------------------------------
