@@ -8,6 +8,11 @@ library(pROC);library(MASS);library(rpubchem);library(readr);library(rjson);libr
 
 
 
+section.ids <- "Names and Identifiers"
+section.ids <- "Computed Descriptors"
+section.props <- "Chemical and Physical Properties"
+section.computed <- "Computed Properties"
+
 
 
 
