@@ -25,6 +25,11 @@ section.computed <- "Computed Properties"
 
 
 
+#--------------------------------------Parallel Programming-------------------------------
+
+
+
+
 #-------------Function Template Library for Classroom Presentation and Modification---------------------
 f.1<-function(X)
 {
