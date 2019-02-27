@@ -14,7 +14,12 @@ three.dehydroquinate.dehydratase.patents.df<-as.data.frame(read.csv("three.dehyd
 chorismate.synthase.patents.df<-as.data.frame(read.csv("chorismate.synthase.patents.csv"))
 EPSP.syhthase.patents.df<-as.data.frame(read.csv("EPSP.synthase.patents.csv"))
 
-
+#---------Formatted Student Notes for Classroom Lectures-----------------------------------------------
+#Fingerprint Tanimoto-based 2-dimensional similarity search. 90 %
+ASCORBIC.ACID.literature.df<-as.data.frame(read.csv("ASCORBIC_ACID.csv"))
+Vitamin.A.literature.df<-as.data.frame(read.csv("Vitamin_A.csv"))
+#Fingerprint Tanimoto-based 2-dimensional similarity search 95 %
+Vitamin.D.literature.df<-as.data.frame(read.csv("Vitamin_D.csv"))
 
 section.ids <- "Names and Identifiers"
 section.ids <- "Computed Descriptors"
