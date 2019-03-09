@@ -1,16 +1,11 @@
-library(xtable)
-library(Rknots)
-library(deSolve)
+library(xtable);library(Rknots);library(deSolve)
 #--------------------------------Data------------------------------------------
-
 protein.5VIK<- loadProtein('5VIK')
 
 #----------------------------Knot Analysis------------------------------------
 
 protein.5VIK.knot <- newKnot(protein.5VIK$A)
-
 protein.5VIK.knot.cp <- closeAndProject(protein.5VIK.knot, w = 2 )
-
 protein.5VIK.knot.delta.p <- computeInvariant( protein.5VIK.knot.cp, invariant = 'Alexander') 
 protein.5VIK.knot.jones.p <- computeInvariant( protein.5VIK.knot.cp, invariant = 'Jones', skein.sign = -1) 
 protein.5VIK.knot.homfly.p <- computeInvariant( protein.5VIK.knot.cp, invariant = 'HOMFLY', skein.sign = -1) 
@@ -19,6 +14,7 @@ protein.5VIK.knot.delta.p.type<-getKnotType(polynomial = protein.5VIK.knot.delta
 protein.5VIK.knot.jones.p.type<-getKnotType(polynomial = protein.5VIK.knot.homfly.p, invariant = 'HOMFLY')
 protein.5VIK.knot.jones.p.type.full<-getKnotType(polynomial = protein.5VIK.knot.homfly.p, invariant = 'HOMFLY', full.output = TRUE)
 
+#----------------------------------------------Table Design-------------------------------------------------#
 knot.analysis.df<-data.frame()
 knot.analysis.df<-rbind(c("5VIK",
                           protein.5VIK.knot.delta.p.type,
@@ -71,11 +67,13 @@ rug(system.solution.1[,4], side=4, col="black")
 
 LO.1<-c("http://knotprot.cent.uw.edu.pl/view/5vik/A/")
 LO.2<-c("http://katlas.org/wiki/File:Figure8knot-parametricequation.png")
-#----------------------------References----------------------------------------
+
+#----------------------------References for Reading List-------------------------------
 
 Reference.1<-c("Mikhail Baloban,Daria M. Shcherbakova,Sergei Pletnev,Vladimir Z. Pletnev,Clark Lagarias,Vladislav V. Verkhusha",
                "Designing brighter near-infrared fluorescent proteins: insights from structural and biochemical studies",
                "Chem. Sci.,2017,8,4546")
+
 Reference.2<-c("ROBERT W. GHRIST and PHILIP J. HOLMES",
                "AN ODE WHOSE SOLUTIONS CONTAIN ALL KNOTS AND LINKS",
                "Int. J. Bifurcation Chaos 06, 779 (1996)")
