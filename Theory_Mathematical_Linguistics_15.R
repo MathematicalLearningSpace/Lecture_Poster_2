@@ -2,7 +2,22 @@
 library(easyPubMed)
 library(bio3d)
 library(readr)
-
+library(CHNOSZ)
+library(stringr)
+library(Peptides)
+library(Biostrings)
+library(seqinr)
+library(seqLogo)
+library(msa)
+library(ape)
+library(dtw)
+library(dtwclust)
+library(odseq)
+library(rphast)
+library(plyr)
+#-----------------------------------------Data--------------------------------------------------------
+data(thermo)
+data(aaindex)
 #-----------------------------------------Search Engine Design----------------------------------------
 Proteasome_xml <- fetch_pubmed_data(get_pubmed_ids("Proteasome"))
 Chaperone_xml <- fetch_pubmed_data(get_pubmed_ids("Chaperone"))
@@ -22,8 +37,27 @@ Table.1 <- read_csv("Ligands.csv")
 #------------------------------------Figure Designs--------------------------------------------------
 
 
-
 #------------------------------------Function Library Designs----------------------------------------
+reading.list<-function(X,search.terms,save.notes=FALSE, notes.name)
+{
+  X_titles <- unlist(xpathApply(X, "//ArticleTitle", saveXML))
+  X_titles_1 <- gsub("(^.{5,10}Title>)|(<\\/.*$)", "", X_titles)
+  X_title_1_filtered<-X_titles_1[grep(search.terms,X_titles_1)]
+  if(save.notes)
+  {
+    write(X_title_1_filtered, file=stringr::str_c("Notes_Reading_List_",notes.name,"_",search.terms,".txt"),append=FALSE)
+  }
+  output<-list()
+  output$Titles<-X_titles_1
+  output$Titles.Filtered<-X_title_1_filtered
+  return(output)
+}
+reading.list(Proteasome_xml,"ligand",TRUE,"Proteasome")
+reading.list(Chaperone_xml,"ligand",TRUE,"Chaperone") 
+reading.list(Ribosome_xml,"ligand",TRUE,"Ribosome") 
+reading.list(Heat_Shock_Proteins,"ligand",TRUE,"Heat_Shock_Proteins")
+reading.list(Ligand_xml,"Receptor Tryosine Kinases",TRUE,"Ligand")
+reading.list(Entropy_xml,"ligand",TRUE,"Entropy")
 
 #------------------------------------References------------------------------------------------------
 
