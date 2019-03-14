@@ -1,19 +1,6 @@
 #----------------------------------Example for Students in the Classroom----------------------------
-library(easyPubMed)
-library(bio3d)
-library(readr)
-library(CHNOSZ)
-library(stringr)
-library(Peptides)
-library(Biostrings)
-library(seqinr)
-library(seqLogo)
-library(msa)
-library(ape)
-library(dtw)
-library(dtwclust)
-library(odseq)
-library(rphast)
+library(easyPubMed);library(bio3d);library(readr);library(CHNOSZ);library(stringr);library(Peptides);library(Biostrings)
+library(seqinr);library(seqLogo);library(msa);library(ape);library(dtw);library(dtwclust);library(odseq);library(rphast)
 library(plyr)
 #-----------------------------------------Data--------------------------------------------------------
 data(thermo)
@@ -58,6 +45,55 @@ reading.list(Ribosome_xml,"ligand",TRUE,"Ribosome")
 reading.list(Heat_Shock_Proteins,"ligand",TRUE,"Heat_Shock_Proteins")
 reading.list(Ligand_xml,"Receptor Tryosine Kinases",TRUE,"Ligand")
 reading.list(Entropy_xml,"ligand",TRUE,"Entropy")
+
+#----------------------------------------------------------Notes Content-------------------------------------------
+Notes.content.A<-function(X,note.name,search.terms,rlfilter=TRUE,save.notes=FALSE)
+{
+  X.list<-list()
+  X_abstract <- unlist(xpathApply(X, "//AbstractText", saveXML))
+  X_abstract_1 <- gsub("(^.{5,10}Title>)|(<\\/.*$)", "", X_abstract)  
+  X_titles <- unlist(xpathApply(X, "//ArticleTitle", saveXML))
+  X_titles_1 <- gsub("(^.{5,10}Title>)|(<\\/.*$)", "", X_titles)
+  if(rlfilter){
+    X_abstract_1_filtered<-  X_abstract_1[grep(search.terms,X_abstract_1)]
+    X_titles_1_filtered<-X_titles_1[grep(search.terms,X_titles_1)]
+  }
+  else{X_abstract_1_filtered<-X_abstract_1
+  X_titles_1_filtered<-X_titles_1}
+  notes.1<-X_abstract_1_filtered
+  readingList<-X_titles_1_filtered
+  notes.summary.format<-""
+  readingList.format<-""
+  for(i in 1:length(X_abstract_1_filtered))
+  {
+    X.list[[i]]<-strsplit(notes.1[i],". ",fixed=TRUE)
+    notes.summary<-unlist(X.list[[i]])
+    for(j in 1:length(notes.summary))
+    {
+      notes.summary.format<-stringr::str_c(notes.summary.format, "\\item ", notes.summary[j], " \\cite{key",i,"}   " )
+    }
+    notes.summary.format<-stringr::str_c(notes.summary.format,"%---------------------------------------------------%")
+    
+  }
+  for(i in 1:length(readingList))
+  {
+    readingList.format<-stringr::str_c(readingList.format," \\bibitem[",i,"]{key",i,"}", readingList[i])
+  }
+  notes.and.reading.list<-stringr::str_c(notes.summary.format,"%-------------References--------------% ",readingList.format)
+  if(save.notes)
+  {
+    write(notes.and.reading.list, file=stringr::str_c("Classroom_Notes_For_Journal_Articles_",note.name,"_",search.terms,".txt"),append=FALSE)
+  }
+  
+  output<-list()
+  output$Notes<-notes.1
+  output$Notes.Summary<-notes.summary.format
+  output$Reading.List<-readingList.format
+  return(output)
+}
+
+test.Notes.content.A<-Notes.content.A(Lysosome_xml,"Lysosome","cancer",save.notes=TRUE)
+test.Notes.content.A
 
 #------------------------------------References------------------------------------------------------
 
