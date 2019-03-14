@@ -25,15 +25,7 @@ section.ids <- "Names and Identifiers"
 section.ids <- "Computed Descriptors"
 section.props <- "Chemical and Physical Properties"
 section.computed <- "Computed Properties"
-
-
-
-
-
 #--------------------------------------Parallel Programming-------------------------------
-
-
-
 
 #-------------Function Template Library for Classroom Presentation and Modification---------------------
 f.1<-function(X)
