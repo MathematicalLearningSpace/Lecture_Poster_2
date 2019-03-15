@@ -17,7 +17,7 @@ Endosome_xml<-fetch_pubmed_data(get_pubmed_ids("Endosome"))
 Enzymes.Proteins.lysosome_xml<-fetch_pubmed_data(get_pubmed_ids("Lysosome Enzymes Proteins"))
 enzyme.inhibitors_xml<-fetch_pubmed_data(get_pubmed_ids("enzyme inhibitors"))
 enzyme.active.site_xml<-fetch_pubmed_data(get_pubmed_ids("three-dimensional structure enzyme active site"))
-MathModels_xml<-fetch_pubmed_data(get_pubmed_ids("Mathematical Models"))
+
 Cell.based.Mathematical.Model_xml<-fetch_pubmed_data(get_pubmed_ids("Cell based Mathematical Model Protein Complex"))
 molecular.docking_xml<-fetch_pubmed_data(get_pubmed_ids("molecular docking"))
 molecular.machine_xml<-fetch_pubmed_data(get_pubmed_ids("molecular machine"))
@@ -27,6 +27,17 @@ Crizotinib_xml<-fetch_pubmed_data(get_pubmed_ids("Crizotinib"))
 Pyrimidine.dimers_xml<-fetch_pubmed_data(get_pubmed_ids("Pyrimidine dimers"))
 intracellular.pH.temperature_xml<-fetch_pubmed_data(get_pubmed_ids("intracellular pH temperature"))
 c.Met.inhibitors_xml<-fetch_pubmed_data(get_pubmed_ids("C-Met Inhibitors"))
+
+#-----------------------------G Quadruplexes-------------------------------------------
+Intramolecular.G.Quadruplexes.Basket_xml<-fetch_pubmed_data(get_pubmed_ids("Intramolecular G Quadruplexes Basket"))
+Intramolecular.G.Quadruplexes.Chair_xml<-fetch_pubmed_data(get_pubmed_ids("Intramolecular G Quadruplexes Chair"))
+Intramolecular.G.Quadruplexes.Propeller_xml<-fetch_pubmed_data(get_pubmed_ids("Intramolecular G Quadruplexes Propeller"))
+Intermolecular.G.Quadruplexes.Hairpin.dimmer_xml<-fetch_pubmed_data(get_pubmed_ids("Intermolecular G-Quadruplexes Hairpin dimmer"))
+Intermolecular.G.Quadruplexes.Tetrameric_xml<-fetch_pubmed_data(get_pubmed_ids("Intermolecular G-Quadruplexes Tetrameric")
+#-----------------------Mathematical Models--------------------------------------------
+Differential.Equations_xml<-fetch_pubmed_data(get_pubmed_ids("Differential Equations"))
+MathModels_xml<-fetch_pubmed_data(get_pubmed_ids("Mathematical Models"))
+                                                                
 #-----------------------------------------------------------------------Reading Lists----------------------------------------------
 reading.list(Lysosome_xml,"cancer",TRUE,"Lysosome")
 reading.list(Enzymes.Proteins.lysosome_xml,"cancer",TRUE,"Lysosome_Enzymes_Proteins")
@@ -51,6 +62,15 @@ Notes.content.A(molecular.mechanics_xml,"Molecular_Mechanics","cancer",save.note
 Notes.content.A(Endosome_xml,"Endosome","cancer",save.notes=TRUE)
 Notes.content.A(Crizotinib_xml,"Crizotinib","cancer",save.notes=TRUE)
 Notes.content.A(c.Met.inhibitors_xml,"C_Met Inhibitors","cancer",save.notes=TRUE)
+Notes.content.A(Intramolecular.G.Quadruplexes.Basket_xml,"Intramolecular_G_Quadruplexes_Basket","cancer",FALSE,save.notes=TRUE)
+Notes.content.A(Intramolecular.G.Quadruplexes.Chair_xml,"Intramolecular_G_Quadruplexes_Chair","cancer",FALSE,save.notes=TRUE)
+Notes.content.A(Intramolecular.G.Quadruplexes.Propeller_xml,"Intramolecular_G_Quadruplexes_Propeller","cancer",FALSE,save.notes=TRUE)
+Notes.content.A(Intermolecular.G.Quadruplexes.Hairpin.dimmer_xml,"Intermolecular_G_Quadruplexes_Hairpin_dimmer","cancer",FALSE,save.notes=TRUE)
+Notes.content.A(Intermolecular.G.Quadruplexes.Tetrameric_xml,"Intermolecular_G_Quadruplexes_Tetrameric","cancer",FALSE,save.notes=TRUE)
+                                                                
+Notes.content.A(Differential.Equations_xml,"Differential_Equations","cancer",FALSE,save.notes=TRUE)
+
+                                                         
 
 #------------------------------------Table Designs----------------------------------------------------
 #------------------Ribosome, Chaperone and Proteasome Ligands from RCSB PDB-----------
