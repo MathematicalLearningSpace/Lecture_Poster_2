@@ -4,7 +4,8 @@
 library(CHNOSZ);library(rcdk);library(leaps);library(caret);library(igraph);library(GA);library(webchem)
 library(markovchain);library(mlr);library(mlrMBO);library(mlrCPO);library(rpubchem);library(klaR)
 library(data.table);library(fuzzyjoin);library(tidytext);library(dplyr);library(tm)
-library(pROC);library(MASS);library(rpubchem);library(readr);library(rjson);library(e1071);library(ROCR)
+library(pROC);library(MASS);library(rpubchem);library(readr);library(rjson);library(e1071);library(ROCR);
+library(miRNAss);library(sequences);library(linkprediction);library(chemmodlab);library(ChemmineOB);library(ChemmineR);library(ChemoSpec)
 
 #--------------------------------\section{Patent Applications}-------------------------------------------
 #----------Formatted Student Notes for Classroom Lectures------------------------------------------------
