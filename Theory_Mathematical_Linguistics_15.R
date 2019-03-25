@@ -17,6 +17,17 @@ Endosome_xml<-fetch_pubmed_data(get_pubmed_ids("Endosome"))
 Enzymes.Proteins.lysosome_xml<-fetch_pubmed_data(get_pubmed_ids("Lysosome Enzymes Proteins"))
 enzyme.inhibitors_xml<-fetch_pubmed_data(get_pubmed_ids("enzyme inhibitors"))
 enzyme.active.site_xml<-fetch_pubmed_data(get_pubmed_ids("three-dimensional structure enzyme active site"))
+#----------------------------------------------------------------------------------------------------------
+ADP.glucose.pyrophosphorylase<-fetch_pubmed_data(get_pubmed_ids("ADP-glucose pyrophosphorylase"))
+peptidyl.tyrosine.autophosphorylation_xml<-fetch_pubmed_data(get_pubmed_ids("peptidyl-tyrosine autophosphorylation"))
+positive.regulation.of.calcium.mediated.signaling<-fetch_pubmed_data(get_pubmed_ids("positive regulation of calcium mediated signaling"))
+mRNA.alternative.polyadenylation<-fetch_pubmed_data(get_pubmed_ids("mRNA alternative polyadenylation"))
+Delta.3.UTR<-fetch_pubmed_data(get_pubmed_ids("profiling the changes of 3′-UTR length"))
+ER.Stress<-fetch_pubmed_data(get_pubmed_ids("Endoplasmic reticulum stress protein glycosylation"))
+InMAP<-fetch_pubmed_data(get_pubmed_ids("Integrative Model for Alternative Polyadenylation"))
+mRNA.post.transcriptional.regulation<-fetch_pubmed_data(get_pubmed_ids("mRNA post-transcriptional regulation")) 
+Notes.content.A(mRNA.post.transcriptional.regulation,"mRNA post transcriptional regulation","cancer",FALSE,save.notes=TRUE)
+#--------------------------------------------------------------------------------------------------------
 #--------------------------------------Signal Transduction Networks---------------------------------------
 A.xml<-fetch_pubmed_data(get_pubmed_ids("Ras signaling pathway")) 
 B.xml<-fetch_pubmed_data(get_pubmed_ids("PI3K-Akt signaling pathway"))  
@@ -74,7 +85,6 @@ Crizotinib_xml<-fetch_pubmed_data(get_pubmed_ids("Crizotinib"))
 Pyrimidine.dimers_xml<-fetch_pubmed_data(get_pubmed_ids("Pyrimidine dimers"))
 intracellular.pH.temperature_xml<-fetch_pubmed_data(get_pubmed_ids("intracellular pH temperature"))
 c.Met.inhibitors_xml<-fetch_pubmed_data(get_pubmed_ids("C-Met Inhibitors"))
-
 #-----------------------------G Quadruplexes-------------------------------------------
 Intramolecular.G.Quadruplexes.Basket_xml<-fetch_pubmed_data(get_pubmed_ids("Intramolecular G Quadruplexes Basket"))
 Intramolecular.G.Quadruplexes.Chair_xml<-fetch_pubmed_data(get_pubmed_ids("Intramolecular G Quadruplexes Chair"))
@@ -99,7 +109,7 @@ reading.list(Reversible.phosphorylation.conformational.change_xml,"cancer",TRUE,
 reading.list(intracellular.pH.temperature_xml,"cancer",TRUE,"intracellular_pH_temperature")
 reading.list(Pyrimidine.dimers_xml,"cancer",TRUE,"Pyrimidine_dimers")
 reading.list(Crizotinib_xml,"cancer",TRUE,"Crizotinib")
-#--------------------------------------------------------------------Notes Content--------------------------------------------------
+#------------------------------Notes Content--------------------------------------------------
 Notes.content.A(Enzymes.Proteins.lysosome_xml,"Enzymes_Proteins_Lysosome","cancer",save.notes=TRUE)
 Notes.content.A(MathModels_xml,"MathModels","cancer",save.notes=TRUE)
 Notes.content.A(Pyrimidine.dimers_xml,"Dimers","cancer",save.notes=TRUE)
@@ -109,6 +119,7 @@ Notes.content.A(molecular.mechanics_xml,"Molecular_Mechanics","cancer",save.note
 Notes.content.A(Endosome_xml,"Endosome","cancer",save.notes=TRUE)
 Notes.content.A(Crizotinib_xml,"Crizotinib","cancer",save.notes=TRUE)
 Notes.content.A(c.Met.inhibitors_xml,"C_Met Inhibitors","cancer",save.notes=TRUE)
+#---------------------------------------------------------------------------------------------
 Notes.content.A(Intramolecular.G.Quadruplexes.Basket_xml,"Intramolecular_G_Quadruplexes_Basket","cancer",FALSE,save.notes=TRUE)
 Notes.content.A(Intramolecular.G.Quadruplexes.Chair_xml,"Intramolecular_G_Quadruplexes_Chair","cancer",FALSE,save.notes=TRUE)
 Notes.content.A(Intramolecular.G.Quadruplexes.Propeller_xml,"Intramolecular_G_Quadruplexes_Propeller","cancer",FALSE,save.notes=TRUE)
